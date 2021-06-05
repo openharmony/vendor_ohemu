@@ -4,56 +4,14 @@
     "device_company": "qemu",
     "board": "arm_virt",
     "kernel_type": "liteos_a",
-    "kernel_version": "",
+    "kernel_version": "3.0.0",
     "subsystems": [
-      {
-        "subsystem": "aafwk",
-        "components": [
-          { "component": "aafwk_lite", "features":[ "enable_ohos_appexecfwk_feature_ability = false" ] }
-        ]
-      },
-      {
-        "subsystem": "hiviewdfx",
-        "components": [
-          { "component": "hilog", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "distributed_schedule",
-        "components": [
-          { "component": "samgr_lite", "features":[] },
-          { "component": "safwk_lite", "features":[] },
-          { "component": "dmsfwk_lite", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "security",
-        "components": [
-          { "component": "hichainsdk", "features":[] },
-          { "component": "permission", "features":[] },
-          { "component": "appverify", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "multimedia",
-        "components": [
-          { "component": "media_service", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "graphic",
-        "components": [
-          { "component": "graphic_utils", "features":[] },
-          { "component": "surface", "features":[] }
-        ]
-      },
       {
         "subsystem": "startup",
         "components": [
           { "component": "syspara_lite", "features":[] },
           { "component": "bootstrap_lite", "features":[] },
-          { "component": "init_lite", "features":[] },
-          { "component": "appspawn_lite", "features":[] }
+          { "component": "init_lite", "features":[] }
         ]
       },
       {
@@ -63,55 +21,10 @@
         ]
       },
       {
-        "subsystem": "communication",
-        "components": [
-          { "component": "ipc_lite", "features":[] },
-          { "component": "softbus_lite", "features":[] },
-          { "component": "wpa_supplicant", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "drivers",
-        "components": [
-          { "component": "adapter_uhdf", "features":[] },
-          { "component": "peripheral_display", "features":[] },
-          { "component": "peripheral_input", "features":[] },
-          { "component": "peripheral_wlan", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "appexecfwk",
-        "components": [
-          { "component": "appexecfwk_lite", "features":[] }
-        ]
-      },
-      {
         "subsystem": "utils",
         "components": [
           { "component": "kv_store", "features":[] },
           { "component": "os_dump", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "vendor",
-        "components": [
-          { "component": "middleware", "features":[] },
-          { "component": "hi3518ev300_init", "features":[] },
-          { "component": "hardware", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "test",
-        "components": [
-          { "component": "developer_test", "features":[] },
-          { "component": "xts_acts", "features":[] },
-          { "component": "xts_tools", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "ai",
-        "components": [
-          { "component": "ai_engine", "features":[] }
         ]
       }
     ],

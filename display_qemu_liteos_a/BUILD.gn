@@ -1,5 +1,10 @@
 # Copyright (C) 2020 Hisilicon (Shanghai) Technologies Co., Ltd. All rights reserved.
 
-group("qemu_arm_virt") {
+import("//build/lite/config/component/lite_component.gni")
+import("//build/lite/config/subsystem/lite_subsystem.gni")
+
+exec_script("patches/patch.py", [rebase_path("//", root_build_dir)])
+
+group("display_qemu") {
   deps = [ "init_configs" ]
 }
