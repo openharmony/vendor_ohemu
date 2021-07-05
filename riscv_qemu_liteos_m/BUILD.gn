@@ -1,0 +1,4 @@
+# Copyright (c) 2020 Huawei Device Co., Ltd. All rights reserved.
+
+group("riscv_qemu_liteos_m") {
+}

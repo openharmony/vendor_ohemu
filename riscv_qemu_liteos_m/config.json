@@ -1,0 +1,35 @@
+{
+    "product_name": "riscv32_qemu_sifive_u",
+    "ohos_version": "OpenHarmony 1.0",
+    "device_company": "qemu",
+    "board": "riscv32_sifive_u",
+    "kernel_type": "liteos_m",
+    "kernel_version": "3.0.0",
+    "subsystems": [
+      {
+        "subsystem": "kernel",
+        "components": [
+          { "component": "liteos_m", "features":[ "enable_ohos_kernel_liteos_m_test = true",
+                                                  "enable_ohos_kernel_liteos_m_fs = false" 
+                                                ]
+          }
+        ]
+      }
+    ],
+    "vendor_adapter_dir": "//vendor/ohos/riscv_qemu_liteos_m",
+    "third_party_dir": "",
+    "product_adapter_dir": "//vendor/ohos/riscv_qemu_liteos_m/hals",
+    "ohos_product_type": "",
+    "ohos_manufacture":"",
+    "ohos_brand":"",
+    "ohos_market_name":"",
+    "ohos_product_series":"",
+    "ohos_product_model":"",
+    "ohos_software_model":"",
+    "ohos_hardware_model":"",
+    "ohos_hardware_profile":"",
+    "ohos_serial":"",
+    "ohos_bootloader_version":"",
+    "ohos_secure_patch_level":"",
+    "ohos_abi_list":""
+}
