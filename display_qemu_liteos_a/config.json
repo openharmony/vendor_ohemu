@@ -7,6 +7,12 @@
     "kernel_version": "3.0.0",
     "subsystems": [
       {
+        "subsystem": "distributed_schedule",
+        "components": [
+          { "component": "samgr_lite", "features":[] }
+        ]
+      },
+      {
         "subsystem": "startup",
         "components": [
           { "component": "syspara_lite", "features":[] },
