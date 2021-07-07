@@ -1,8 +1,8 @@
 {
-    "product_name": "riscv32_qemu_sifive_u",
+    "product_name": "riscv_qemu_liteos_m",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "qemu",
-    "board": "riscv32_sifive_u",
+    "board": "riscv32_virt",
     "kernel_type": "liteos_m",
     "kernel_version": "3.0.0",
     "subsystems": [
