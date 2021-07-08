@@ -9,6 +9,7 @@
       {
         "subsystem": "distributed_schedule",
         "components": [
+          { "component": "safwk_lite", "features":[] },
           { "component": "samgr_lite", "features":[] }
         ]
       },
