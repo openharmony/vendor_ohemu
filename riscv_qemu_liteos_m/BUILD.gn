@@ -6,7 +6,7 @@ executable("riscv_qemu_liteos_m") {
     "-Wl,-mcmodel=medany",
     "-Wl,-melf32lriscv",
     "-nostartfiles",
-    "-Wl,-T"+rebase_path("Liteos.ld"),
+    "-Wl,-T"+rebase_path("//device/qemu/riscv32_virt/Liteos.ld"),
   ]
   libs = [
     "gcc",
@@ -14,7 +14,7 @@ executable("riscv_qemu_liteos_m") {
     "c"
   ]
   deps = [
-    "//kernel/liteos_m:kernel",
+    "//build/lite:ohos",
     "//device/qemu/riscv32_virt:board"
   ]
 }
