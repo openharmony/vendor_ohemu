@@ -1,4 +1,20 @@
 # Copyright (c) 2020 Huawei Device Co., Ltd. All rights reserved.
 
-group("riscv_qemu_liteos_m") {
+executable("riscv_qemu_liteos_m") {
+  output_name = "OHOS_Image"
+  ldflags = [
+    "-Wl,-mcmodel=medany",
+    "-Wl,-melf32lriscv",
+    "-nostartfiles",
+    "-Wl,-T"+rebase_path("//device/qemu/riscv32_virt/Liteos.ld"),
+  ]
+  libs = [
+    "gcc",
+    "nosys",
+    "c"
+  ]
+  deps = [
+    "//build/lite:ohos",
+    "//device/qemu/riscv32_virt:board"
+  ]
 }
