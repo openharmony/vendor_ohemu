@@ -14,11 +14,29 @@
         ]
       },
       {
+        "subsystem": "hiviewdfx",
+        "components": [
+          { "component": "hilog", "features":[] },
+          { "component": "hidumper", "features":[] }
+        ]
+      },
+      {
         "subsystem": "startup",
         "components": [
           { "component": "syspara_lite", "features":[] },
           { "component": "bootstrap_lite", "features":[] },
+          { "component": "appspawn_lite", "features":[] },
           { "component": "init_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "graphic",
+        "components": [
+          { "component": "graphic_utils", "features":[] },
+          { "component": "graphic_hals", "features":[] },
+          { "component": "ui", "features":[ "enable_graphic_font = true" ] },
+          { "component": "surface", "features":[] },
+          { "component": "wms", "features":[] }
         ]
       },
       {
