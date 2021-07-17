@@ -1,5 +1,5 @@
 {
-    "product_name": "riscv_qemu_liteos_m",
+    "product_name": "qemu_riscv_mini_system_demo",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "qemu",
     "board": "riscv32_virt",
@@ -9,16 +9,14 @@
       {
         "subsystem": "kernel",
         "components": [
-          { "component": "liteos_m", "features":[ "enable_ohos_kernel_liteos_m_test = true",
-                                                  "enable_ohos_kernel_liteos_m_fs = false" 
-                                                ]
+          { "component": "liteos_m", "features":[ "enable_ohos_kernel_liteos_m_test = true" ]
           }
         ]
       }
     ],
-    "vendor_adapter_dir": "//vendor/ohos/riscv_qemu_liteos_m",
+    "vendor_adapter_dir": "//vendor/ohos/qemu_riscv32_mini_system_demo",
     "third_party_dir": "",
-    "product_adapter_dir": "//vendor/ohos/riscv_qemu_liteos_m/hals",
+    "product_adapter_dir": "//vendor/ohos/qemu_riscv32_mini_system_demo/hals",
     "ohos_product_type": "",
     "ohos_manufacture":"",
     "ohos_brand":"",

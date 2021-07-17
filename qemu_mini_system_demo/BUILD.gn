@@ -1,11 +1,11 @@
 # Copyright (c) 2020 Huawei Device Co., Ltd. All rights reserved.
 
-executable("cortex_m4_qemu_liteos_m") {
+executable("qemu_mini_system_demo") {
   output_name = "OHOS_Image"
   ldflags = [
     "-specs=nano.specs",
     "-nostartfiles",
-    "-Wl,-T"+rebase_path("//device/qemu/cortex_m4_an386/Liteos.ld"),
+    "-Wl,-T"+rebase_path("//device/qemu/arm_mps2_an386/Liteos.ld"),
     "-Wl,--gc-section"
   ]
 
@@ -17,6 +17,6 @@ executable("cortex_m4_qemu_liteos_m") {
 
   deps = [
     "//build/lite:ohos",
-    "//device/qemu/cortex_m4_an386:board"
+    "//device/qemu/arm_mps2_an386:board"
   ]
 }
