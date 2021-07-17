@@ -1,8 +1,8 @@
 {
-    "product_name": "cortex_m4_qemu",
+    "product_name": "qemu_mini_system_demo",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "qemu",
-    "board": "cortex_m4_an386",
+    "board": "arm_mps2_an386",
     "kernel_type": "liteos_m",
     "kernel_version": "3.0.0",
     "subsystems": [
@@ -45,9 +45,9 @@
         ]
       }
     ],
-    "vendor_adapter_dir": "//vendor/ohos/cortex_m4_qemu_liteos_m",
+    "vendor_adapter_dir": "//vendor/ohos/qemu_mini_system_demo",
     "third_party_dir": "",
-    "product_adapter_dir": "//vendor/ohos/cortex_m4_qemu_liteos_m/hals",
+    "product_adapter_dir": "//vendor/ohos/qemu_mini_system_demo/hals",
     "ohos_product_type": "",
     "ohos_manufacture":"",
     "ohos_brand":"",
