@@ -72,5 +72,5 @@ cd device/qemu/arm_mps2_an386
 
 ## Repositories Involved
 
-[device\_qemu](https://gitee.com/openharmony/device_qemu/blob/master/README_zh.md)
+[device\_qemu](https://gitee.com/openharmony/device_qemu/blob/master/README.md)
 
