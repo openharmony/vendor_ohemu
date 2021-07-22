@@ -55,7 +55,7 @@
     ],
     "vendor_adapter_dir": "//device/qemu/hardware",
     "third_party_dir": "//third_party",
-    "product_adapter_dir": "//vendor/ohos/display_qemu_liteos_a/hals",
+    "product_adapter_dir": "//vendor/ohemu/display_qemu_liteos_a/hals",
     "ohos_product_type":"",
     "ohos_manufacture":"",
     "ohos_brand":"",

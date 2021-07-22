@@ -14,9 +14,9 @@
         ]
       }
     ],
-    "vendor_adapter_dir": "//vendor/ohos/qemu_riscv32_mini_system_demo",
+    "vendor_adapter_dir": "//vendor/ohemu/qemu_riscv32_mini_system_demo",
     "third_party_dir": "",
-    "product_adapter_dir": "//vendor/ohos/qemu_riscv32_mini_system_demo/hals",
+    "product_adapter_dir": "//vendor/ohemu/qemu_riscv32_mini_system_demo/hals",
     "ohos_product_type": "",
     "ohos_manufacture":"",
     "ohos_brand":"",
