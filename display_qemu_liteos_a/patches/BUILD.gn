@@ -1,3 +1,0 @@
-# Copyright (c) 2020 Huawei Device Co., Ltd. All rights reserved.
-group("arm_virt") {
-}
