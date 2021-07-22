@@ -18,11 +18,13 @@
 OUT_DIR="out/arm_virt/display_qemu/"
 sudo modprobe mtdram total_size=65536 erase_size=256
 sudo mtdpart add /dev/mtd0 kernel 0 10223616
-sudo mtdpart add /dev/mtd0 kernel 10223616 10485760
-sudo mtdpart add /dev/mtd0 root 10485760 56623104
-sudo nandwrite -p /dev/mtd1 out/arm_virt/display_qemu/liteos.bin
-echo -e "bootargs=root=cfi-flash fstype=jffs2 rootaddr=0xA00000 rootsize=27M\x0" | sudo nandwrite -p /dev/mtd2 -
-sudo nandwrite -p /dev/mtd3 out/arm_virt/display_qemu/rootfs_jffs2.img
+sudo mtdpart add /dev/mtd0 bootargs 10223616 262144
+sudo mtdpart add /dev/mtd0 root 10485760 23068672
+sudo mtdpart add /dev/mtd0 user 33554432 33554432
+sudo nandwrite -p /dev/mtd1 $OUT_DIR/liteos.bin
+echo -e "bootargs=root=cfi-flash fstype=jffs2 rootaddr=10M rootsize=22M useraddr=32M usersize=32M\x0" | sudo nandwrite -p /dev/mtd2 -
+sudo nandwrite -p /dev/mtd3 $OUT_DIR/rootfs_jffs2.img
+sudo nandwrite -p /dev/mtd4 $OUT_DIR/userfs_jffs2.img
 sudo dd if=/dev/mtd0 of=flash.img
 sudo chown `whoami` flash.img
 sudo rmmod mtdram
