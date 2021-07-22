@@ -66,6 +66,11 @@
       dir_mode: 555
       file_mode: 444
     -
+      source_dir: dev_tools/bin
+      target_dir: bin
+      dir_mode: 555
+      file_mode: 555
+    -
       target_dir: system/external
     -
       target_dir: proc
