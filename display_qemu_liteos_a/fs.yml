@@ -36,6 +36,11 @@
       dir_mode: 555
       file_mode: 555
     -
+      source_dir: test
+      target_dir: test
+      dir_mode: 555
+      file_mode: 444
+    -
       source_dir: vendor
       target_dir: vendor
       dir_mode: 555
