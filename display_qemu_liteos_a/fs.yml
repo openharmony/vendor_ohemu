@@ -82,7 +82,7 @@
       file_dir: "bin/shell"
       file_mode: 500
   fs_make_cmd:
-    - ${root_path}/build/lite/make_rootfs/rootfsimg_liteos.sh ${fs_dir} jffs2
+    - mkfs.jffs2 -q -o ${fs_dir}/../rootfs_jffs2.img -d ${fs_dir} -e 0x40000 --devtable ${root_path}/build/lite/make_rootfs/rootfs_liteos.config
 -
   fs_dir_name: userfs
   fs_dirs:
@@ -100,7 +100,7 @@
     -
       target_dir: data/system/param
   fs_make_cmd:
-    - ${root_path}/build/lite/make_rootfs/rootfsimg_liteos.sh ${fs_dir} jffs2
+    - mkfs.jffs2 -q -o ${fs_dir}/../userfs_jffs2.img -d ${fs_dir} -e 0x40000
   fs_attr:
     tee_enable:
       fs_dirs:
