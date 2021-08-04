@@ -17,6 +17,7 @@
 flash_name=flash.img
 rebuild=no
 net_enable=no
+vnc="-vnc :20  -serial mon:stdio"
 src_dir=out/arm_virt/display_qemu/
 bootargs=$(cat <<-END
 bootargs=root=cfi-flash fstype=jffs2 rootaddr=10M rootsize=22M useraddr=32M usersize=32M\x0
@@ -31,10 +32,11 @@ to the options.
 
     -f, --force                rebuild ${flash_name}
     -n, --net-enable           enable net
+    -l, --local-desktop        no VNC
     -h, --help                 print help info
 
     By default, ${flash_name} will not be rebuilt if exists, and net will not
-    be enabled.
+    be enabled, gpu enabled and waiting for VNC connection at port 5920.
 END
 )
 
@@ -61,16 +63,21 @@ function start_qemu(){
     net_enable=${1}
     read -t 5 -p "Enter to start qemu[y/n]:" flag
     start=${flag:-y}
+    if [[ "${vnc}" == "-vnc "* ]]; then
+        echo -e "Waiting VNC connection on: 5920 ...(Ctrl-C exit)"
+    fi
     if [ ${start} = y ]; then
         if [ ${net_enable} = yes ]
         then
             net_config 2>/dev/null
-            sudo `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -nographic -m 1G -drive \
+            sudo `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
             if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false -netdev bridge,id=net0 \
-            -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66
+            -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66 \
+            -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc}
         else
-            `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -nographic -m 1G -drive \
-            if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false
+            `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
+            if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false \
+            -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc}
         fi
     else
         echo "Exit qemu-run"
@@ -78,7 +85,7 @@ function start_qemu(){
 }
 
 ############################## main ##############################
-ARGS=`getopt -o fnh --l force,net-enable,help -n "$0" -- "$@"`
+ARGS=`getopt -o fnlh --l force,net-enable,local-desktop,help -n "$0" -- "$@"`
 if [ $? != 0 ]; then
     echo "Try '$0 --help' for more information."
     exit 1
@@ -96,6 +103,10 @@ while true;do
         shift;
         net_enable=yes
         echo -e "Qemu net enable..."
+        ;;
+        -l|--local-desktop)
+        shift;
+        vnc=""
         ;;
         -h|--help)
         shift;
