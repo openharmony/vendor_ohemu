@@ -3,8 +3,11 @@
 import("//build/lite/config/component/lite_component.gni")
 import("//build/lite/config/subsystem/lite_subsystem.gni")
 
-exec_script("patches/patch.py", [rebase_path("//", root_build_dir)])
+exec_script("patches/patch.py", [ rebase_path("//", root_build_dir) ])
 
 group("display_qemu_liteos_a") {
-  deps = [ "init_configs" ]
+  deps = [
+    "apps",
+    "init_configs",
+  ]
 }
