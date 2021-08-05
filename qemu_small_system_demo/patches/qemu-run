@@ -18,7 +18,7 @@ flash_name=flash.img
 rebuild=no
 net_enable=no
 vnc="-vnc :20  -serial mon:stdio"
-src_dir=out/arm_virt/display_qemu/
+src_dir=out/arm_virt/qemu_small_system_demo/
 bootargs=$(cat <<-END
 bootargs=root=cfi-flash fstype=jffs2 rootaddr=10M rootsize=22M useraddr=32M usersize=32M\x0
 END
