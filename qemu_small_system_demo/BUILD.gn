@@ -26,23 +26,14 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-executable("qemu_mini_system_demo") {
-  output_name = "OHOS_Image"
-  ldflags = [
-    "-specs=nano.specs",
-    "-nostartfiles",
-    "-Wl,-T"+rebase_path("//device/qemu/arm_mps2_an386/Liteos.ld"),
-    "-Wl,--gc-section"
-  ]
+import("//build/lite/config/component/lite_component.gni")
+import("//build/lite/config/subsystem/lite_subsystem.gni")
 
-  libs = [
-    "m",
-    "nosys",
-    "c"
-  ]
+exec_script("patches/patch.py", [ rebase_path("//", root_build_dir) ])
 
+group("qemu_small_system_demo") {
   deps = [
-    "//build/lite:ohos",
-    "//device/qemu/arm_mps2_an386:board"
+    "apps",
+    "init_configs",
   ]
 }

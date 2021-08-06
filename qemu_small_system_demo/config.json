@@ -1,5 +1,5 @@
 {
-    "product_name": "display_qemu",
+    "product_name": "qemu_small_system_demo",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "qemu",
     "board": "arm_virt",
@@ -46,6 +46,14 @@
         ]
       },
       {
+        "subsystem": "communication",
+        "components": [
+          { "component": "ipc_lite", "features":[] },
+          { "component": "dsoftbus", "features":[] },
+          { "component": "wpa_supplicant", "features":[] }
+        ]
+      },
+      {
         "subsystem": "utils",
         "components": [
           { "component": "kv_store", "features":[] },
@@ -55,7 +63,7 @@
     ],
     "vendor_adapter_dir": "//device/qemu/hardware",
     "third_party_dir": "//third_party",
-    "product_adapter_dir": "//vendor/ohos/display_qemu_liteos_a/hals",
+    "product_adapter_dir": "//vendor/ohemu/qemu_small_system_demo/hals",
     "ohos_product_type":"",
     "ohos_manufacture":"",
     "ohos_brand":"",

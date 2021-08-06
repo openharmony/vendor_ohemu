@@ -26,23 +26,28 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-executable("qemu_mini_system_demo") {
-  output_name = "OHOS_Image"
-  ldflags = [
-    "-specs=nano.specs",
-    "-nostartfiles",
-    "-Wl,-T"+rebase_path("//device/qemu/arm_mps2_an386/Liteos.ld"),
-    "-Wl,--gc-section"
-  ]
+import("//build/lite/config/component/lite_component.gni")
 
-  libs = [
-    "m",
-    "nosys",
-    "c"
+lite_component("apps") {
+  features = [ ":simple_ui_demo" ]
+}
+
+executable("simple_ui_demo") {
+  sources = [ "src/sample_ui.cpp" ]
+  include_dirs = [
+    "//foundation/graphic/ui/interfaces/kits",
+    "//foundation/graphic/ui/interfaces/innerkits",
+    "//foundation/graphic/utils/interfaces",
+  ]
+  ldflags = [
+    "-lstdc++",
+    "-lpthread",
+    "-Wl,-rpath-link=$ohos_root_path/$root_out_dir",
   ]
 
   deps = [
-    "//build/lite:ohos",
-    "//device/qemu/arm_mps2_an386:board"
+    "//foundation/graphic/ui/test/framework:lite_graphic_test_framework",
+    "//foundation/graphic/utils:lite_graphic_hals",
+    "//foundation/graphic/wms:wms_client",
   ]
 }
