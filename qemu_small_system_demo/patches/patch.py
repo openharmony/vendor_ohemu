@@ -36,11 +36,6 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         root_dir = sys.argv[1]
         root_dir = os.path.join(os.getcwd(), root_dir)
-        os.makedirs(os.path.join(root_dir, "device/qemu/drivers/libs/virt/"), exist_ok=True)
-        shutil.copy(os.path.join(root_dir, "device/hisilicon/drivers/libs/ohos/llvm/hi3518ev300/libspinor_flash.a"),
-                    os.path.join(root_dir, "device/qemu/drivers/libs/virt/libspinor_flash.a"))
-        shutil.copy(os.path.join(root_dir, "device/hisilicon/drivers/libs/ohos/llvm/hi3518ev300/libmtd_common.a"),
-                    os.path.join(root_dir, "device/qemu/drivers/libs/virt/libmtd_common.a"))
         shutil.copy(os.path.join(root_dir, "vendor/ohemu/qemu_small_system_demo/patches/qemu-run"), root_dir)
 
         graphic_config_abs_path = os.path.join(root_dir, graphic_config_path)
