@@ -1,0 +1,35 @@
+{
+  "product_name": "qemu_ca7_mini_system_demo",
+  "ohos_version": "OpenHarmony 1.0",
+  "device_company": "qemu",
+  "board": "arm_virt",
+  "kernel_type": "liteos_a",
+  "kernel_version": "3.0.0.mini",
+  "subsystems": [
+    {
+      "subsystem": "kernel",
+      "components": [
+        {
+          "component": "liteos_a",
+          "features": []
+        }
+      ]
+    }
+  ],
+  "vendor_adapter_dir": "",
+  "third_party_dir": "//third_party",
+  "product_adapter_dir": "",
+  "ohos_product_type": "",
+  "ohos_manufacture": "",
+  "ohos_brand": "",
+  "ohos_market_name": "",
+  "ohos_product_series": "",
+  "ohos_product_model": "",
+  "ohos_software_model": "",
+  "ohos_hardware_model": "",
+  "ohos_hardware_profile": "",
+  "ohos_serial": "",
+  "ohos_bootloader_version": "",
+  "ohos_secure_patch_level": "",
+  "ohos_abi_list": ""
+}
