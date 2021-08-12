@@ -29,20 +29,15 @@
 executable("qemu_mini_system_demo") {
   output_name = "OHOS_Image"
   ldflags = [
-    "-specs=nano.specs",
     "-nostartfiles",
-    "-Wl,-T"+rebase_path("//device/qemu/arm_mps2_an386/Liteos.ld"),
-    "-Wl,--gc-section"
+    "-Wl,-T" + rebase_path("//device/qemu/arm_mps2_an386/Liteos.ld"),
+    "-Wl,--gc-section",
   ]
 
-  libs = [
-    "m",
-    "nosys",
-    "c"
-  ]
+  libs = [ "nosys" ]
 
   deps = [
     "//build/lite:ohos",
-    "//device/qemu/arm_mps2_an386:board"
+    "//device/qemu/arm_mps2_an386:board",
   ]
 }
