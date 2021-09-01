@@ -44,7 +44,7 @@ function make_flash(){
     echo -e "\nStart making ${flash_name}..."
     echo -e "${bootargs}" > ${src_dir}/bootargs
     dd if=/dev/zero of=${flash_name} bs=64M count=1
-    dd if=${src_dir}/liteos.bin of=${flash_name} conv=notrunc seek=0 oflag=seek_bytes
+    dd if=${src_dir}/OHOS_Image.bin of=${flash_name} conv=notrunc seek=0 oflag=seek_bytes
     dd if=${src_dir}/bootargs of=${flash_name} conv=notrunc seek=9984k oflag=seek_bytes
     dd if=${src_dir}/rootfs_jffs2.img of=${flash_name} conv=notrunc seek=10M oflag=seek_bytes
     dd if=${src_dir}/userfs_jffs2.img of=${flash_name} conv=notrunc seek=32M oflag=seek_bytes
