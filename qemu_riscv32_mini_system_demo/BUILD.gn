@@ -32,15 +32,16 @@ executable("qemu_riscv32_mini_system_demo") {
     "-Wl,-mcmodel=medany",
     "-Wl,-melf32lriscv",
     "-nostartfiles",
-    "-Wl,-T"+rebase_path("//device/qemu/riscv32_virt/Liteos.ld"),
+    "-Wl,-T" + rebase_path("//device/qemu/riscv32_virt/Liteos.ld"),
+    "-nostdlib",
+    "-Wl,--gc-section",
   ]
   libs = [
     "gcc",
     "nosys",
-    "c"
   ]
   deps = [
     "//build/lite:ohos",
-    "//device/qemu/riscv32_virt:board"
+    "//device/qemu/riscv32_virt:board",
   ]
 }
