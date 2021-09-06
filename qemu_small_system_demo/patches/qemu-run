@@ -19,8 +19,9 @@ rebuild=no
 net_enable=no
 vnc="-vnc :20  -serial mon:stdio"
 src_dir=out/arm_virt/qemu_small_system_demo/
+re_arg=no
 bootargs=$(cat <<-END
-bootargs=root=cfi-flash fstype=jffs2 rootaddr=10M rootsize=22M useraddr=32M usersize=32M\x0
+bootargs=root=cfi-flash fstype=jffs2 rootaddr=10M rootsize=22M useraddr=32M usersize=32M
 END
 )
 help_info=$(cat <<-END
@@ -33,6 +34,7 @@ to the options.
     -f, --force                rebuild ${flash_name}
     -n, --net-enable           enable net
     -l, --local-desktop        no VNC
+    -b, --bootargs             additional boot arguments(-bk1=v1,k2=v2...)
     -h, --help                 print help info
 
     By default, ${flash_name} will not be rebuilt if exists, and net will not
@@ -42,7 +44,7 @@ END
 
 function make_flash(){
     echo -e "\nStart making ${flash_name}..."
-    echo -e "${bootargs}" > ${src_dir}/bootargs
+    echo -ne "${bootargs}"'\0' > ${src_dir}/bootargs
     dd if=/dev/zero of=${flash_name} bs=64M count=1
     dd if=${src_dir}/OHOS_Image.bin of=${flash_name} conv=notrunc seek=0 oflag=seek_bytes
     dd if=${src_dir}/bootargs of=${flash_name} conv=notrunc seek=9984k oflag=seek_bytes
@@ -85,7 +87,7 @@ function start_qemu(){
 }
 
 ############################## main ##############################
-ARGS=`getopt -o fnlh --l force,net-enable,local-desktop,help -n "$0" -- "$@"`
+ARGS=`getopt -o fnlb:h -l force,net-enable,local-desktop,bootargs:,help -n "$0" -- "$@"`
 if [ $? != 0 ]; then
     echo "Try '$0 --help' for more information."
     exit 1
@@ -108,6 +110,12 @@ while true;do
         shift;
         vnc=""
         ;;
+        -b|--bootargs)
+        shift;
+        re_arg=yes
+        bootargs+=" "${1//","/" "}
+        shift
+        ;;
         -h|--help)
         shift;
         echo -e "${help_info}"
@@ -122,5 +130,9 @@ done
 
 if [ ! -f "${flash_name}" ] || [ ${rebuild} = yes ]; then
     make_flash ${flash_name} "${bootargs}" ${src_dir}
+elif [ ${re_arg} = yes ]; then
+    echo "Update bootargs..."
+    echo -e "${bootargs}"'\0' > ${src_dir}/bootargs
+    dd if=${src_dir}/bootargs of=${flash_name} conv=notrunc seek=9984k oflag=seek_bytes
 fi
 start_qemu ${net_enable}
