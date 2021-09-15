@@ -7,7 +7,7 @@
     "kernel_version": "3.0.0",
     "subsystems": [
       {
-        "subsystem": "distributed_schedule",
+        "subsystem": "distributedschedule",
         "components": [
           { "component": "safwk_lite", "features":[] },
           { "component": "samgr_lite", "features":[] }
