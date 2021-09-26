@@ -28,7 +28,7 @@ vendor/ohos/                          --- vendor_ohos repository path
 
 ## Installation
 
-[QEMU Install Guide](https://gitee.com/openharmony/device_qemu/blob/master/README.md)
+[QEMU Install Guide](https://gitee.com/openharmony/device_qemu/blob/HEAD/README.md)
 
 ## Usage
 
@@ -66,11 +66,11 @@ cd device/qemu/arm_mps2_an386
 ```
 ## Contribution
 
-[How to involve](https://gitee.com/openharmony/docs/blob/master/en/contribute/contribution.md)
+[How to involve](https://gitee.com/openharmony/docs/blob/HEAD/en/contribute/contribution.md)
 
 [Commit message spec](https://gitee.com/openharmony/device_qemu/wikis/Commit%20message%E8%A7%84%E8%8C%83?sort_id=4042860)
 
 ## Repositories Involved
 
-[device\_qemu](https://gitee.com/openharmony/device_qemu/blob/master/README.md)
+[device\_qemu](https://gitee.com/openharmony/device_qemu/blob/HEAD/README.md)
 
