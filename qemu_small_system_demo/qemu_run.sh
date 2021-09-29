@@ -25,7 +25,7 @@ bootargs=root=cfi-flash fstype=jffs2 rootaddr=10M rootsize=22M useraddr=32M user
 END
 )
 help_info=$(cat <<-END
-Usage: $0 [OPTION]...
+Usage: qemu-run [OPTION]...
 Make a qemu image($flash_name) for OHOS, and run the image in qemu according
 to the options.
 
