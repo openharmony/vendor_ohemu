@@ -45,3 +45,6 @@ executable("qemu_riscv32_mini_system_demo") {
     "//device/qemu/riscv32_virt:board",
   ]
 }
+
+exec_script("//vendor/ohemu/common/patch.py",
+            [ rebase_path("//", root_build_dir) ])

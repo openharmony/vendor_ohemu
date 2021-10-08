@@ -41,3 +41,6 @@ executable("qemu_mini_system_demo") {
     "//device/qemu/arm_mps2_an386:board",
   ]
 }
+
+exec_script("//vendor/ohemu/common/patch.py",
+            [ rebase_path("//", root_build_dir) ])

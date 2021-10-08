@@ -26,25 +26,14 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+import shutil
 import sys
 import os
-
-graphic_config_path = 'foundation/graphic/utils/interfaces/innerkits/graphic_config.h'
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         root_dir = sys.argv[1]
         root_dir = os.path.join(os.getcwd(), root_dir)
-        graphic_config_abs_path = os.path.join(root_dir, graphic_config_path)
-        print(graphic_config_abs_path)
-        if os.path.isfile(graphic_config_abs_path):
-            with open(graphic_config_abs_path, 'r+') as f:
-                flist = f.readlines()
-                for i in range(len(flist)):
-                    if 'static constexpr const char* VECTOR_FONT_DIR = "/user/data/"' in flist[i]:
-                        print('='*40 + ' find it ' + '='*40)
-                        flist[i] = 'static constexpr const char* VECTOR_FONT_DIR = "/storage/data/";\n'
-                        break
-                with open(graphic_config_abs_path, 'w+') as nf:
-                    nf.writelines(flist)
+        shutil.copy(os.path.join(root_dir, "vendor/ohemu/common/qemu-run"),
+                    root_dir)
 

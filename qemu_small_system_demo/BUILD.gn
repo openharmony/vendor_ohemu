@@ -26,6 +26,8 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+exec_script("//vendor/ohemu/common/patch.py",
+            [ rebase_path("//", root_build_dir) ])
 exec_script("patches/patch.py", [ rebase_path("//", root_build_dir) ])
 
 group("qemu_small_system_demo") {
