@@ -15,53 +15,95 @@
 
 set -e
 
-function help_func() {
-  echo "For example:"
-  echo "qemu-run [Executable file]"
-  echo "qemu-run gdb [Executable file]"
-  echo "qemu-run [Executable file] test [log.txt]"
+qemu_test=""
+gdb_option=""
+out_file=""
+build_file=""
+out_option=""
+elf_file=out/arm_mps2_an386/qemu_mini_system_demo/bin/liteos
+
+help_info=$(cat <<-END
+Usage: qemu-run [OPTION]...
+Run a OHOS image in qemu according to the options.
+
+    Options:
+
+    -f, --file file_name     kernel exec file name
+    -g, --gdb                enable gdb for kernel
+    -t, --test log.txt       test mode, exclusive with -g
+    -h, --help               print help info
+
+    By default, the kernel exec file is: ${elf_file}.
+END
+)
+
+function start_qemu(){
+    set +e
+    read -t 5 -p "Enter to start qemu[y/n]:" flag
+    set -e
+    start=${flag:-y}
+    if [ ${start} = y ]; then
+      if [ "${qemu_test}" == "test" ]; then
+        vendor/ohemu/qemu_mini_system_demo/qemu_test_monitor.sh $out_file &
+      fi
+      `which qemu-system-arm` -M mps2-an386 -m 16M -kernel $elf_file $gdb_option \
+          -append "root=dev/vda or console=ttyS0" $out_option -nographic
+    else
+        echo "Exit qemu-run"
+    fi
 }
 
-qemu_test=""
-if [ $# == 1 ]; then
-  elf_file=$1
-elif [ $# == 2 ]; then
-  if [ "$1" == "gdb" ]; then
-    elf_file=$2
-    gdb_option="-s -S"
-  else
-    help_func
-    exit
-  fi
-elif [ $# == 3 ]; then
-  if [ "$2" == "test" ]; then
-    qemu_test=$2
-    elf_file=$1
-    out_file=$3
-    build_file=$(dirname $out_file)/build.log
-    out_option="-serial file:$out_file"
-    vendor/ohemu/qemu_mini_system_demo/qemu_test_monitor.sh $out_file &
-  else
-    help_func
-    exit
-  fi
+############################## main ##############################
+ARGS=`getopt -o f:gt:h --l file:,gdb,test:,help -n "$0" -- "$@"`
+if [ $? != 0 ]; then
+    echo "Try '$0 --help' for more information."
+    exit 1
 fi
+eval set --"${ARGS}"
 
-if [ "$elf_file" == "" ]; then
+while true;do
+    case "${1}" in
+        -f|--file)
+        elf_file="${2}"
+        shift;
+        shift;
+        ;;
+        -t|--test)
+        qemu_test="test"
+        out_file="${2}"
+        build_file=$(dirname $out_file)/build.log
+        out_option="-serial file:$out_file"
+        shift;
+        shift;
+        ;;
+        -g|--gdb)
+        shift;
+        gdb_option="-s -S"
+        echo -e "Qemu kernel gdb enable..."
+        ;;
+        -h|--help)
+        shift;
+        echo -e "${help_info}"
+        exit
+        ;;
+        --)
+        shift;
+        break;
+        ;;
+    esac
+done
+
+if [ "$elf_file" == "" ] || [ ! -f "${elf_file}" ]; then
   echo "Specify the path to the executable file"
-  help_func
-  exit
+  echo -e "${help_info}"
+  exit 1
 fi
-
-qemu-system-arm                                   \
-  -M mps2-an386                                   \
-  -m 16M                                          \
-  -kernel $elf_file                               \
-  $gdb_option                                     \
-  -append "root=dev/vda or console=ttyS0"         \
-  $out_option                                     \
-  -nographic
-
+if [ "${gdb_option}" != "" ] && [ "${qemu_test}" != "" ]; then
+  echo "Error: '-g' '-t' options cannot be used together"
+  exit 2
+fi
+echo -e "elf_file = ${elf_file}"
+start_qemu
 
 function test_success() {
   echo "Test success!!!"
