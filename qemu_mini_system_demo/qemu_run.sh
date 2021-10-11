@@ -18,7 +18,6 @@ set -e
 qemu_test=""
 gdb_option=""
 out_file=""
-build_file=""
 out_option=""
 elf_file=out/arm_mps2_an386/qemu_mini_system_demo/bin/liteos
 
@@ -71,7 +70,6 @@ while true;do
         -t|--test)
         qemu_test="test"
         out_file="${2}"
-        build_file=$(dirname $out_file)/build.log
         out_option="-serial file:$out_file"
         shift;
         shift;
@@ -111,7 +109,7 @@ function test_success() {
 }
 
 function test_failed() {
-  cat $out_file >> $build_file
+  cat $out_file
   echo "Test failed!!!"
   exit 1
 }
