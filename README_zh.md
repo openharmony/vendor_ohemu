@@ -30,40 +30,7 @@ vendor/ohos/                          --- vendor_ohos 仓库路径
 
 ## 使用说明
 
-1. 运行`hb set`命令选择对应的产品样例。
-```
-ohos
- > qemu_small_system_demo
-   qemu_mini_system_demo
-```
-
-其中，
-
-`qemu_small_system_demo`表示小型系统的样例，它会集成OpenHarmony上层组件，例如：
-graphic、foundation等。
-
-`qemu_mini_system_demo`表示微型系统的样例，它会集成OpenHarmony上层组件，例如：
-samgr、hilog等。
-
-2. 运行`hb build`进行编译。
-
-3. 将编译出的镜像基于qemu来运行，方法如下：
-
-3.1 `qemu_small_system_demo`的运行方法是
-
-```
-./qemu-init
-./qemu-run
-```
-
-再用`vnc-client`连接该主机的5920端口
-
-3.2 `qemu_mini_system_demo`的运行方法是
-
-```
-cd device/qemu/arm_mps2_an386
-./qemu_run.sh ../../../out/arm_mps2_an386/bin/liteos
-```
+参照相关仓的说明
 
 ## 贡献
 
