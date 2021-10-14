@@ -14,7 +14,7 @@
 #limitations under the License.
 
 if [ "$1" = "" ]; then
-  echo "vendor/ohemu/qemu_mini_system_demo/qemu_test_monitor.sh [log.txt]"
+  echo "vendor/ohemu/common/qemu_mini_test_monitor.sh [log.txt]"
 fi
 
 test_file=$1
@@ -22,28 +22,29 @@ qemu_count_max=30 # 5 minutes
 qemu_count=0
 
 rm -f $test_file
+
 function kill_qemu() {
-  pid=`ps -ef | grep qemu-system-arm | grep -v grep | awk '{print $2}'`
-  kill -15 $pid
-  exit 0
+    pid=`ps -a | grep qemu-system- | awk '{print $1}'`
+    kill -15 $pid
+    exit 0
 }
 
 while true
 do
-  if [ ! -f "$test_file" ]; then
-    sleep 10s
-  else
-    result=`tail -1 $test_file`
-    if [ "$result" = "--- Test End ---" ]; then
-      kill_qemu
-      break
+    if [ ! -f "$test_file" ]; then
+        sleep 10s
     else
-      sleep 10s
+        result=`tail -1 $test_file`
+        if [ "$result" = "--- Test End ---" ]; then
+            kill_qemu
+            break
+        else
+            sleep 10s
+        fi
     fi
-  fi
-  let qemu_count++
-  if [ $qemu_count = "$qemu_count_max" ]; then
-     kill_qemu
-     break
-  fi
+    let qemu_count++
+    if [ $qemu_count = "$qemu_count_max" ]; then
+        kill_qemu
+        break
+    fi
 done

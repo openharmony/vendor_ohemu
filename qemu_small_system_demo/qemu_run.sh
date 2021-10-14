@@ -15,15 +15,24 @@
 
 #set -e
 flash_name=flash.img
-rebuild=no
-net_enable=no
 vnc="-vnc :20  -serial mon:stdio"
 src_dir=out/arm_virt/qemu_small_system_demo/
-re_arg=no
 bootargs=$(cat <<-END
 bootargs=root=cfi-flash fstype=jffs2 rootaddr=10M rootsize=22M useraddr=32M usersize=32M
 END
 )
+
+elf_file=$1
+rebuild_image=$2
+vnc_enable=$3
+add_boot_args=$4
+boot_args=$5
+net_enable=$6
+gdb_enable=$7
+qemu_test=$8
+test_file=$9
+qemu_help=${10}
+
 help_info=$(cat <<-END
 Usage: qemu-run [OPTION]...
 Make a qemu image($flash_name) for OHOS, and run the image in qemu according
@@ -31,16 +40,43 @@ to the options.
 
     Options:
 
-    -f, --force                rebuild ${flash_name}
-    -n, --net-enable           enable net
-    -l, --local-desktop        no VNC
-    -b, --bootargs             additional boot arguments(-bk1=v1,k2=v2...)
-    -h, --help                 print help info
+    -f, --force                    rebuild ${flash_name}
+    -n, --net-enable               enable net
+    -l, --local-desktop            no VNC
+    -b, --bootargs boot_arguments  additional boot arguments(-bk1=v1,k2=v2...)
+    -h, --help                     print help info
 
     By default, ${flash_name} will not be rebuilt if exists, and net will not
     be enabled, gpu enabled and waiting for VNC connection at port 5920.
 END
 )
+
+if [ "$qemu_help" = "yes" ]; then
+    echo "${help_info}"
+    exit 0
+fi
+
+if [ "$vnc_enable" = "no" ]; then
+    vnc=""
+fi
+
+if [ "$add_boot_args" = "yes" ]; then
+    bootargs+=" "${boot_args//","/" "}
+fi
+
+function unsupported_parameters_check(){
+    if [ "$gdb_enable" = "yes" ]; then
+        echo "Error: The -g|--gdb option is not supported !"
+        echo "${help_info}"
+        exit 1
+    fi
+
+    if [ "$qemu_test" = "test" ]; then
+        echo "Error: The -t|--test option is not supported !"
+        echo "${help_info}"
+        exit 1
+    fi
+}
 
 function make_flash(){
     echo -e "\nStart making ${flash_name}..."
@@ -63,74 +99,28 @@ function net_config(){
 
 function start_qemu(){
     net_enable=${1}
-    read -t 5 -p "Enter to start qemu[y/n]:" flag
-    start=${flag:-y}
     if [[ "${vnc}" == "-vnc "* ]]; then
         echo -e "Waiting VNC connection on: 5920 ...(Ctrl-C exit)"
     fi
-    if [ ${start} = y ]; then
-        if [ ${net_enable} = yes ]
-        then
-            net_config 2>/dev/null
-            sudo `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
-            if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false -netdev bridge,id=net0 \
-            -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66 \
-            -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc}
-        else
-            `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
-            if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false \
-            -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc}
-        fi
+    if [ ${net_enable} = yes ]
+    then
+        net_config 2>/dev/null
+        sudo `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
+        if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false -netdev bridge,id=net0 \
+        -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66 \
+        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc}
     else
-        echo "Exit qemu-run"
+        `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
+        if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false \
+        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc}
     fi
 }
 
-############################## main ##############################
-ARGS=`getopt -o fnlb:h -l force,net-enable,local-desktop,bootargs:,help -n "$0" -- "$@"`
-if [ $? != 0 ]; then
-    echo "Try '$0 --help' for more information."
-    exit 1
-fi
-eval set --"${ARGS}"
+unsupported_parameters_check
 
-while true;do
-    case "${1}" in
-        -f|--force)
-        shift;
-        rebuild=yes
-        echo -e "Redo making ${flash_name}..."
-        ;;
-        -n|--net-enable)
-        shift;
-        net_enable=yes
-        echo -e "Qemu net enable..."
-        ;;
-        -l|--local-desktop)
-        shift;
-        vnc=""
-        ;;
-        -b|--bootargs)
-        shift;
-        re_arg=yes
-        bootargs+=" "${1//","/" "}
-        shift
-        ;;
-        -h|--help)
-        shift;
-        echo -e "${help_info}"
-        exit
-        ;;
-        --)
-        shift;
-        break;
-        ;;
-    esac
-done
-
-if [ ! -f "${flash_name}" ] || [ ${rebuild} = yes ]; then
+if [ ! -f "${flash_name}" ] || [ ${rebuild_image} = yes ]; then
     make_flash ${flash_name} "${bootargs}" ${src_dir}
-elif [ ${re_arg} = yes ]; then
+elif [ ${add_boot_args} = yes ]; then
     echo "Update bootargs..."
     echo -e "${bootargs}"'\0' > ${src_dir}/bootargs
     dd if=${src_dir}/bootargs of=${flash_name} conv=notrunc seek=9984k oflag=seek_bytes

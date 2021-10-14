@@ -15,11 +15,30 @@
 
 set -e
 
-qemu_test=""
-gdb_option=""
-out_file=""
-out_option=""
-elf_file=out/arm_mps2_an386/qemu_mini_system_demo/bin/liteos
+elf_file=$1
+rebuild_image=$2
+vnc_enable=$3
+add_boot_args=$4
+boot_args=$5
+net_enable=$6
+gdb_enable=$7
+qemu_test=$8
+test_file=$9
+qemu_help=${10}
+
+qemu_option=""
+
+#### Submit code to CI test command, do not modify #####
+if [ "$qemu_test" = "test" ]; then
+    qemu_option+="-serial file:$test_file"
+    if [ "$elf_file" = "Invalid" ]; then
+        elf_file=out/arm_mps2_an386/qemu_mini_system_demo/bin/OHOS_Image
+    fi
+fi
+
+if [ "$elf_file" = "Invalid" ]; then
+    elf_file=out/arm_mps2_an386/qemu_mini_system_demo/bin/liteos
+fi
 
 help_info=$(cat <<-END
 Usage: qemu-run [OPTION]...
@@ -27,114 +46,56 @@ Run a OHOS image in qemu according to the options.
 
     Options:
 
-    -f, --file file_name     kernel exec file name
-    -g, --gdb                enable gdb for kernel
-    -t, --test log.txt       test mode, exclusive with -g
-    -h, --help               print help info
+    -e,  --exec file_name     kernel exec file name
+    -g,  --gdb                enable gdb for kernel
+    -t,  --test               test mode, exclusive with -g
+    -h,  --help               print help info
 
     By default, the kernel exec file is: ${elf_file}.
 END
 )
 
+if [ "$qemu_help" = "yes" ]; then
+    echo "${help_info}"
+    exit 0
+fi
+
+if [ "$gdb_enable" = "yes" ]; then
+    qemu_option+="-s -S"
+fi
+
+function unsupported_parameters_check(){
+    if [ "$rebuild_image" = "yes" ]; then
+        echo "Error: The -f|--force option is not supported !"
+        echo "${help_info}"
+        exit 1
+    fi
+
+    if [ "$vnc_enable" = "no" ]; then
+        echo "Error: The -l|--local-desktop option is not supported !"
+        echo "${help_info}"
+        exit 1
+    fi
+
+    if [ "$add_boot_args" = "yes" ]; then
+        echo "Error: The -b|--bootargs option is not supported !"
+        echo "${help_info}"
+        exit 1
+    fi
+
+    if [ "$net_enable" = "yes" ]; then
+        echo "Error: The -n|--net-enable option is not supported !"
+        echo "${help_info}"
+        exit 1
+    fi
+}
+
 function start_qemu(){
-    set +e
-    read -t 5 -p "Enter to start qemu[y/n]:" flag
-    set -e
-    start=${flag:-y}
-    if [ ${start} = y ]; then
-      if [ "${qemu_test}" == "test" ]; then
-        vendor/ohemu/qemu_mini_system_demo/qemu_test_monitor.sh $out_file &
-      fi
-      `which qemu-system-arm` -M mps2-an386 -m 16M -kernel $elf_file $gdb_option \
-          -append "root=dev/vda or console=ttyS0" $out_option -nographic
-    else
-        echo "Exit qemu-run"
-    fi
+    qemu-system-arm -M mps2-an386 -m 16M -kernel $elf_file $qemu_option \
+    -append "root=dev/vda or console=ttyS0" -nographic
 }
 
-############################## main ##############################
-ARGS=`getopt -o f:gt:h --l file:,gdb,test:,help -n "$0" -- "$@"`
-if [ $? != 0 ]; then
-    echo "Try '$0 --help' for more information."
-    exit 1
-fi
-eval set --"${ARGS}"
 
-while true;do
-    case "${1}" in
-        -f|--file)
-        elf_file="${2}"
-        shift;
-        shift;
-        ;;
-        -t|--test)
-        qemu_test="test"
-        out_file="${2}"
-        out_option="-serial file:$out_file"
-        shift;
-        shift;
-        ;;
-        -g|--gdb)
-        shift;
-        gdb_option="-s -S"
-        echo -e "Qemu kernel gdb enable..."
-        ;;
-        -h|--help)
-        shift;
-        echo -e "${help_info}"
-        exit
-        ;;
-        --)
-        shift;
-        break;
-        ;;
-    esac
-done
+unsupported_parameters_check
 
-if [ "$elf_file" == "" ] || [ ! -f "${elf_file}" ]; then
-  echo "Specify the path to the executable file"
-  echo -e "${help_info}"
-  exit 1
-fi
-if [ "${gdb_option}" != "" ] && [ "${qemu_test}" != "" ]; then
-  echo "Error: '-g' '-t' options cannot be used together"
-  exit 2
-fi
-echo -e "elf_file = ${elf_file}"
 start_qemu
-
-function test_success() {
-  echo "Test success!!!"
-  exit 0
-}
-
-function test_failed() {
-  cat $out_file
-  echo "Test failed!!!"
-  exit 1
-}
-
-if [ "$qemu_test" = "test" ]; then
-  if [ ! -f "$out_file" ]; then
-    test_failed
-  else
-    result=`tail -1 $out_file`
-    if [ "$result" != "--- Test End ---" ]; then
-      test_failed
-    fi
-
-    result=`tail -2 $out_file`
-    failedresult=${result%,*}
-    failed=${failedresult%:*}
-    if [ "$failed" != "failed count" ]; then
-      test_failed
-    fi
-
-    failedcount=${failedresult#*:}
-    if [ "$failedcount" = "0" ]; then
-      test_success
-    else
-      test_failed
-    fi
-  fi
-fi

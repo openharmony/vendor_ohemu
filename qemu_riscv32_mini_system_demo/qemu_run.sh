@@ -13,10 +13,32 @@
 #See the License for the specific language governing permissions and
 #limitations under the License.
 
-#set -e
-GDBOPTIONS=""
-net_enable=no
-EXEFILE=out/riscv32_virt/qemu_riscv_mini_system_demo/bin/liteos
+set -e
+
+elf_file=$1
+rebuild_image=$2
+vnc_enable=$3
+add_boot_args=$4
+boot_args=$5
+net_enable=$6
+gdb_enable=$7
+qemu_test=$8
+test_file=$9
+qemu_help=${10}
+
+qemu_option=""
+
+#### Submit code to CI test command, do not modify #####
+if [ "$qemu_test" = "test" ]; then
+    qemu_option+="-serial file:$test_file"
+    if [ "$elf_file" = "Invalid" ]; then
+        elf_file=out/riscv32_virt/qemu_riscv_mini_system_demo/bin/OHOS_Image
+    if
+fi
+
+if [ "$elf_file" = "Invalid" ]; then
+    elf_file=out/riscv32_virt/qemu_riscv_mini_system_demo/bin/liteos
+fi
 
 help_info=$(cat <<-END
 Usage: qemu-run [OPTION]...
@@ -24,15 +46,44 @@ Run a OHOS image in qemu according to the options.
 
     Options:
 
-    -f, --file [file_name]   kernel exec file name
-    -n, --net-enable         enable net
-    -g, --gdb                enable gdb for kernel
-    -h, --help               print help info
+    -e,  --exec file_name     kernel exec file name
+    -n,  --net-enable         enable net
+    -g,  --gdb                enable gdb for kernel
+    -t,  --test               test mode, exclusive with -g
+    -h,  --help               print help info
 
-    By default, the kernel exec file is: ${EXEFILE},
-    and net will not be enabled.
+    By default, the kernel exec file is: ${elf_file}.
 END
 )
+
+if [ "$qemu_help" = "yes" ]; then
+    echo "${help_info}"
+    exit 0
+fi
+
+if [ "$gdb_enable" = "yes" ]; then
+    qemu_option+="-s -S"
+fi
+
+function unsupported_parameters_check(){
+    if [ "$rebuild_image" = "yes" ]; then
+        echo "Error: The -f|--force option is not supported !"
+        echo "${help_info}"
+        exit 1
+    fi
+
+    if [ "$vnc_enable" = "no" ]; then
+        echo "Error: The -l|--local-desktop option is not supported !"
+        echo "${help_info}"
+        exit 1
+    fi
+
+    if [ "$add_boot_args" = "yes" ]; then
+        echo "Error: The -b|--bootargs option is not supported !"
+        echo "${help_info}"
+        exit 1
+    fi
+}
 
 function net_config(){
     echo "Network config..."
@@ -44,69 +95,21 @@ function net_config(){
 
 function start_qemu(){
     net_enable=${1}
-    read -t 5 -p "Enter to start qemu[y/n]:" flag
-    start=${flag:-y}
-    if [ ${start} = y ]; then
-        if [ ${net_enable} = yes ]
-        then
-            net_config 2>/dev/null
-            sudo `which qemu-system-riscv32` -M virt -m 128M -bios none -nographic -kernel $EXEFILE \
-            -global virtio-mmio.force-legacy=false \
-            $GDBOPTIONS \
-            -netdev bridge,id=net0 \
-            -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66 \
-            -append "root=/dev/vda or console=ttyS0"
-        else
-            `which qemu-system-riscv32` -M virt -m 128M -bios none -nographic -kernel $EXEFILE \
-            $GDBOPTIONS \
-            -append "root=/dev/vda or console=ttyS0"
-        fi
+    if [ ${net_enable} = yes ]; then
+        net_config 2>/dev/null
+        sudo `which qemu-system-riscv32` -M virt -m 128M -bios none -nographic -kernel $elf_file \
+        -global virtio-mmio.force-legacy=false \
+        $qemu_option \
+        -netdev bridge,id=net0 \
+        -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66 \
+        -append "root=/dev/vda or console=ttyS0"
     else
-        echo "Exit qemu-run"
+        qemu-system-riscv32 -M virt -m 128M -bios none -nographic -kernel $elf_file \
+        $qemu_option \
+        -append "root=/dev/vda or console=ttyS0"
     fi
 }
 
-############################## main ##############################
-ARGS=`getopt -o f:ngh --l file:,net-enable,gdb,help -n "$0" -- "$@"`
-if [ $? != 0 ]; then
-    echo "Try '$0 --help' for more information."
-    exit 1
-fi
-eval set --"${ARGS}"
+unsupported_parameters_check
 
-while true;do
-    case "${1}" in
-        -f|--file)
-        EXEFILE="${2}"
-        shift;
-        shift;
-        ;;
-        -n|--net-enable)
-        shift;
-        net_enable=yes
-        echo -e "Qemu net enable..."
-        ;;
-        -g|--gdb)
-        shift;
-        GDBOPTIONS="-s -S"
-        echo -e "Qemu kernel gdb enable..."
-        ;;
-        -h|--help)
-        shift;
-        echo -e "${help_info}"
-        exit
-        ;;
-        --)
-        shift;
-        break;
-        ;;
-    esac
-done
-
-if [ "$EXEFILE" == "" ] || [ ! -f "${EXEFILE}" ]; then
-  echo "Specify the path to the executable file"
-  echo -e "${help_info}"
-  exit
-fi
-echo -e "EXEFILE = ${EXEFILE}"
 start_qemu ${net_enable}
