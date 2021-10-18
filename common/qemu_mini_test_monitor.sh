@@ -23,9 +23,21 @@ qemu_count=0
 
 rm -f $test_file
 
+function kill_specified_process(){
+    qemu_name=$1
+    while true
+    do
+        pid=`ps -ef | grep $qemu_name | grep -v grep | awk '{print $2}' | head -n 1`
+        if [ "$pid" == "" ]; then
+            break
+        fi
+        echo "kill pid $pid"
+        kill -15 $pid
+    done
+}
+
 function kill_qemu() {
-    pid=`ps -a | grep qemu-system- | awk '{print $1}'`
-    kill -15 $pid
+    kill_specified_process qemu-system-
     exit 0
 }
 

@@ -33,7 +33,7 @@ if [ "$qemu_test" = "test" ]; then
     qemu_option+="-serial file:$test_file"
     if [ "$elf_file" = "Invalid" ]; then
         elf_file=out/riscv32_virt/qemu_riscv_mini_system_demo/bin/OHOS_Image
-    if
+    fi
 fi
 
 if [ "$elf_file" = "Invalid" ]; then

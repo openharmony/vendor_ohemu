@@ -159,8 +159,22 @@ function start_qemu_test() {
     fi
 }
 
+function kill_specified_process(){
+    qemu_name=$1
+    while true
+    do
+        pid=`ps -ef | grep $qemu_name | grep -v grep | awk '{print $2}' | head -n 1`
+        if [ "$pid" == "" ]; then
+            break
+        fi
+        kill -15 $pid
+    done
+}
+
 function start_qemu_monitor() {
     if [ "$kernel_type" = "liteos_m" ]; then
+        kill_specified_process qemu_mini_test_
+        kill_specified_process qemu-system-
         ./vendor/ohemu/common/qemu_mini_test_monitor.sh $test_file &
     fi
 }
