@@ -37,38 +37,8 @@ vendor/ohos/                          --- vendor_ohos repository path
 
 ## Usage
 
-1. run command `hb set` to select the product target
-```
-ohos
- > qemu_small_system_demo
-   qemu_mini_system_demo
-```
+Refer to involved repositories documents.
 
-`qemu_small_system_demo` indicates small system product demo, it contains
-system components, such as graphic, foundation, etc.
-
-`qemu_mini_system_demo` indicates mini system product demo, it contains
-system components, such as samgr, hilog, etc.
-
-2. run command `hb build` to start building。
-
-3. To run the image with qemu. In details,
-
-3.1 `qemu_small_system_demo` target,
-
-```
-./qemu-init
-./qemu-run
-```
-
-use `vnc-client` to connect the host's 5920 port.
-
-3.2 `qemu_mini_system_demo` target,
-
-```
-cd device/qemu/arm_mps2_an386
-./qemu_run.sh ../../../out/arm_mps2_an386/bin/liteos
-```
 ## Contribution
 
 [How to involve](https://gitee.com/openharmony/docs/blob/HEAD/en/contribute/contribution.md)
