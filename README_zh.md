@@ -8,7 +8,8 @@
 ## 软件架构
 
 支持QEMU的ARMv7-a架构的virt平台的图形显示产品样例，支持RISC-V架构的virt平台的
-样例，以及Cortex-M4架构的样例。
+样例，支持Xtensa架构的esp32开发板的样例，支持C-SKY架构的virt平台的样例，以及
+Cortex-M4架构的样例。
 
 代码路径：
 
@@ -17,11 +18,15 @@ device/qemu/                          --- device_qemu 仓库路径
 ├── arm_mps2_an386                    --- Cortex-M4 架构的 MPS2-AN386 单板模拟
 ├── arm_virt                          --- ARMv7-a 架构的 virt 单板模拟
 ├── drivers                           --- virt驱动目录
-└── riscv32_virt                      --- RISC-V 架构的 virt 单板模拟
+├── riscv32_virt                      --- RISC-V 架构的 virt 单板模拟
+├── esp32                             --- Xtensa 架构的单板模拟
+└── SmartL_E802                       --- C-SKY 架构的 virt 单板模拟
 vendor/ohos/                          --- vendor_ohos 仓库路径
 ├── qemu_small_system_demo            --- 小型系统的样例
 ├── qemu_mini_system_demo             --- 微型系统的样例
-└── qemu_riscv_mini_system_demo       --- 微型系统的 RISC-V 架构的样例
+├── qemu_riscv_mini_system_demo       --- 微型系统的 RISC-V 架构的样例
+├── qemu_xtensa_mini_system_demo      --- 微型系统的 Xtensa 架构的样例
+└── qemu_csky_mini_system_demo        --- 微型系统的 C-SKY 架构的样例
 ```
 
 ## 安装教程
