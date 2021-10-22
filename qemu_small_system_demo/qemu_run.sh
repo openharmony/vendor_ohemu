@@ -13,12 +13,12 @@
 #See the License for the specific language governing permissions and
 #limitations under the License.
 
-#set -e
+set -e
 flash_name=flash.img
 vnc="-vnc :20  -serial mon:stdio"
 src_dir=out/arm_virt/qemu_small_system_demo/
 bootargs=$(cat <<-END
-bootargs=root=cfi-flash fstype=jffs2 rootaddr=10M rootsize=22M useraddr=32M usersize=32M
+bootargs=root=cfi-flash fstype=jffs2 rootaddr=10M rootsize=27M useraddr=37M usersize=27M
 END
 )
 
@@ -44,6 +44,7 @@ to the options.
     -n, --net-enable               enable net
     -l, --local-desktop            no VNC
     -b, --bootargs boot_arguments  additional boot arguments(-bk1=v1,k2=v2...)
+    -g,  --gdb                     enable gdb for kernel
     -h, --help                     print help info
 
     By default, ${flash_name} will not be rebuilt if exists, and net will not
@@ -64,13 +65,11 @@ if [ "$add_boot_args" = "yes" ]; then
     bootargs+=" "${boot_args//","/" "}
 fi
 
-function unsupported_parameters_check(){
-    if [ "$gdb_enable" = "yes" ]; then
-        echo "Error: The -g|--gdb option is not supported !"
-        echo "${help_info}"
-        exit 1
-    fi
+if [ "$gdb_enable" = "yes" ]; then
+    qemu_option+="-s -S"
+fi
 
+function unsupported_parameters_check(){
     if [ "$qemu_test" = "test" ]; then
         echo "Error: The -t|--test option is not supported !"
         echo "${help_info}"
@@ -85,16 +84,18 @@ function make_flash(){
     dd if=${src_dir}/OHOS_Image.bin of=${flash_name} conv=notrunc seek=0 oflag=seek_bytes
     dd if=${src_dir}/bootargs of=${flash_name} conv=notrunc seek=9984k oflag=seek_bytes
     dd if=${src_dir}/rootfs_jffs2.img of=${flash_name} conv=notrunc seek=10M oflag=seek_bytes
-    dd if=${src_dir}/userfs_jffs2.img of=${flash_name} conv=notrunc seek=32M oflag=seek_bytes
+    dd if=${src_dir}/userfs_jffs2.img of=${flash_name} conv=notrunc seek=37M oflag=seek_bytes
     echo -e "Success making ${flash_name}...\n"
 }
 
 function net_config(){
     echo "Network config..."
+    set +e
     sudo modprobe tun tap
     sudo ip link add br0 type bridge
     sudo ip address add 10.0.2.2/24 dev br0
     sudo ip link set dev br0 up
+    set -e
 }
 
 function start_qemu(){
@@ -108,11 +109,11 @@ function start_qemu(){
         sudo `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
         if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false -netdev bridge,id=net0 \
         -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66 \
-        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc}
+        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc} $qemu_option
     else
         `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
         if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false \
-        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc}
+        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc} $qemu_option
     fi
 }
 
