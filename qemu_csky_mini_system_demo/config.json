@@ -9,11 +9,7 @@
       {
         "subsystem": "kernel",
         "components": [
-          { "component": "liteos_m",
-            "features":[
-              "enable_ohos_kernel_liteos_m_fs = false",
-              "enable_ohos_kernel_liteos_m_kal = false"
-            ]
+          { "component": "liteos_m", "features":[]
           }
         ]
       }

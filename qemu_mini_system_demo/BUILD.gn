@@ -26,20 +26,7 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-executable("qemu_mini_system_demo") {
-  output_name = "OHOS_Image"
-  ldflags = [
-    "-nostartfiles",
-    "-Wl,-T" + rebase_path("//device/qemu/arm_mps2_an386/Liteos.ld"),
-    "-Wl,--gc-section",
-  ]
-
-  libs = [ "nosys" ]
-
-  deps = [
-    "//build/lite:ohos",
-    "//device/qemu/arm_mps2_an386:board",
-  ]
+group("qemu_mini_system_demo") {
 }
 
 exec_script("//vendor/ohemu/common/patch.py",

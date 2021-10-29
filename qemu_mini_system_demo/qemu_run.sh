@@ -31,13 +31,10 @@ qemu_option=""
 #### Submit code to CI test command, do not modify #####
 if [ "$qemu_test" = "test" ]; then
     qemu_option+="-serial file:$test_file"
-    if [ "$elf_file" = "Invalid" ]; then
-        elf_file=out/arm_mps2_an386/qemu_mini_system_demo/bin/OHOS_Image
-    fi
 fi
 
 if [ "$elf_file" = "Invalid" ]; then
-    elf_file=out/arm_mps2_an386/qemu_mini_system_demo/bin/liteos
+    elf_file=out/arm_mps2_an386/qemu_mini_system_demo/OHOS_Image
 fi
 
 help_info=$(cat <<-END

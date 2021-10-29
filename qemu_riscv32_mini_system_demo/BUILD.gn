@@ -26,24 +26,7 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-executable("qemu_riscv32_mini_system_demo") {
-  output_name = "OHOS_Image"
-  ldflags = [
-    "-Wl,-mcmodel=medany",
-    "-Wl,-melf32lriscv",
-    "-nostartfiles",
-    "-Wl,-T" + rebase_path("//device/qemu/riscv32_virt/Liteos.ld"),
-    "-nostdlib",
-    "-Wl,--gc-section",
-  ]
-  libs = [
-    "gcc",
-    "nosys",
-  ]
-  deps = [
-    "//build/lite:ohos",
-    "//device/qemu/riscv32_virt:board",
-  ]
+group("qemu_riscv32_mini_system_demo") {
 }
 
 exec_script("//vendor/ohemu/common/patch.py",
