@@ -28,7 +28,7 @@ qemu_help=${10}
 
 
 if [ "$elf_file" = "Invalid" ]; then
-    elf_file=out/esp32/qemu_xtensa_mini_system_demo/unstripped/bin/liteos
+    elf_file=out/esp32/qemu_xtensa_mini_system_demo/OHOS_Image
 fi
 
 help_info=$(cat <<-END
@@ -87,7 +87,7 @@ function unsupported_parameters_check(){
 }
 
 function merge_bin() {
-    out_dir=out/esp32/qemu_xtensa_mini_system_demo/unstripped/bin
+    out_dir=out/esp32/qemu_xtensa_mini_system_demo
     esptool.py --chip esp32 elf2image --flash_mode dio --flash_freq 80m                 \
     --flash_size 4MB -o $out_dir/liteos.bin $elf_file
 

@@ -29,7 +29,7 @@ qemu_help=${10}
 qemu_option=""
 
 if [ "$elf_file" = "Invalid" ]; then
-    elf_file=out/SmartL_E802/qemu_csky_mini_system_demo/unstripped/bin/liteos
+    elf_file=out/SmartL_E802/qemu_csky_mini_system_demo/OHOS_Image
 fi
 
 help_info=$(cat <<-END
