@@ -28,7 +28,7 @@
 
 exec_script("patches/patch.py", [ rebase_path("//", root_build_dir) ])
 
-group(get_path_info(rebase_path("."), "file")) {
+group("qemu_small_system_demo") {
   deps = [
     "apps",
     "init_configs",

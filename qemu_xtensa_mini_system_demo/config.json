@@ -1,5 +1,8 @@
 {
     "product_name": "qemu_xtensa_mini_system_demo",
+    "type": "mini",
+    "target_cpu": "arm",
+    "version": "3.0",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "qemu",
     "board": "esp32",

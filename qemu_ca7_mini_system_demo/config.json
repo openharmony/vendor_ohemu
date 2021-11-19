@@ -1,6 +1,8 @@
 {
   "product_name": "qemu_ca7_mini_system_demo",
   "ohos_version": "OpenHarmony 1.0",
+  "type":"mini", 
+  "version": "3.0",
   "device_company": "qemu",
   "board": "arm_virt",
   "kernel_type": "liteos_a",

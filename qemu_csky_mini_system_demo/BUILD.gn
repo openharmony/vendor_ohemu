@@ -11,5 +11,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group(get_path_info(rebase_path("."), "file")) {
+group("qemu_csky_mini_system_demo") {
 }

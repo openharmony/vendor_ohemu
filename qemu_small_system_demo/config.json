@@ -1,6 +1,8 @@
 {
     "product_name": "qemu_small_system_demo",
     "ohos_version": "OpenHarmony 1.0",
+    "version": "3.0",
+    "type": "small",
     "device_company": "qemu",
     "board": "arm_virt",
     "kernel_type": "liteos_a",

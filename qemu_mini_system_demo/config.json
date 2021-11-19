@@ -1,6 +1,8 @@
 {
     "product_name": "qemu_mini_system_demo",
     "ohos_version": "OpenHarmony 1.0",
+    "type":"mini",
+    "version": "3.0",
     "device_company": "qemu",
     "board": "arm_mps2_an386",
     "kernel_type": "liteos_m",
