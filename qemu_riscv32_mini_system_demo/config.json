@@ -2,6 +2,8 @@
     "product_name": "qemu_riscv_mini_system_demo",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "qemu",
+    "type":"mini",
+    "version": "3.0", 
     "board": "riscv32_virt",
     "kernel_type": "liteos_m",
     "kernel_version": "3.0.0",

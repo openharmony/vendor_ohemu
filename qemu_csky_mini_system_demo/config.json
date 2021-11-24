@@ -1,6 +1,8 @@
 {
     "product_name": "qemu_csky_mini_system_demo",
     "ohos_version": "OpenHarmony 1.0",
+    "type":"mini",
+    "version": "3.0",
     "device_company": "qemu",
     "board": "SmartL_E802",
     "kernel_type": "liteos_m",
