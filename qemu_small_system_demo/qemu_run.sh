@@ -109,11 +109,13 @@ function start_qemu(){
         sudo `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
         if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false -netdev bridge,id=net0 \
         -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66 \
-        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc} $qemu_option
+        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc} $qemu_option \
+        -device virtio-rng-device
     else
         `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
         if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false \
-        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc} $qemu_option
+        -device virtio-gpu-device,xres=800,yres=480 -device virtio-mouse-device ${vnc} $qemu_option \
+        -device virtio-rng-device
     fi
 }
 
