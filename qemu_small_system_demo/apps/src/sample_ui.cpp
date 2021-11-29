@@ -62,7 +62,7 @@ void GUIInit()
     OHOS::GraphicStartUp::InitFontEngine(
             reinterpret_cast<uintptr_t>(g_fontMemBaseAddr),
             OHOS::MIN_FONT_PSRAM_LENGTH,
-            OHOS::VECTOR_FONT_DIR,
+            VECTOR_FONT_DIR,
             DEFAULT_VECTOR_FONT_FILENAME);
 }
 
