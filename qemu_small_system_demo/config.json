@@ -18,6 +18,7 @@
       {
         "subsystem": "security",
         "components": [
+          { "component": "deviceauth_lite", "features":[] },
           { "component": "huks", "features":
             [
               "huks_config_file = \"hks_config_small.h\""
