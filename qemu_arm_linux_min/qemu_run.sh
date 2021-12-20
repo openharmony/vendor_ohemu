@@ -28,11 +28,6 @@ qemu_help=${10}
 vnc="-vnc :20  -serial mon:stdio"
 qemu_option=""
 
-#### Submit code to CI test command, do not modify #####
-if [ "$qemu_test" = "test" ]; then
-    qemu_option+="-serial file:$test_file"
-fi
-
 if [ "$elf_file" = "" ]; then
     elf_file=out/qemu-arm-linux/packages/phone/images
 fi
@@ -44,10 +39,7 @@ Run a OHOS image in qemu according to the options.
     Options:
 
     -e,  --exec image_path    build images path, including: zImage-dtb, ramdisk.img, system.img, vendor.img, userdata.img
-    -n,  --net-enable         enable net
-    -l,  --local-desktop      no VNC
     -g,  --gdb                enable gdb for kernel
-    -t,  --test               test mode, exclusive with -g
     -h,  --help               print help info
 
     By default, the kernel exec file is: ${elf_file}.
@@ -59,37 +51,9 @@ if [ "$qemu_help" = "yes" ]; then
     exit 0
 fi
 
-if [ "$vnc_enable" = "no" ]; then
-    vnc=""
-fi
-
 if [ "$gdb_enable" = "yes" ]; then
     qemu_option+="-s -S"
 fi
-
-function unsupported_parameters_check(){
-    if [ "$rebuild_image" = "yes" ]; then
-        echo "Error: The -f|--force option is not supported !"
-        echo "${help_info}"
-        exit 1
-    fi
-
-    if [ "$add_boot_args" = "yes" ]; then
-        echo "Error: The -b|--bootargs option is not supported !"
-        echo "${help_info}"
-        exit 1
-    fi
-}
-
-function net_config(){
-    echo "Network config..."
-    set +e
-    sudo modprobe tun tap
-    sudo ip link add br0 type bridge
-    sudo ip address add 10.0.2.2/24 dev br0
-    sudo ip link set dev br0 up
-    set -e
-}
 
 function start_qemu(){
     qemu-system-arm -M virt -cpu cortex-a7 -smp 4 -m 1024 -nographic \
@@ -101,7 +65,5 @@ function start_qemu(){
     -kernel $elf_file/zImage-dtb -initrd $elf_file/../../../ramdisk.img \
     -append "console=ttyAMA0,115200 init=/bin/init hardware=qemu.arm.linux default_boot_device=a003e00.virtio_mmio root=/dev/ram0 rw"
 }
-
-unsupported_parameters_check
 
 start_qemu
