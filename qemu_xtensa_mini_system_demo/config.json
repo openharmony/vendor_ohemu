@@ -12,14 +12,21 @@
       {
         "subsystem": "kernel",
         "components": [
-          { "component": "liteos_m", "features":[]
-          }
+          { "component": "liteos_m" }
+        ]
+      },
+      {
+        "subsystem": "utils",
+        "components": [
+          { "component": "file", "features":[] },
+          { "component": "kv_store", "features":[] }
         ]
       }
     ],
-    "vendor_adapter_dir": "//device/qemu/esp32",
-    "third_party_dir": "//third_party",
+    "vendor_adapter_dir": "//device/qemu/esp32/adapter",
     "product_adapter_dir": "//vendor/ohemu/qemu_xtensa_mini_system_demo/hals",
+    "third_party_dir": "//third_party",
+    "flash_partition_dir": "fs",
     "ohos_product_type":"",
     "ohos_manufacture":"",
     "ohos_brand":"",
