@@ -1,30 +1,83 @@
 {
-  "product_name": "qemu-arm-linux-min",
-  "product_company": "qemu",
-  "product_device": "qemu-arm-linux",
-  "version": "2.0",
-  "type": "standard",
-  "support_jsapi": false,
-  "product_build_path": "device/qemu/arm_virt/linux",
-  "parts":{
-    "common:common":{"features": {"common_feature_verify": true}},
-    "startup:startup_l2":{},
-    "startup:init":{},
-    "hiviewdfx:hiviewdfx_hilog_native":{},
-    "hiviewdfx:hilog_native":{},
-    "hiviewdfx:hilog_service":{},
-    "hiviewdfx:hitrace_native":{},
-    "hiviewdfx:faultloggerd":{},
-    "utils:utils_base":{},
-    "security:huks":{},
-    "security:deviceauth_standard":{},
-    "communication:ipc":{},
-    "communication:dsoftbus_standard":{},
-    "appexecfwk:eventhandler":{},
-    "distributedschedule:samgr_standard":{},
-    "distributedschedule:safwk":{},
-    "developtools:bytrace_standard":{},
-    "developtools:hdc_standard":{},
-    "device_arm_virt:qemu_arm_linux_chipset":{}
+    "product_name": "qemu-arm-linux-min",
+    "type": "standard",
+    "version": "3.0",
+    "device_company": "qemu",
+    "board": "qemu-arm-linux",
+    "target_cpu": "arm",
+    "target_os": "ohos",
+    "enable_ramdisk": true,
+    "support_jsapi": false,
+    "device_build_path": "device/qemu/arm_virt/linux",
+    "subsystems": [
+      {
+        "subsystem": "common",
+        "components": [
+          { "component": "common", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          { "component": "startup_l2", "features":[] },
+          { "component": "init", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hiviewdfx",
+        "components": [
+          { "component": "hiviewdfx_hilog_native", "features":[] },
+          { "component": "hilog_native", "features":[] },
+          { "component": "hilog_service", "features":[] },
+          { "component": "hitrace_native", "features":[] },
+          { "component": "faultloggerd", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "security",
+        "components": [
+          { "component": "deviceauth_standard", "features":[] },
+          { "component": "huks", "features": [] }
+        ]
+      },
+      {
+        "subsystem": "utils",
+        "components": [
+          { "component": "utils_base", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "communication",
+        "components": [
+          { "component": "ipc", "features":[] },
+          { "component": "dsoftbus_standard", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "appexecfwk",
+        "components": [
+          { "component": "eventhandler", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributedschedule",
+        "components": [
+          { "component": "samgr_standard", "features":[] },
+          { "component": "safwk", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "developtools",
+        "components": [
+          { "component": "bytrace_standard", "features":[] },
+          { "component": "hdc_standard", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "device_arm_virt",
+        "components": [
+          { "component": "qemu_arm_linux_chipset", "features":[] }
+        ]
+      }
+    ]
   }
-}
