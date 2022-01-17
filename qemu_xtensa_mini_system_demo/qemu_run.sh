@@ -101,6 +101,11 @@ function merge_bin() {
 }
 
 function start_qemu(){
+    esptool_version=`esptool.py version | sed -n '2p'`
+    if [ "$esptool_version" \< "3.1" ]; then
+        echo "Error: The esptool.py version is too low"
+        exit 1
+    fi
     merge_bin
     export QEMU_XTENSA_CORE_REGS_ONLY=1
     $QEMU/qemu-system-xtensa -nographic $qemu_option -machine esp32                                  \
