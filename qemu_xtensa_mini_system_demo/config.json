@@ -3,7 +3,7 @@
     "type": "mini",
     "target_cpu": "arm",
     "version": "3.0",
-    "ohos_version": "OpenHarmony 1.0",
+    "ohos_version": "OpenHarmony 3.0",
     "device_company": "qemu",
     "board": "esp32",
     "kernel_type": "liteos_m",
@@ -13,6 +13,17 @@
         "subsystem": "kernel",
         "components": [
           { "component": "liteos_m" }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          {
+            "component": "syspara_lite",
+            "features": [
+              "enable_ohos_startup_syspara_lite_use_posix_file_api = true"
+            ]
+          }
         ]
       },
       {
