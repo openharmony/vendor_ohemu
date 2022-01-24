@@ -1,6 +1,6 @@
 {
     "product_name": "qemu_csky_mini_system_demo",
-    "ohos_version": "OpenHarmony 1.0",
+    "ohos_version": "OpenHarmony 3.0",
     "type":"mini",
     "version": "3.0",
     "device_company": "qemu",
@@ -12,6 +12,17 @@
         "subsystem": "kernel",
         "components": [
           { "component": "liteos_m" }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          {
+            "component": "syspara_lite",
+            "features": [
+              "enable_ohos_startup_syspara_lite_use_posix_file_api = true"
+            ]
+          }
         ]
       },
       {

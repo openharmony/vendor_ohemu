@@ -16,7 +16,7 @@
 #include "hal_sys_param.h"
 
 #define OHOS_DEVICE_TYPE "****"
-#define OHOS_DISPLAY_VERSION "OpenHarmony 1.0.1"
+#define OHOS_DISPLAY_VERSION "OpenHarmony 3.0.1"
 #define OHOS_MANUFACTURE "****"
 #define OHOS_BRAND "****"
 #define OHOS_MARKET_NAME "****"
