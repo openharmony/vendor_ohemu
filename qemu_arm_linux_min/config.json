@@ -30,7 +30,15 @@
           { "component": "hilog_native", "features":[] },
           { "component": "hilog_service", "features":[] },
           { "component": "hitrace_native", "features":[] },
-          { "component": "faultloggerd", "features":[] }
+          { "component": "faultloggerd", "features":[] },
+          { "component": "hisysevent_native", "features":[] },
+          { "component": "hichecker_native", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributedhardware",
+        "components": [
+          { "component": "device_manager_base", "features": [] }
         ]
       },
       {
