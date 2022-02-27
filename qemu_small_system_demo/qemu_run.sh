@@ -85,7 +85,73 @@ function make_flash(){
     dd if=${src_dir}/bootargs of=${flash_name} conv=notrunc seek=9984k oflag=seek_bytes
     dd if=${src_dir}/rootfs_jffs2.img of=${flash_name} conv=notrunc seek=10M oflag=seek_bytes
     dd if=${src_dir}/userfs_jffs2.img of=${flash_name} conv=notrunc seek=37M oflag=seek_bytes
-    echo -e "Success making ${flash_name}...\n"
+    echo -e "Succeed making ${flash_name}.\n"
+}
+
+function check_mmc_tools(){
+    modprobe -n nbd > /dev/null 2>&1
+    if [ $? != 0 ]; then
+        echo "Failed: need kernel module 'nbd'"
+        exit 1
+    fi
+
+    type qemu-img qemu-nbd > /dev/null 2>&1
+    if [ $? != 0 ]; then
+        echo "Failed: need qemu-utils 'qemu-img' and 'qemu-nbd'"
+        exit 1
+    fi
+
+    type parted > /dev/null 2>&1
+    if [ $? != 0 ]; then
+        echo "Failed: need tool 'parted'"
+        exit 1
+    fi
+}
+
+function make_mmc(){
+    echo -ne "\nStart making out/smallmmc.img..."
+
+    # Create raw "disk" with 1G, 2G, 5G partitions, all type 0C (FAT32 LBA).
+    qemu-img create -f raw out/smallmmc.raw 8G > /dev/null
+    sudo losetup /dev/loop0 out/smallmmc.raw
+    sudo parted -s /dev/loop0 -- mklabel msdos mkpart primary fat32 2048s 1025MiB \
+            mkpart primary fat32 1025MiB 3073MiB mkpart primary fat32 3073MiB -1s
+
+    # Format.
+    sudo losetup -o 1048576 /dev/loop1 /dev/loop0
+    sudo losetup -o 1074790400 /dev/loop2 /dev/loop0
+    sudo losetup -o 3222274048 /dev/loop3 /dev/loop0
+    sudo mkfs.vfat /dev/loop1 > /dev/null
+    sudo mkfs.vfat /dev/loop2 > /dev/null
+    sudo mkfs.vfat /dev/loop3 > /dev/null
+
+    # Clean.
+    sudo losetup -d /dev/loop3
+    sudo losetup -d /dev/loop2
+    sudo losetup -d /dev/loop1
+    sudo losetup -d /dev/loop0
+
+    # Convert to qcow2 format.
+    qemu-img convert -f raw out/smallmmc.raw -O qcow2 out/smallmmc.img
+    rm out/smallmmc.raw
+
+    # Mount.
+    sudo modprobe nbd
+    sudo qemu-nbd --connect=/dev/nbd0 out/smallmmc.img
+    sudo mount /dev/nbd0p1 /mnt   # 1st partition
+
+    # Copy necessary files.
+    sudo mkdir /mnt/data
+    sudo cp out/arm_virt/qemu_small_system_demo/data/line_cj.brk /mnt/data/
+    sudo cp out/arm_virt/qemu_small_system_demo/data/SourceHanSansSC-Regular.otf /mnt/data
+
+    # Unmount.
+    sudo umount /mnt
+    sudo qemu-nbd -d /dev/nbd0 > /dev/null
+    sudo modprobe -r nbd
+    sync out/smallmmc.img   # avoid 'Failed to get "write" lock' error
+
+    echo -e "done.\n"
 }
 
 function net_config(){
@@ -110,11 +176,13 @@ function start_qemu(){
         if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false -netdev bridge,id=net0 \
         -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66 \
         -device virtio-gpu-device,xres=800,yres=480 -device virtio-tablet-device ${vnc} $qemu_option \
+        -drive if=none,file=./out/smallmmc.img,format=qcow2,id=mmc -device virtio-blk-device,drive=mmc \
         -device virtio-rng-device
     else
         `which qemu-system-arm` -M virt,gic-version=2,secure=on -cpu cortex-a7 -smp cpus=1 -m 1G -drive \
         if=pflash,file=./${flash_name},format=raw -global virtio-mmio.force-legacy=false \
         -device virtio-gpu-device,xres=800,yres=480 -device virtio-tablet-device ${vnc} $qemu_option \
+        -drive if=none,file=./out/smallmmc.img,format=qcow2,id=mmc -device virtio-blk-device,drive=mmc \
         -device virtio-rng-device
     fi
 }
@@ -127,5 +195,9 @@ elif [ ${add_boot_args} = yes ]; then
     echo "Update bootargs..."
     echo -e "${bootargs}"'\0' > ${src_dir}/bootargs
     dd if=${src_dir}/bootargs of=${flash_name} conv=notrunc seek=9984k oflag=seek_bytes
+fi
+if [ ! -f "out/smallmmc.img" ]; then
+    check_mmc_tools
+    make_mmc
 fi
 start_qemu ${net_enable}
