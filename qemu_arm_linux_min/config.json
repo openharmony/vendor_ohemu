@@ -83,6 +83,12 @@
         ]
       },
       {
+        "subsystem": "securec",
+        "components": [
+          { "component": "thirdparty_bounds_checking_function", "features":[] }
+        ]
+      },
+      {
         "subsystem": "device_arm_virt",
         "components": [
           { "component": "qemu_arm_linux_chipset", "features":[] }
