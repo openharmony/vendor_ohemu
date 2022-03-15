@@ -89,23 +89,9 @@ function make_flash(){
 }
 
 function check_mmc_tools(){
-    modprobe -n nbd > /dev/null 2>&1
-    if [ $? != 0 ]; then
-        echo "Failed: need kernel module 'nbd'"
-        exit 1
-    fi
-
-    type qemu-img qemu-nbd > /dev/null 2>&1
-    if [ $? != 0 ]; then
-        echo "Failed: need qemu-utils 'qemu-img' and 'qemu-nbd'"
-        exit 1
-    fi
-
-    type parted > /dev/null 2>&1
-    if [ $? != 0 ]; then
-        echo "Failed: need tool 'parted'"
-        exit 1
-    fi
+    modprobe -n nbd > /dev/null
+    type qemu-img qemu-nbd > /dev/null
+    type parted > /dev/null
 }
 
 function make_mmc(){
