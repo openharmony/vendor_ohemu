@@ -1,0 +1,168 @@
+{
+    "product_name": "qemu-arm-linux-headless",
+    "type": "standard",
+    "version": "3.0",
+    "device_company": "qemu",
+    "board": "qemu-arm-linux",
+    "target_cpu": "arm",
+    "target_os": "ohos",
+    "enable_ramdisk": true,
+    "device_build_path": "device/qemu/arm_virt/linux",
+    "subsystems": [
+      {
+        "subsystem": "common",
+        "components": [
+          { "component": "common", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          { "component": "startup_l2", "features":[] },
+          { "component": "appspawn", "features":[] },
+          { "component": "init", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hiviewdfx",
+        "components": [
+          { "component": "hiviewdfx_hilog_native", "features":[] },
+          { "component": "hilog_native", "features":[] },
+          { "component": "hilog_service", "features":[] },
+          { "component": "hitrace_native", "features":[] },
+          { "component": "hichecker_native", "features":[] },
+          { "component": "faultloggerd", "features":[] },
+          { "component": "hisysevent_native", "features":[] },
+          { "component": "hicollie_native", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributedhardware",
+        "components": [
+          { "component": "device_manager_base", "features": [ "device_manager_base_no_interaction_auth=true" ] }
+        ]
+      },
+      {
+        "subsystem": "security",
+        "components": [
+          { "component": "deviceauth_standard", "features":[] },
+          { "component": "access_token", "features":[] },
+          { "component": "huks", "features": [] },
+          { "component": "device_security_level", "features": [] },
+          { "component": "dataclassification", "features": [] },
+          { "component": "permission_standard", "features": [] },
+          { "component": "appverify", "features": [] }
+        ]
+      },
+      {
+        "subsystem": "account",
+        "components": [
+          { "component": "os_account_standard", "features": [] }
+        ]
+      },
+      {
+        "subsystem": "utils",
+        "components": [
+          { "component": "utils_base", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "communication",
+        "components": [
+          { "component": "ipc", "features":[] },
+          { "component": "dsoftbus_standard", "features":[] },
+          { "component": "ipc_js", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "aafwk",
+        "components": [
+          { "component": "ability_runtime", "features":[ "ability_runtime_power=false", "ability_runtime_graphics=false" ] },
+          { "component": "ability_tools", "features":[] },
+          { "component": "ability_base", "features":[] },
+          { "component": "zidl", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "appexecfwk",
+        "components": [
+          { "component": "eventhandler", "features":[] },
+          { "component": "appexecfwk_standard", "features":[] },
+          { "component": "appexecfwk_core", "features":[] },
+          { "component": "bundle_tools", "features":[] },
+          { "component": "bundle_framework", "features":[ "bundle_framework_graphics=false" ] }
+        ]
+      },
+      {
+        "subsystem": "ace",
+        "components": [
+          { "component": "napi", "features":[ "napi_enable_container_scope=false" ] }
+        ]
+      },
+      {
+        "subsystem": "notification",
+        "components": [
+          { "component": "ces_standard", "features":[ "ces_standard_with_graphics=false" ] }
+        ]
+      },
+      {
+        "subsystem": "distributedschedule",
+        "components": [
+          { "component": "samgr_standard", "features":[] },
+          { "component": "safwk", "features":[] },
+          { "component": "dmsfwk_standard", "features":[ "dmsfwk_standard_mission_manager=false" ] }
+        ]
+      },
+      {
+        "subsystem": "deviceprofile",
+        "components": [
+          { "component": "device_profile_core", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributeddatamgr",
+        "components": [
+          { "component": "distributeddatamgr", "features":[] },
+          { "component": "native_appdatamgr", "features":[] },
+          { "component": "distributeddataobject", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "storage",
+        "components": [
+          { "component": "storage_service", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "global",
+        "components": [
+          { "component": "resmgr_standard", "features":[ "resmgr_standard_support_icu=false" ] }
+        ]
+      },
+      {
+        "subsystem": "device_arm_virt",
+        "components": [
+          { "component": "qemu_arm_linux_chipset", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "developtools",
+        "components": [
+          { "component": "bytrace_standard", "features":[] },
+          { "component": "hdc_standard", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "securec",
+        "components": [
+          { "component": "thirdparty_bounds_checking_function", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "procrank",
+        "components": [
+          { "component": "procrank", "features":[] }
+        ]
+      }
+    ]
+  }
