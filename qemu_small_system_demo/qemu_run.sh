@@ -89,8 +89,6 @@ function make_flash(){
 }
 
 function check_mmc_tools(){
-    modprobe -n nbd > /dev/null
-    type qemu-img qemu-nbd > /dev/null
     type parted > /dev/null
 }
 
@@ -120,22 +118,6 @@ function make_mmc(){
     # Convert to qcow2 format.
     qemu-img convert -f raw out/smallmmc.raw -O qcow2 out/smallmmc.img
     rm out/smallmmc.raw
-
-    # Mount.
-    sudo modprobe nbd
-    sudo qemu-nbd --connect=/dev/nbd0 out/smallmmc.img
-    sudo mount /dev/nbd0p1 /mnt   # 1st partition
-
-    # Copy necessary files.
-    sudo mkdir /mnt/data
-    sudo cp out/arm_virt/qemu_small_system_demo/data/line_cj.brk /mnt/data/
-    sudo cp out/arm_virt/qemu_small_system_demo/data/SourceHanSansSC-Regular.otf /mnt/data
-
-    # Unmount.
-    sudo umount /mnt
-    sudo qemu-nbd -d /dev/nbd0 > /dev/null
-    sudo modprobe -r nbd
-    sync out/smallmmc.img   # avoid 'Failed to get "write" lock' error
 
     echo -e "done.\n"
 }
