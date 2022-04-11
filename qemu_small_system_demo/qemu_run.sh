@@ -97,23 +97,23 @@ function make_mmc(){
 
     # Create raw "disk" with 1G, 2G, 5G partitions, all type 0C (FAT32 LBA).
     qemu-img create -f raw out/smallmmc.raw 8G > /dev/null
-    sudo losetup /dev/loop0 out/smallmmc.raw
-    sudo parted -s /dev/loop0 -- mklabel msdos mkpart primary fat32 2048s 1025MiB \
+    sudo losetup /dev/loop590 out/smallmmc.raw
+    sudo parted -s /dev/loop590 -- mklabel msdos mkpart primary fat32 2048s 1025MiB \
             mkpart primary fat32 1025MiB 3073MiB mkpart primary fat32 3073MiB -1s
 
     # Format.
-    sudo losetup -o 1048576 /dev/loop1 /dev/loop0
-    sudo losetup -o 1074790400 /dev/loop2 /dev/loop0
-    sudo losetup -o 3222274048 /dev/loop3 /dev/loop0
-    sudo mkfs.vfat /dev/loop1 > /dev/null
-    sudo mkfs.vfat /dev/loop2 > /dev/null
-    sudo mkfs.vfat /dev/loop3 > /dev/null
+    sudo losetup -o 1048576 /dev/loop591 /dev/loop590
+    sudo losetup -o 1074790400 /dev/loop592 /dev/loop590
+    sudo losetup -o 3222274048 /dev/loop593 /dev/loop590
+    sudo mkfs.vfat /dev/loop591 > /dev/null
+    sudo mkfs.vfat /dev/loop592 > /dev/null
+    sudo mkfs.vfat /dev/loop593 > /dev/null
 
     # Clean.
-    sudo losetup -d /dev/loop3
-    sudo losetup -d /dev/loop2
-    sudo losetup -d /dev/loop1
-    sudo losetup -d /dev/loop0
+    sudo losetup -d /dev/loop593
+    sudo losetup -d /dev/loop592
+    sudo losetup -d /dev/loop591
+    sudo losetup -d /dev/loop590
 
     # Convert to qcow2 format.
     qemu-img convert -f raw out/smallmmc.raw -O qcow2 out/smallmmc.img
