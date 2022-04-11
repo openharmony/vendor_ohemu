@@ -16,6 +16,6 @@
 #ifndef PRODUCT_GRAPHIC_LITE_CONFIG_H
 #define PRODUCT_GRAPHIC_LITE_CONFIG_H
 
-#define VECTOR_FONT_DIR             "/sdcard/data/"
+#define VECTOR_FONT_DIR             "/storage/data/"
 
 #endif
