@@ -27,6 +27,7 @@ qemu_help=${10}
 
 vnc="-vnc :20  -serial mon:stdio"
 qemu_option=""
+fsimg="vendor/ohemu/qemu_riscv32_mini_system_demo/fs-storage.img"
 
 #### Submit code to CI test command, do not modify #####
 if [ "$qemu_test" = "test" ]; then
@@ -101,12 +102,14 @@ function start_qemu(){
         -netdev bridge,id=net0 \
         -device virtio-net-device,netdev=net0,mac=12:22:33:44:55:66 \
         -device virtio-gpu-device,xres=800,yres=480 -device virtio-tablet-device ${vnc} \
+        -drive if=pflash,file=$fsimg,format=raw,index=1 \
         -append "root=/dev/vda or console=ttyS0"
     else
         qemu-system-riscv32 -M virt -m 128M -bios none -kernel $elf_file \
         -global virtio-mmio.force-legacy=false \
         $qemu_option \
         -device virtio-gpu-device,xres=800,yres=480 -device virtio-tablet-device ${vnc} \
+        -drive if=pflash,file=$fsimg,format=raw,index=1 \
         -append "root=/dev/vda or console=ttyS0"
     fi
 }

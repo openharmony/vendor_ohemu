@@ -3,15 +3,72 @@
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "qemu",
     "type":"mini",
-    "version": "3.0", 
+    "version": "3.0",
     "board": "riscv32_virt",
     "kernel_type": "liteos_m",
     "kernel_version": "3.0.0",
+    "force_link_libs": [
+      "bootstrap",
+      "example",
+      "ui_demo"
+    ],
     "subsystems": [
       {
         "subsystem": "kernel",
         "components": [
           { "component": "liteos_m", "features":[]
+          }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          {
+            "component": "bootstrap_lite"
+          },
+          {
+            "component": "syspara_lite",
+            "features": [
+              "enable_ohos_startup_syspara_lite_use_posix_file_api = true"
+            ]
+          }
+        ]
+      },
+      {
+        "subsystem": "hiviewdfx",
+        "components": [
+          {
+            "component": "hilog_lite",
+            "optional": "true"
+          },
+          {
+            "component": "hievent_lite",
+            "optional": "true"
+          }
+        ]
+      },
+      {
+        "subsystem": "graphic",
+        "components": [
+          {
+            "component": "graphic_utils",
+            "features": [
+              "enable_ohos_graphic_utils_product_config = true"
+            ]
+          },
+          {
+            "component": "ui"
+          }
+        ]
+      },
+      {
+        "subsystem": "distributedschedule",
+        "components": [
+          {
+            "component": "samgr_lite",
+            "features": [
+              "config_ohos_distributedschedule_samgr_lite_shared_task_size = 4096"
+            ]
           }
         ]
       }
