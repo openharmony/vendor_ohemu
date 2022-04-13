@@ -60,6 +60,7 @@
             <filefilter name="binaryFileTypePolicyFilter" desc="qemu默认文件">
                 <filteritem type="filepath" name="qemu_xtensa_mini_system_demo/image/bootloader.bin" desc="qemu默认文件"/>
                 <filteritem type="filepath" name="qemu_xtensa_mini_system_demo/image/partition-table.bin" desc="qemu默认分区文件"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs-storage.img" desc="qemu_riscv32默认文件系统镜像"/>
                 <!--filteritem type="filepath" name="abcdefg/.*.uvwxyz" desc="Describe the reason for filtering scan results"/-->
                 <!--filteritem type="filepath" name="projectroot/[a-zA-Z0-9]{20,}.sh" desc="Temp files"/-->
             </filefilter>
