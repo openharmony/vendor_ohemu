@@ -30,8 +30,6 @@
 #define OHOS_SERIAL "1234567890"
 #define OHOS_FIRST_API_VERSION 1
 
-#define EMPTY_STR ""
-
 const char *HalGetDeviceType(void)
 {
     return OHOS_DEVICE_TYPE;
