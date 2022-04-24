@@ -102,7 +102,7 @@
       {
         "subsystem": "notification",
         "components": [
-          { "component": "ces_standard", "features":[ "ces_standard_with_graphics=false" ] }
+          { "component": "common_event_service", "features":[ "common_event_service_with_graphics=false" ] }
         ]
       },
       {
