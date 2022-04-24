@@ -27,4 +27,5 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 group("qemu_riscv32_mini_system_demo") {
+  deps = [ "tests:example" ]
 }
