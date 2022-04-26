@@ -124,3 +124,11 @@ int HalGetFirstApiVersion(void)
 {
     return OHOS_FIRST_API_VERSION;
 }
+
+/**
+ * @brief implement for js kvstorekit/filekit
+ */
+const char *GetDataPath(void)
+{
+    return "/data";
+}
