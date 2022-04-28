@@ -13,16 +13,24 @@
  * limitations under the License.
  */
 
-#if defined(UI_TEST)
+#if defined(UI_TEST) || defined(ABILITY_TEST)
 #include "ohos_init.h"
 #include "ui_adapter.h"
+#if defined(UI_TEST)
 #include "ui_test.h"
 #include "sample_ui.h"
+#elif defined(ABILITY_TEST)
+#include "ability_test.h"
+#endif
 
 /* ui app entry */
 void RunApp(void)
 {
+#ifdef UI_TEST
     AnimatorDemoStart();
+#elif defined(ABILITY_TEST)
+    StartJSApp();
+#endif
 }
 
 void AppEntry(void)
