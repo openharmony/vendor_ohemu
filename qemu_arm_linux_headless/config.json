@@ -136,7 +136,7 @@
       {
         "subsystem": "global",
         "components": [
-          { "component": "resmgr_standard", "features":[ "resmgr_standard_support_icu=false" ] }
+          { "component": "resource_management", "features":[ "resource_management_support_icu=false" ] }
         ]
       },
       {
