@@ -62,7 +62,7 @@ function start_qemu(){
     -drive if=none,file=$elf_file/vendor.img,format=raw,id=vendor,index=2 -device virtio-blk-device,drive=vendor \
     -drive if=none,file=$elf_file/system.img,format=raw,id=system,index=1 -device virtio-blk-device,drive=system \
     -drive if=none,file=$elf_file/updater.img,format=raw,id=updater,index=0 -device virtio-blk-device,drive=updater \
-    -kernel $elf_file/zImage-dtb -initrd $elf_file/../../../ramdisk.img \
+    -kernel $elf_file/zImage-dtb -initrd $elf_file/ramdisk.img \
     -append "console=ttyAMA0,115200 init=/bin/init hardware=qemu.arm.linux default_boot_device=a003e00.virtio_mmio root=/dev/ram0 rw"
 }
 
