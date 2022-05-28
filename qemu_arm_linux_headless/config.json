@@ -33,7 +33,8 @@
           { "component": "hichecker_native", "features":[] },
           { "component": "faultloggerd", "features":[] },
           { "component": "hisysevent_native", "features":[] },
-          { "component": "hicollie_native", "features":[] }
+          { "component": "hicollie_native", "features":[] },
+          { "component": "hidumper", "features":[] }
         ]
       },
       {
@@ -71,7 +72,9 @@
         "components": [
           { "component": "ipc", "features":[] },
           { "component": "dsoftbus_standard", "features":[] },
-          { "component": "ipc_js", "features":[] }
+          { "component": "ipc_js", "features":[] },
+          { "component": "dhcp", "features":[] },
+          { "component": "netmanager_base", "features":[] }
         ]
       },
       {
@@ -81,6 +84,15 @@
           { "component": "ability_tools", "features":[] },
           { "component": "ability_base", "features":[] },
           { "component": "idl", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "appexecfwk",
+        "components": [
+          { "component": "bundle_framework", "features":[ "bundle_framework_graphics=false" ] },
+          { "component": "appexecfwk_standard", "features":[] },
+          { "component": "appexecfwk_core", "features":[] },
+          { "component": "bundle_tool", "features":[] }
         ]
       },
       {
@@ -96,6 +108,13 @@
         "subsystem": "arkui",
         "components": [
           { "component": "napi", "features":[ "napi_enable_container_scope=false" ] }
+        ]
+      },
+      {
+        "subsystem": "ark",
+        "components": [
+          { "component": "ark", "features": [] },
+          { "component": "ark_js_runtime", "features": [] }
         ]
       },
       {
@@ -126,6 +145,7 @@
           { "component": "dataability", "features":[] },
           { "component": "preferences", "features":[] },
           { "component": "data_share", "features":[] },
+          { "component": "native_appdatamgr", "features":[ "native_appdatamgr_rdb_support_icu=false" ] },
           { "component": "distributeddataobject", "features":[] }
         ]
       },
@@ -151,6 +171,7 @@
         "subsystem": "developtools",
         "components": [
           { "component": "bytrace", "features":[] },
+          { "component": "profiler", "features":[] },
           { "component": "hdc", "features":[] }
         ]
       },
