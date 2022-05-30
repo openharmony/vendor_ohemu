@@ -150,9 +150,9 @@
         ]
       },
       {
-        "subsystem": "storage",
+        "subsystem": "filemanagement",
         "components": [
-          { "component": "storage_service", "features":[] }
+          { "component": "storage_service", "features":[ "storage_service_graphic=false" ] }
         ]
       },
       {
