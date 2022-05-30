@@ -63,7 +63,7 @@
         ]
       },
       {
-        "subsystem": "appexecfwk",
+        "subsystem": "notification",
         "components": [
           { "component": "eventhandler", "features":[] }
         ]
