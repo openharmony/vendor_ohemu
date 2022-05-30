@@ -172,7 +172,8 @@
         "components": [
           { "component": "bytrace", "features":[] },
           { "component": "profiler", "features":[] },
-          { "component": "hdc", "features":[] }
+          { "component": "hdc", "features":[] },
+          { "component": "syscap_codec", "features":[] }
         ]
       },
       {
