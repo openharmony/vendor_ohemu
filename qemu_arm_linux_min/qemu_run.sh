@@ -16,6 +16,7 @@
 qemu_option="-M virt -cpu cortex-a7 -smp 4 -m 1024 -nographic"
 qemu_setup_network=""
 qemu_instance_id=""
+img_copy_option="-n"
 
 kernel_bootargs="console=ttyAMA0,115200 init=/bin/init hardware=qemu.arm.linux default_boot_device=a003e00.virtio_mmio root=/dev/ram0 rw"
 
@@ -32,6 +33,7 @@ Run a OHOS image in qemu according to the options.
     -n,  --network            auto setup network for qemu (sudo required).
     -i,  --instance id        start qemu images with specified instance id (from 01 to 99).
                               it will also setup network when running in multiple instance mode.
+         -f                   force override instance image with a new copy.
     -h,  --help               print this help info.
 
     If no image_path specified, it will find OHOS image in current working directory; then try ${elf_file}.
@@ -105,10 +107,10 @@ function qemu_network()
 
 function copy_img()
 {
-    cp $elf_file/userdata.img $elf_file/userdata${qemu_instance_id}.img
-    cp $elf_file/vendor.img $elf_file/vendor${qemu_instance_id}.img
-    cp $elf_file/system.img $elf_file/system${qemu_instance_id}.img
-    cp $elf_file/updater.img $elf_file/updater${qemu_instance_id}.img
+    cp ${img_copy_option} $elf_file/userdata.img $elf_file/userdata${qemu_instance_id}.img
+    cp ${img_copy_option} $elf_file/vendor.img $elf_file/vendor${qemu_instance_id}.img
+    cp ${img_copy_option} $elf_file/system.img $elf_file/system${qemu_instance_id}.img
+    cp ${img_copy_option} $elf_file/updater.img $elf_file/updater${qemu_instance_id}.img
 }
 
 while [ $# -ne 0 ]
@@ -131,6 +133,9 @@ do
             ;;
         "-g")
             qemu_option_add "-s -S"
+            ;;
+        "-f")
+            img_copy_option=""
             ;;
         "-h")
             echo_help
