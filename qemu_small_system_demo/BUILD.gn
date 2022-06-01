@@ -29,6 +29,7 @@
 group("qemu_small_system_demo") {
   deps = [
     "apps",
+    "hals/utils/sys_param:vendor.para",
     "init_configs",
   ]
 }
