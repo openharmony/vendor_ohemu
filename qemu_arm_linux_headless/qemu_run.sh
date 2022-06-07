@@ -70,9 +70,9 @@ function kernel_bootargs_add()
 function setup_sn()
 {
     if [ x"${qemu_instance_id}" != x ]; then
-        kernel_bootargs_add "ohos.boot.sn=${qemu_instance_id}23456789"
+        kernel_bootargs_add "sn=${qemu_instance_id}23456789"
     else
-        kernel_bootargs_add "ohos.boot.sn=0023456789"
+        kernel_bootargs_add "sn=0023456789"
     fi
 }
 
