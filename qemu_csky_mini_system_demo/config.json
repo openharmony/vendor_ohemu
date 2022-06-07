@@ -26,10 +26,15 @@
         ]
       },
       {
+        "subsystem": "distributeddatamgr",
+        "components": [
+          { "component": "kv_store", "features":[] }
+        ]
+      },
+      {
         "subsystem": "utils",
         "components": [
-          { "component": "file", "features":[] },
-          { "component": "kv_store", "features":[] }
+          { "component": "file", "features":[] }
         ]
       }
     ],
