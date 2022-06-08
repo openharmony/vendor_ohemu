@@ -98,7 +98,6 @@
       {
         "subsystem": "bundlemanager",
         "components": [
-          { "component": "eventhandler", "features":[] },
           { "component": "appexecfwk_core", "features":[] },
           { "component": "bundle_tool", "features":[] },
           { "component": "bundle_framework", "features":[ "bundle_framework_graphics=false" ] }
@@ -120,7 +119,8 @@
       {
         "subsystem": "notification",
         "components": [
-          { "component": "common_event_service", "features":[ "common_event_service_with_graphics=false" ] }
+          { "component": "common_event_service", "features":[ "common_event_service_with_graphics=false" ] },
+          { "component": "eventhandler", "features":[] }
         ]
       },
       {
