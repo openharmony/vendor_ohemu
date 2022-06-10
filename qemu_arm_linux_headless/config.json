@@ -78,12 +78,12 @@
         ]
       },
       {
-        "subsystem": "aafwk",
+        "subsystem": "ability",
         "components": [
           { "component": "ability_runtime", "features":[ "ability_runtime_power=false", "ability_runtime_graphics=false" ] },
           { "component": "ability_tools", "features":[] },
           { "component": "ability_base", "features":[] },
-          { "component": "idl", "features":[] }
+          { "component": "idl_tool", "features":[] }
         ]
       },
       {
