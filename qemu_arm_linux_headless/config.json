@@ -142,8 +142,7 @@
         "components": [
           { "component": "distributeddatamgr", "features":[] },
           { "component": "relational_store", "features":[] },
-          { "component": "dataability", "features":[] },
-          { "component": "preferences", "features":[] },
+          { "component": "preference", "features":[] },
           { "component": "data_share", "features":[] },
           { "component": "native_appdatamgr", "features":[ "native_appdatamgr_rdb_support_icu=false" ] },
           { "component": "distributeddataobject", "features":[] }
