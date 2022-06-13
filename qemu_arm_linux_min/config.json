@@ -38,7 +38,7 @@
       {
         "subsystem": "distributedhardware",
         "components": [
-          { "component": "device_manager_base", "features": [] }
+          { "component": "device_manager", "features": [] }
         ]
       },
       {
