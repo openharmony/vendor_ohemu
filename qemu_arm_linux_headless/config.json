@@ -71,7 +71,7 @@
         "subsystem": "communication",
         "components": [
           { "component": "ipc", "features":[] },
-          { "component": "dsoftbus_standard", "features":[] },
+          { "component": "dsoftbus", "features":[] },
           { "component": "ipc_js", "features":[] },
           { "component": "dhcp", "features":[] },
           { "component": "netmanager_base", "features":[] }
