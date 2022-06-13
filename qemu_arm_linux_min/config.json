@@ -59,7 +59,7 @@
         "subsystem": "communication",
         "components": [
           { "component": "ipc", "features":[] },
-          { "component": "dsoftbus_standard", "features":["dsoftbus_standard_get_devicename=false"] }
+          { "component": "dsoftbus", "features":["dsoftbus_get_devicename=false"] }
         ]
       },
       {
