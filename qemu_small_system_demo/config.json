@@ -87,12 +87,6 @@
         ]
       },
       {
-        "subsystem": "utils",
-        "components": [
-          { "component": "os_dump", "features":[] }
-        ]
-      },
-      {
         "subsystem": "hdf",
         "components": [
           { "component": "device_driver_framework", "features":[] },
