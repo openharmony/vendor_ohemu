@@ -75,9 +75,9 @@
         ]
       },
       {
-        "subsystem": "aafwk",
+        "subsystem": "ability",
         "components": [
-          { "component": "aafwk_lite", "features":[ "enable_ohos_appexecfwk_feature_ability = false" ] }
+          { "component": "ability_lite", "features":[ "enable_ohos_appexecfwk_feature_ability = false" ] }
         ]
       },
       {
