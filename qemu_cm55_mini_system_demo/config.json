@@ -33,12 +33,6 @@
         ]
       },
       {
-        "subsystem": "utils",
-        "components": [
-          { "component": "os_dump", "features":[] }
-        ]
-      },
-      {
         "subsystem": "startup",
         "components": [
           { "component": "bootstrap_lite", "features":[] },
