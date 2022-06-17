@@ -141,6 +141,7 @@
         "subsystem": "distributeddatamgr",
         "components": [
           { "component": "distributeddatamgr", "features":[] },
+          { "component": "distributedfilejs", "features":[] },
           { "component": "relational_store", "features":[] },
           { "component": "dataability", "features":[] },
           { "component": "preferences", "features":[] },
