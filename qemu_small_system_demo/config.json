@@ -63,7 +63,6 @@
       {
         "subsystem": "communication",
         "components": [
-          { "component": "ipc_lite", "features":[] },
           { "component": "dsoftbus", "features":[] },
           { "component": "wpa_supplicant", "features":[] }
         ]
