@@ -18,7 +18,7 @@ qemu_setup_network=""
 qemu_instance_id=""
 img_copy_option="-n"
 
-kernel_bootargs="console=ttyAMA0,115200 init=/bin/init hardware=qemu.arm.linux default_boot_device=a003e00.virtio_mmio root=/dev/ram0 rw"
+kernel_bootargs="console=ttyAMA0,115200 init=/bin/init hardware=qemu.arm.linux default_boot_device=a003e00.virtio_mmio root=/dev/ram0 rw ohos.required_mount.system=/dev/block/vdb@/usr@ext4@ro,barrier=1@wait,required ohos.required_mount.vendor=/dev/block/vdc@/vendor@ext4@ro,barrier=1@wait,required"
 
 elf_file="out/qemu-arm-linux/packages/phone/images"
 if [ -f "${PWD}/ramdisk.img" ]; then
