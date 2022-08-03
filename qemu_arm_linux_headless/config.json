@@ -90,7 +90,7 @@
           { "component": "ability_tools", "features":[] },
           { "component": "ability_base", "features":[] },
           { "component": "idl_tool", "features":[] },
-          { "component": "dmsfwk", "features":[ "dmsfwk_mission_manager=false" ] }
+          { "component": "dmsfwk", "features":[ "dmsfwk_mission_manager=false", "dmsfwk_standard_mission_manager=false" ] }
         ]
       },
       {
