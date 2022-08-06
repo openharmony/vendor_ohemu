@@ -75,9 +75,9 @@
         ]
       },
       {
-        "subsystem": "distributedschedule",
+        "subsystem": "systemabilitymgr",
         "components": [
-          { "component": "samgr_standard", "features":[] },
+          { "component": "samgr", "features":[] },
           { "component": "safwk", "features":[] }
         ]
       },
