@@ -31,12 +31,6 @@
         ]
       },
       {
-        "subsystem": "distributeddatamgr",
-        "components": [
-          { "component": "kv_store", "features":[] }
-        ]
-      },
-      {
         "subsystem": "commonlibrary",
         "components": [
           { "component": "file", "features":[] }
