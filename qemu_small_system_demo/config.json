@@ -80,12 +80,6 @@
         ]
       },
       {
-        "subsystem": "distributeddatamgr",
-        "components": [
-          { "component": "kv_store", "features":[] }
-        ]
-      },
-      {
         "subsystem": "hdf",
         "components": [
           { "component": "hdf_core", "features":[] },

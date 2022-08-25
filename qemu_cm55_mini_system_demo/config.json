@@ -27,12 +27,6 @@
         ]
       },
       {
-        "subsystem": "distributeddatamgr",
-        "components": [
-          { "component": "kv_store", "features":[] }
-        ]
-      },
-      {
         "subsystem": "startup",
         "components": [
           { "component": "bootstrap_lite", "features":[] },
