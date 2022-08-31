@@ -107,7 +107,8 @@
         "components": [
           { "component": "appexecfwk_core", "features":[] },
           { "component": "bundle_tool", "features":[] },
-          { "component": "bundle_framework", "features":[ "bundle_framework_graphics=false" ] }
+          { "component": "bundle_framework", "features":[ "bundle_framework_graphics=false" ] },
+          { "component": "distributed_bundle_framework","features": []}
         ]
       },
       {
@@ -165,7 +166,8 @@
       {
         "subsystem": "global",
         "components": [
-          { "component": "resource_management", "features":[ "resource_management_support_icu=false" ] }
+          { "component": "resource_management", "features":[ "resource_management_support_icu=false" ] },
+          { "component": "i18n", "features":[] }
         ]
       },
       {
@@ -193,6 +195,12 @@
         "subsystem": "procrank",
         "components": [
           { "component": "procrank", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hdf",
+        "components": [
+          { "component": "hdf_core", "features":[] }
         ]
       }
     ]
