@@ -56,12 +56,6 @@
         ]
       },
       {
-        "subsystem": "utils",
-        "components": [
-          { "component": "utils_base", "features":[] }
-        ]
-      },
-      {
         "subsystem": "communication",
         "components": [
           { "component": "ipc", "features":[] },
