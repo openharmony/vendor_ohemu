@@ -9,13 +9,6 @@
     "kernel_version": "3.0.0",
     "subsystems": [
       {
-        "subsystem": "systemabilitymgr",
-        "components": [
-          { "component": "safwk_lite", "features":[] },
-          { "component": "samgr_lite", "features":[] }
-        ]
-      },
-      {
         "subsystem": "security",
         "components": [
           { "component": "device_auth", "features":[] },
@@ -37,21 +30,7 @@
         "subsystem": "startup",
         "components": [
           { "component": "bootstrap_lite", "features":[] },
-          { "component": "appspawn_lite", "features":[] },
           { "component": "init_lite", "features":["enable_ohos_startup_init_feature_begetctl_liteos=true"] }
-        ]
-      },
-      {
-        "subsystem": "graphic",
-        "components": [
-          { "component": "graphic_utils", "features": [
-              "enable_ohos_graphic_utils_product_config = true"
-            ]
-          },
-          { "component": "graphic_hals", "features":[] },
-          { "component": "ui", "features":[ "enable_graphic_font = true" ] },
-          { "component": "surface", "features":[] },
-          { "component": "wms", "features":[] }
         ]
       },
       {
@@ -65,18 +44,6 @@
         "components": [
           { "component": "dsoftbus", "features":[] },
           { "component": "wpa_supplicant", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "bundlemanager",
-        "components": [
-          { "component": "bundle_framework_lite", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "ability",
-        "components": [
-          { "component": "ability_lite", "features":[ "enable_ohos_appexecfwk_feature_ability = false" ] }
         ]
       },
       {
