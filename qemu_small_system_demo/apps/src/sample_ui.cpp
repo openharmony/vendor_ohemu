@@ -29,7 +29,7 @@
 #include "font/ui_font_header.h"
 #include "window/window.h"
 #include "common/screen.h"
-#include "engines/gfx/gfx_engine_manager.h"
+#include "engines/gfx/soft_engine.h"
 #include "hal_tick.h"
 #include "hilog/log.h"
 
@@ -57,7 +57,8 @@ static uint32_t g_fontMemBaseAddr[OHOS::MIN_FONT_PSRAM_LENGTH / 4];
 void GUIInit()
 {
     OHOS::GraphicStartUp::Init();
-    OHOS::BaseGfxEngine::InitGfxEngine();
+    static OHOS::SoftEngine localGfxEngine;
+    OHOS::SoftEngine::InitGfxEngine(&localGfxEngine);
 
     OHOS::GraphicStartUp::InitFontEngine(
             reinterpret_cast<uintptr_t>(g_fontMemBaseAddr),
