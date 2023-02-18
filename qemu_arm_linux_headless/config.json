@@ -30,7 +30,7 @@
           { "component": "hilog_native", "features":[] },
           { "component": "hilog_service", "features":[] },
           { "component": "hitrace_native", "features":[] },
-          { "component": "hichecker_native", "features":[] },
+          { "component": "hichecker_native", "features":[ "hichecker_support_asan=false" ] },
           { "component": "faultloggerd", "features":[] },
           { "component": "hisysevent_native", "features":[] },
           { "component": "hicollie_native", "features":[] },
