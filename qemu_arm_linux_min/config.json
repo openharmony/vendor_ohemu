@@ -85,7 +85,6 @@
       {
         "subsystem": "securec",
         "components": [
-          { "component": "thirdparty_bounds_checking_function", "features":[] }
         ]
       },
       {
