@@ -86,12 +86,6 @@
         "subsystem": "securec",
         "components": [
         ]
-      },
-      {
-        "subsystem": "device_arm_virt",
-        "components": [
-          { "component": "qemu_arm_linux_chipset", "features":[] }
-        ]
       }
     ]
   }
