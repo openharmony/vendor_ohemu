@@ -18,7 +18,6 @@
       {
         "subsystem": "startup",
         "components": [
-          { "component": "startup_l2", "features":[] },
           { "component": "appspawn", "features":[] },
           { "component": "init", "features":[] }
         ]
