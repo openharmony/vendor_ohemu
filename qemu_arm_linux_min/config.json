@@ -19,7 +19,6 @@
       {
         "subsystem": "startup",
         "components": [
-          { "component": "startup_l2", "features":[] },
           { "component": "init", "features":[] }
         ]
       },
