@@ -55,6 +55,12 @@
         ]
       },
       {
+        "subsystem": "useriam",
+        "components": [
+          { "component": "user_auth_framework", "features":[] }
+        ]
+      },
+      {
         "subsystem": "account",
         "components": [
           { "component": "os_account", "features": [] }
