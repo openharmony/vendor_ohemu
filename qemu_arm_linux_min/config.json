@@ -49,12 +49,6 @@
         ]
       },
       {
-        "subsystem": "useriam",
-        "components": [
-          { "component": "user_auth_framework", "features":[] }
-        ]
-      },
-      {
         "subsystem": "commonlibrary",
         "components": [
           { "component": "c_utils", "features": [] }
