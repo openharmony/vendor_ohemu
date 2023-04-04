@@ -15,14 +15,10 @@
 
 set -e
 
-product_path=`hb env|grep 'product path:'`
-product_path=${product_path:26}
-kernel_type=`hb env|grep 'kernel:'`
-kernel_type=${kernel_type:20}
-board=`hb env|grep 'board:'`
-board=${board:19}
-product=`hb env|grep 'product:'`
-product=${product:21}
+board=$(cat ohos_config.json | grep -oP '(?<="board": ")[^"]*' | sed -e 's/\\//g')
+kernel_type=$(cat ohos_config.json | grep -oP '(?<="kernel": ")[^"]*' | sed -e 's/\\//g')
+product=$(cat ohos_config.json | grep -oP '(?<="product": ")[^"]*' | sed -e 's/\\//g')
+product_path=$(cat ohos_config.json | grep -oP '(?<="product_path": ")[^"]*' | sed -e 's/\\//g')
 
 real_cmd="${product_path}/qemu_run.sh"
 if [[ ! -x "${real_cmd}" ]]; then
