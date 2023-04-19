@@ -35,9 +35,9 @@ lite_component("apps") {
 executable("simple_ui_demo") {
   sources = [ "src/sample_ui.cpp" ]
   include_dirs = [
-    "//foundation/graphic/ui/interfaces/kits",
-    "//foundation/graphic/ui/interfaces/innerkits",
-    "//foundation/graphic/utils/interfaces",
+    "//foundation/arkui/ui_lite/interfaces/kits",
+    "//foundation/arkui/ui_lite/interfaces/innerkits",
+    "//foundation/graphic/graphic_utils_lite/interfaces",
   ]
   ldflags = [
     "-lstdc++",
@@ -46,8 +46,8 @@ executable("simple_ui_demo") {
   ]
 
   deps = [
-    "//foundation/graphic/ui/test/framework:lite_graphic_test_framework",
-    "//foundation/graphic/utils:lite_graphic_hals",
-    "//foundation/graphic/wms:wms_client",
+    "//foundation/arkui/ui_lite/test/framework:lite_graphic_test_framework",
+    "//foundation/graphic/graphic_utils_lite:lite_graphic_hals",
+    "//foundation/window/window_manager_lite:wms_client",
   ]
 }
