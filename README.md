@@ -41,7 +41,7 @@ Refer to involved repositories documents.
 
 ## Contribution
 
-[How to involve](https://gitee.com/openharmony/docs/blob/HEAD/en/contribute/contribution.md)
+[How to involve](https://gitee.com/openharmony/docs/blob/master/en/contribute/how-to-contribute.md)
 
 [Commit message spec](https://gitee.com/openharmony/device_qemu/wikis/Commit%20message%E8%A7%84%E8%8C%83?sort_id=4042860)
 
