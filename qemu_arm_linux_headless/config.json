@@ -175,7 +175,7 @@
         "subsystem": "developtools",
         "components": [
           { "component": "bytrace", "features":[] },
-          { "component": "profiler", "features":["profiler_SmartPerf=false"] },
+          { "component": "hiprofiler", "features":["hiprofiler_SmartPerf=false"] },
           { "component": "hdc", "features":[] },
           { "component": "syscap_codec", "features":[] }
         ]
