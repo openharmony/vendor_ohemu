@@ -31,6 +31,7 @@
           { "component": "hilog_service", "features":[] },
           { "component": "hitrace_native", "features":[] },
           { "component": "faultloggerd", "features":[] },
+          { "component": "hisysevent_native", "features":[] },
           { "component": "hichecker", "features":[ "hichecker_support_asan=false" ] }
         ]
       },
