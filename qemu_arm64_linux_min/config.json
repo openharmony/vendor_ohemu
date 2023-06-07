@@ -32,7 +32,8 @@
           { "component": "hitrace_native", "features":[] },
           { "component": "faultloggerd", "features":[] },
           { "component": "hisysevent_native", "features":[] },
-          { "component": "hichecker_native", "features":[ "hichecker_support_asan=false" ] }
+          { "component": "hichecker_native", "features":[ "hichecker_support_asan=false" ] },
+          { "component": "hichecker", "features":[ "hichecker_support_asan=false" ] }
         ]
       },
       {
