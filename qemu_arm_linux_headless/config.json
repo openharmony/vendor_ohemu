@@ -10,9 +10,9 @@
     "device_build_path": "device/qemu/arm_virt/linux",
     "subsystems": [
       {
-        "subsystem": "common",
+        "subsystem": "build",
         "components": [
-          { "component": "common", "features":[] }
+          { "component": "build_framework", "features":[] }
         ]
       },
       {
