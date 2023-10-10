@@ -84,6 +84,12 @@
         "subsystem": "securec",
         "components": [
         ]
+      },
+      {
+        "subsystem": "resourceschedule",
+        "components": [
+          { "component": "ffrt", "features":[] }
+        ]
       }
     ]
   }
