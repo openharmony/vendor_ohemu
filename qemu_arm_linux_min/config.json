@@ -88,7 +88,8 @@
       {
         "subsystem": "resourceschedule",
         "components": [
-          { "component": "ffrt", "features":[] }
+          { "component": "ffrt", "features":[] },
+          { "component": "frame_aware_sched", "features":[] }
         ]
       }
     ]
