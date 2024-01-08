@@ -24,6 +24,7 @@
             <policy name="projectPolicy" desc="">
                 <policyitem type="copyright" name="Huawei Technologies Co., Ltd. All rights reserved." path=".*" desc="original liteos copyright"/>
                 <policyitem type="copyright" name="Bestechnic (Shanghai) Co., Ltd. All rights reserved." path=".*" desc="original liteos copyright"/>
+                <policyitem type="copyright" name="Institute of Software, Chinese Academy of Sciences." path=".*" desc=""/>
                 <policyitem type="license" name="BSD-3-Clause" path=".*" desc="Liteos kernel use bsd3 license"/>
             </policy>
         </policylist>

@@ -1,0 +1,6 @@
+{
+  "device_riscv64_virt": {
+    "path": "device/qemu/riscv64_virt",
+    "name": "riscv64_virt"
+  }
+}
