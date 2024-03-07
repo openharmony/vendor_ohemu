@@ -91,6 +91,12 @@
           { "component": "ffrt", "features":[] },
           { "component": "frame_aware_sched", "features":[] }
         ]
+      },
+      {
+        "subsystem": "device_qemu-arm-linux",
+        "components": [
+          { "component": "qemu_arm_linux_chipset", "features":[] }
+        ]
       }
     ]
   }
