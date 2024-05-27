@@ -76,6 +76,19 @@
                 <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-air-conditioner-64.bin" desc="qemu_riscv32 lfs需要打包到文件系统的文件"/>
                 <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/js/common/cloud_green.bin" desc="qemu_riscv32 lfs需要打包到文件系统的文件"/>
                 <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-candle-64.bin" desc="qemu_riscv32 lfs需要打包到文件系统的文件"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-light-64.png" desc="icon"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-fridge-64.png" desc="icon"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-curtains-64.png" desc="icon"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-myspace-64.png" desc="icon"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/img/02.gif" desc="文件系统打包数据"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/img/03.png" desc="文件系统打包数据"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-candle-64.png" desc="icon"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/img/04.jpg" desc="文件系统打包数据"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-sun-64.png" desc="icon"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-workday-64.png" desc="icon"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/img/01.gif" desc="文件系统打包数据"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/img/launcher.gif" desc="文件系统打包数据"/>
+                <filteritem type="filepath" name="qemu_riscv32_mini_system_demo/fs_data/data/data/panel/common/icons8-air-conditioner-64.png" desc="icon"/>
                 <!--filteritem type="filepath" name="abcdefg/.*.uvwxyz" desc="Describe the reason for filtering scan results"/-->
                 <!--filteritem type="filepath" name="projectroot/[a-zA-Z0-9]{20,}.sh" desc="Temp files"/-->
             </filefilter>
