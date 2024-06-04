@@ -19,7 +19,7 @@
       {
         "subsystem": "startup",
         "components": [
-          { "component": "init", "features":[ "enable_appspawn_client_module=false" ] }
+          { "component": "init", "features":[ "init_appspawn_client_module=false" ] }
         ]
       },
       {
