@@ -55,7 +55,7 @@
           {
             "component": "graphic_utils_lite",
             "features": [
-              "enable_ohos_graphic_utils_product_config = true"
+              "graphic_utils_lite_enable_ohos_product_config = true"
             ]
           }
         ]
