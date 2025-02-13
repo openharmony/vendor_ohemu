@@ -90,6 +90,12 @@
         "components": [
           { "component": "qemu_arm_linux_chipset", "features":[] }
         ]
+      },
+      {
+        "subsystem": "ability",
+        "components": [
+          { "component": "idl_tool", "features":[] }
+        ]
       }
     ]
   }

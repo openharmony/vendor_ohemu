@@ -193,6 +193,12 @@
         "components": [
           { "component": "hdf_core", "features":[] }
         ]
+      },
+      {
+        "subsystem": "ability",
+        "components": [
+          { "component": "idl_tool", "features":[] }
+        ]
       }
     ]
   }
