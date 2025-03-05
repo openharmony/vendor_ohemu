@@ -96,6 +96,12 @@
         "components": [
           { "component": "qemu_loongarch64_linux_chipset", "features":[] }
         ]
+      },
+      {
+        "subsystem": "ability",
+        "components": [
+          { "component": "idl_tool", "features":[] }
+        ]
       }
     ]
   }
