@@ -93,6 +93,13 @@
         ]
       },
       {
+        "subsystem": "arkcompiler",
+        "components": [
+          { "component": "ets_frontend", "features":[] },
+          { "component": "toolchain", "features":[] }
+        ]
+      },
+      {
         "subsystem": "device_qemu-arm-linux",
         "components": [
           { "component": "qemu_arm_linux_chipset", "features":[] }
