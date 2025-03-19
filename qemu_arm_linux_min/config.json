@@ -91,6 +91,12 @@
           { "component": "frame_aware_sched", "features":[] }
         ]
       },
+	  {
+        "subsystem": "arkcompiler",
+        "components": [
+		  { "component": "ets_frontend", "features":[] }
+        ]
+      },
       {
         "subsystem": "device_qemu-arm-linux",
         "components": [
