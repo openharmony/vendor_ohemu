@@ -46,6 +46,13 @@
         ]
       },
       {
+        "subsystem": "thirdparty",
+        "components": [
+		  { "component": "bounds_checking_function", "features":[] },
+		  { "component": "mbedtls", "features":[] }
+        ]
+      },
+      {
         "subsystem": "hdf",
         "components": [
           { "component": "hdf_core", "features":[] },
