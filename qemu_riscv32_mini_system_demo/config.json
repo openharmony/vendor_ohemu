@@ -107,6 +107,17 @@
         ]
       },
       {
+        "subsystem": "thirdparty",
+        "components": [
+          {
+            "component": "bounds_checking_function"
+          },
+          {
+            "component": "mbedtls"
+          }
+        ]
+      },
+      {
         "subsystem": "systemabilitymgr",
         "components": [
           {
