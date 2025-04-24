@@ -108,6 +108,12 @@
         "components": [
           { "component": "idl_tool", "features":[] }
         ]
+      },
+      {
+        "subsystem": "thirdparty",
+        "components": [
+          { "component": "libuv", "features":[] }
+        ]
       }
     ]
   }
