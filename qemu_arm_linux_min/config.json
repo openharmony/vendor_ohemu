@@ -108,6 +108,12 @@
         "components": [
           { "component": "idl_tool", "features":[] }
         ]
+      },
+      {
+        "subsystem": "hdf",
+        "components": [
+          { "component": "drivers_interface_bluetooth", "features":[] }
+        ]
       }
     ]
   }
