@@ -23,6 +23,12 @@
         ]
       },
       {
+        "subsystem": "graphic",
+        "components": [
+          { "component": "graphic_surface", "features":[] }
+        ]
+      },
+      {
         "subsystem": "hiviewdfx",
         "components": [
           { "component": "hilog", "features":[] },
@@ -107,6 +113,12 @@
         "subsystem": "ability",
         "components": [
           { "component": "idl_tool", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "thirdparty",
+        "components": [
+          { "component": "libuv", "features":[] }
         ]
       },
       {
