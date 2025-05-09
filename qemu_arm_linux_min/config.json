@@ -120,6 +120,12 @@
         "components": [
           { "component": "libuv", "features":[] }
         ]
+      },
+      {
+        "subsystem": "hdf",
+        "components": [
+          { "component": "drivers_interface_bluetooth", "features":[] }
+        ]
       }
     ]
   }
