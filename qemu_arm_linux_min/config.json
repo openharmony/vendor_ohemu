@@ -49,7 +49,8 @@
         "components": [
           { "component": "device_auth", "features":[] },
           { "component": "access_token", "features":[] },
-          { "component": "huks", "features": [ "huks_qemu_enabled = true" ] }
+          { "component": "huks", "features": [ "huks_qemu_enabled = true" ] },
+          { "component": "dataclassification", "features":[] }
         ]
       },
       {
