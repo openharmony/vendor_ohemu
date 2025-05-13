@@ -119,7 +119,8 @@
       {
         "subsystem": "thirdparty",
         "components": [
-          { "component": "libuv", "features":[] }
+          { "component": "libuv", "features":[] },
+          { "component": "sqlite", "features":[] }
         ]
       },
       {
