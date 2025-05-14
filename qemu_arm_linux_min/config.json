@@ -101,7 +101,8 @@
 	  {
         "subsystem": "arkcompiler",
         "components": [
-		  { "component": "ets_frontend", "features":[] }
+          { "component": "ets_frontend", "features":[] },
+          { "component": "ets_runtime", "features":[] }
         ]
       },
       {
