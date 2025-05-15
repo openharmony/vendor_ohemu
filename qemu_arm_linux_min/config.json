@@ -121,7 +121,8 @@
         "components": [
           { "component": "libuv", "features":[] },
           { "component": "sqlite", "features":[] },
-          { "component": "libusb", "features":[] }
+          { "component": "libusb", "features":[] },
+          { "component": "astc-encoder", "features":[] }
         ]
       },
       {
