@@ -25,7 +25,8 @@
       {
         "subsystem": "graphic",
         "components": [
-          { "component": "graphic_surface", "features":[] }
+          { "component": "graphic_surface", "features":[] },
+          { "component": "graphics_effect", "features":[] }
         ]
       },
       {
