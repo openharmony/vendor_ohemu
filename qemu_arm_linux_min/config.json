@@ -121,6 +121,8 @@
         "components": [
           { "component": "libuv", "features":[] },
           { "component": "sqlite", "features":[] },
+          { "component": "protobuf", "features":[] },
+          { "component": "abseil-cpp", "features":[] },
           { "component": "astc-encoder", "features":[] }
         ]
       },
