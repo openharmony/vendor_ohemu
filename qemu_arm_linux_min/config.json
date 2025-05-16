@@ -50,7 +50,8 @@
           { "component": "device_auth", "features":[] },
           { "component": "access_token", "features":[] },
           { "component": "huks", "features": [ "huks_qemu_enabled = true" ] },
-          { "component": "dataclassification", "features":[] }
+          { "component": "dataclassification", "features":[] },
+          { "component": "device_security_level", "features":[] }
         ]
       },
       {
@@ -122,6 +123,8 @@
           { "component": "libuv", "features":[] },
           { "component": "sqlite", "features":[] },
           { "component": "libusb", "features":[] },
+          { "component": "protobuf", "features":[] },
+          { "component": "abseil-cpp", "features":[] },
           { "component": "astc-encoder", "features":[] }
         ]
       },
