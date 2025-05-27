@@ -127,6 +127,7 @@
           { "component": "libusb", "features":[] },
           { "component": "protobuf", "features":[] },
           { "component": "abseil-cpp", "features":[] },
+          { "component": "pcre2", "features":[] },
           { "component": "astc-encoder", "features":[] }
         ]
       },
