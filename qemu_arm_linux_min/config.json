@@ -109,6 +109,15 @@
         "components": [
           { "component": "idl_tool", "features":[] }
         ]
+      },
+      {
+        "subsystem": "sdk",
+        "components": [
+          {
+            "component": "sdk",
+            "features": []
+          }
+        ]
       }
     ]
   }
