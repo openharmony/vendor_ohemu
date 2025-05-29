@@ -143,7 +143,16 @@
         "subsystem": "hdf",
         "components": [
           { "component": "drivers_interface_bluetooth", "features":[] },
-		  { "component": "hdf_core", "features":[] }
+          { "component": "hdf_core", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "sdk",
+        "components": [
+          {
+            "component": "sdk",
+            "features": []
+          }
         ]
       }
     ]
