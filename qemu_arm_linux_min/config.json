@@ -17,6 +17,13 @@
         ]
       },
       {
+        "subsystem": "thirdparty",
+        "components": [
+          { "component": "lzma", "features":[] },
+          { "component": "libunwind", "features":[] }
+        ]
+      },
+      {
         "subsystem": "startup",
         "components": [
           { "component": "init", "features":[ "init_appspawn_client_module=false" ] }
