@@ -137,7 +137,8 @@
           { "component": "abseil-cpp", "features":[] },
           { "component": "pcre2", "features":[] },
           { "component": "astc-encoder", "features":[] },
-          { "component": "rust_libc", "features":[] }
+          { "component": "rust_libc", "features":[] },
+          { "component": "optimized_routines", "features":[] }
         ]
       },
       {
