@@ -156,6 +156,15 @@
             "features": []
           }
         ]
+      },
+      {
+        "subsystem": "developtools",
+        "components": [
+          {
+            "component": "ace_ets2bundle",
+            "features": []
+          }
+        ]
       }
     ]
   }
