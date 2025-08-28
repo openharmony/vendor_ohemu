@@ -155,6 +155,24 @@
             "features": []
           }
         ]
+      },
+      {
+        "subsystem": "developtools",
+        "components": [
+          {
+            "component": "ace_ets2bundle",
+            "features": []
+          }
+        ]
+      },
+      {
+        "subsystem": "thirdparty",
+        "components": [
+          {
+            "component": "typescript",
+            "features": []
+          }
+        ]
       }
     ]
   }
