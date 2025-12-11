@@ -138,6 +138,8 @@
           { "component": "pcre2", "features":[] },
           { "component": "astc-encoder", "features":[] },
           { "component": "rust_libc", "features":[] },
+          { "component": "rust_cxx", "features":[] },
+          { "component": "rust_bindgen", "features":[] },
           { "component": "optimized_routines", "features":[] }
         ]
       },
