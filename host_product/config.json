@@ -1,0 +1,37 @@
+{
+  "product_name": "host_product",
+  "type": "standard",
+  "version": "3.0",
+  "compile_mode": "host",
+  "host_target_os": "linux",
+  "host_target_cpu": "x86_64",
+  "subsystems": [
+    {
+      "subsystem": "build",
+      "components": [
+        {
+          "component": "build_framework",
+          "features": [],
+          "prune_deps": {
+            "components": [
+              "selinux",
+              "selinux_adapter"
+            ],
+            "sub_component": [
+              "//third_party/f2fs-tools:f2fs-tools_host_toolchain"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "subsystem": "securec",
+      "components": [
+        {
+          "component": "thirdparty_bounds_checking_function",
+          "features": []
+        }
+      ]
+    }
+  ]
+}
