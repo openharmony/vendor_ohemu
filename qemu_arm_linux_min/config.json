@@ -103,7 +103,8 @@
         "subsystem": "resourceschedule",
         "components": [
           { "component": "ffrt", "features":[] },
-          { "component": "frame_aware_sched", "features":[] }
+          { "component": "frame_aware_sched", "features":[] },
+          { "component": "qos_manager", "features":[] }
         ]
       },
       {
@@ -139,6 +140,8 @@
         "subsystem": "hdf",
         "components": [
           { "component": "drivers_interface_bluetooth", "features":[] },
+          { "component": "drivers_interface_usb", "features":[] },
+          { "component": "drivers_peripheral_usb", "features":[] },
           { "component": "hdf_core", "features":[] }
         ]
       },
