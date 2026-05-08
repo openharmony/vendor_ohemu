@@ -65,6 +65,7 @@ function kernel_bootargs_add()
 {
     kernel_bootargs+=" "
     kernel_bootargs+="$1"
+    kernel_bootargs+=" "
 }
 
 function setup_sn()
