@@ -30,13 +30,6 @@
         ]
       },
       {
-        "subsystem": "graphic",
-        "components": [
-          { "component": "graphic_surface", "features":[] },
-          { "component": "graphics_effect", "features":[] }
-        ]
-      },
-      {
         "subsystem": "hiviewdfx",
         "components": [
           { "component": "hilog", "features":[] },
@@ -47,9 +40,15 @@
         ]
       },
       {
+        "subsystem": "customization",
+        "components": [
+          { "component": "config_policy", "features":[] }
+        ]
+      },
+      {
         "subsystem": "distributedhardware",
         "components": [
-          { "component": "device_manager", "features": [] }
+          { "component": "device_manager", "features": [ "device_manager_capability=false" ] }
         ]
       },
       {
@@ -107,14 +106,6 @@
           { "component": "frame_aware_sched", "features":[] }
         ]
       },
-	  {
-        "subsystem": "arkcompiler",
-        "components": [
-          { "component": "ets_frontend", "features":[] },
-          { "component": "ets_runtime", "features":[] },
-          { "component": "toolchain", "features":[] }
-        ]
-      },
       {
         "subsystem": "device_qemu-arm-linux",
         "components": [
@@ -140,7 +131,8 @@
           { "component": "rust_libc", "features":[] },
           { "component": "rust_cxx", "features":[] },
           { "component": "rust_bindgen", "features":[] },
-          { "component": "optimized_routines", "features":[] }
+          { "component": "optimized_routines", "features":[] },
+          { "component": "mksh", "features":[] }
         ]
       },
       {
@@ -148,24 +140,6 @@
         "components": [
           { "component": "drivers_interface_bluetooth", "features":[] },
           { "component": "hdf_core", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "sdk",
-        "components": [
-          {
-            "component": "sdk",
-            "features": []
-          }
-        ]
-      },
-      {
-        "subsystem": "developtools",
-        "components": [
-          {
-            "component": "ace_ets2bundle",
-            "features": []
-          }
         ]
       },
       {
