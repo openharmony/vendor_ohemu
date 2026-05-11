@@ -1,0 +1,14 @@
+root {
+    wlan_config {
+        ap6275s :& chipList {
+            chipAp6275s :: chipInst {
+                match_attr = "hdf_wlan_chips_ap6275s";
+                driverName = "ap6275s";
+                bus {
+                    vendorId = 0x0296;
+                    deviceId = [0x5347];
+                }
+            }
+        }
+    }
+}

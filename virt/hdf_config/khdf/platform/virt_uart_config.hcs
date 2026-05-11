@@ -1,0 +1,23 @@
+root {
+    platform {
+        uart_config {
+            template uart_device {
+                serviceName = "";
+                match_attr = "";
+                driver_name = "ttyS";
+                num = 0;
+            }
+            device_uart_0x0000 :: uart_device {
+                match_attr = "edu_virt_uart_0";
+            }
+            device_uart_0x0001 :: uart_device {
+                num = 1;
+                match_attr = "edu_virt_uart_1";
+            }
+            device_uart_0x0003 :: uart_device {
+                num = 3;
+                match_attr = "edu_virt_uart_3";
+            }
+        }
+    }
+}

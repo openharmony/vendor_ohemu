@@ -1,0 +1,234 @@
+{
+    "hdf_audio_codec_primary_dev0": [
+        {
+            "deep-buffer-playback": [
+                {
+                    "Headphones": [
+                        {
+                            "name": "Speaker1 Switch",
+                            "value": 0
+                        }
+                    ],
+                    "Speaker": [
+                        {
+                            "name": "Headphone1 Switch",
+                            "value": 1
+                        },
+                        {
+                            "name": "Headphone2 Switch",
+                            "value": 1
+                        }
+                    ],
+                    "MIC": [
+                        {
+                            "name": "RPGA MIC Switch",
+                            "value": 1
+                        }
+                    ],
+                    "micHs": [
+                        {
+                            "name": "LPGA MIC Switch",
+                            "value": 0
+                        }
+                    ]
+                }
+            ],
+            "low-latency-communication": [
+                {
+                    "Speaker": [
+                        {
+                            "name": "Speaker1 Switch",
+                            "value": 1
+                        }
+                    ],
+                    "Headphones": [
+                        {
+                            "name": "Headphone1 Switch",
+                            "value": 0
+                        },
+                        {
+                            "name": "Headphone2 Switch",
+                            "value": 0
+                        }
+                    ],
+                    "MIC": [
+                        {
+                            "name": "RPGA MIC Switch",
+                            "value": 1
+                        }
+                    ],
+                    "micHs": [
+                        {
+                            "name": "LPGA MIC Switch",
+                            "value": 0
+                        }
+                    ]
+                }
+            ],
+            "ringtone-playback": [
+                {
+                    "Speaker": [
+                        {
+                            "name": "Speaker1 Switch",
+                            "value": 1
+                        }
+                    ],
+                    "Headphones": [
+                        {
+                            "name": "Headphone1 Switch",
+                            "value": 1
+                        },
+                        {
+                            "name": "Headphone2 Switch",
+                            "value": 1
+                        }
+                    ]
+                }
+            ],
+            "voice-call": [
+                {
+                    "Speaker": [
+                        {
+                            "name": "Speaker1 Switch",
+                            "value": 1
+                        }
+                    ],
+                    "Headphones": [
+                        {
+                            "name": "Headphone1 Switch",
+                            "value": 0
+                        },
+                        {
+                            "name": "Headphone2 Switch",
+                            "value": 0
+                        }
+                    ],
+                    "MIC": [
+                        {
+                            "name": "RPGA MIC Switch",
+                            "value": 1
+                        }
+                    ],
+                    "micHs": [
+                        {
+                            "name": "LPGA MIC Switch",
+                            "value": 0
+                        }
+                    ]
+                }
+            ],
+            "low-latency-noirq-playback": [
+                {
+                    "Speaker": [
+                        {
+                            "name": "Speaker1 Switch",
+                            "value": 1
+                        }
+                    ],
+                    "Headphones": [
+                        {
+                            "name": "Headphone1 Switch",
+                            "value": 0
+                        },
+                        {
+                            "name": "Headphone2 Switch",
+                            "value": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "hdf_audio_codec_hdmi_dev0": [
+        {
+            "deep-buffer-playback Speaker": [
+                {
+                    "name": "DAC",
+                    "value": 1
+                },
+                {
+                    "name": "DAC",
+                    "value": 1
+                }
+            ],
+            "headphones": [
+                {
+                    "name": "Speaker1 Switch",
+                    "value": 1
+                },
+                {
+                    "name": "Headphone1 Switch",
+                    "value": 0
+                },
+                {
+                    "name": "Headphone2 Switch",
+                    "value": 0
+                }
+            ],
+            "Speaker": [
+                {
+                    "name": "Speaker1 Switch",
+                    "value": 0
+                },
+                {
+                    "name": "Headphone1 Switch",
+                    "value": 1
+                },
+                {
+                    "name": "Headphone2 Switch",
+                    "value": 1
+                }
+            ],
+            "deep-buffer-playback headphones": [
+                {
+                    "name": "DAC",
+                    "value": 1
+                },
+                {
+                    "name": "DAC",
+                    "value": 1
+                }
+            ],
+            "deep-buffer-playback mic": [
+                {
+                    "name": "DAC",
+                    "value": 1
+                },
+                {
+                    "name": "DAC",
+                    "value": 1
+                }
+            ],
+            "deep-buffer-playback micHs": [
+                {
+                    "name": "DAC",
+                    "value": 1
+                },
+                {
+                    "name": "DAC",
+                    "value": 1
+                }
+            ],
+            "mic": [
+                {
+                    "name": "LPGA MIC Switch",
+                    "value": 0
+                },
+                {
+                    "name": "RPGA MIC Switch",
+                    "value": 1
+                }
+            ],
+            "micHs": [
+                {
+                    "name": "LPGA MIC Switch",
+                    "value": 1
+                },
+                {
+                    "name": "RPGA MIC Switch",
+                    "value": 0
+                }
+            ]
+        }
+    ]
+}

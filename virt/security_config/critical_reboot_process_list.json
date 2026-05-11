@@ -1,0 +1,48 @@
+{
+    "critical_reboot_process_list": [
+        {
+            "name": "samgr",
+            "critical": [1, 1, 60]
+        },
+        {
+            "name": "foundation",
+            "critical": [1, 4, 240]
+        },
+        {
+            "name": "param_watcher",
+            "critical": [1, 4, 240]
+        },
+        {
+            "name": "appspawn",
+            "critical":[1, 4, 240]
+        },
+        {
+            "name": "render_service",
+            "critical": [1, 5, 60]
+        },
+        {
+            "name": "storage_daemon",
+            "critical": [1, 4, 240]
+        },
+        {
+            "name": "storage_manager",
+            "critical": [1, 4, 240]
+        },
+        {
+            "name": "hdf_devmgr",
+            "critical": [1, 4, 60]
+        },
+        {
+            "name": "accesstoken_service",
+            "critical": [1, 4, 240]
+        },
+        {
+            "name": "privacy_service",
+            "critical": [1, 4, 240]
+        },
+        {
+            "name": "accountmgr",
+            "critical": [1, 4, 240]
+        }
+    ]
+}

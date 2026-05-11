@@ -1,0 +1,181 @@
+root {
+    module = "camera";
+    camera_config {
+        match_attr = "hdf_camera_driver";
+        abilityConfig {
+            uvcMode = true;
+            template device {
+                deviceName = "camera0";
+                SensorConfig {
+                    mode = false; /* whether sensor is supported */
+                    template SensorDevice {
+                        name = "sensor0"; /* sensor name */
+                        id = 0; /* id */
+                        exposure = false; /* whether exposure is supported */
+                        mirror = false; /* whether mirror is supported */
+                        gain = false; /* whether gain is supported */
+                        ctrlValue = [
+                        /* id, min, max, step, default */
+                            0,   0,   0,   0,   0,
+                            8,   0,   0,   0,   0,
+                        ];
+                    }
+                }
+
+                IspConfig {
+                    mode = false; /* whether isp is supported */
+                    name = "isp0"; /* isp name */
+                    id = 0; /* id */
+                    brightness = false; /* whether brightness is supported */
+                    contrast = false; /* whether contrast is supported */
+                    saturation = false; /* whether saturation is supported */
+                    hue = false; /* whether hue is supported */
+                    sharpness = false; /* whether sharpness is supported */
+                    gain = false; /* whether gain is supported */
+                    gamma = false; /* whether gamma is supported */
+                    whiteBalance = false; /* whether whiteBalance is supported */
+                    ctrlValue = [
+                    /* id, min, max, step, default */
+                        1,   0,   0,   0,   0,
+                        2,   0,   0,   0,   0,
+                        3,   0,   0,   0,   0,
+                        4,   0,   0,   0,   0,
+                        5,   0,   0,   0,   0,
+                        6,   0,   0,   0,   0,
+                        7,   0,   0,   0,   0,
+                        8,   0,   0,   0,   0,
+                        9,   0,   0,   0,   0,
+                    ];
+                }
+
+                VcmConfig {
+                    mode = false; /* whether vcm is supported */
+                    template VcmDevice {
+                        name = "vcm0"; /* vcm name */
+                        id = 0; /* id */
+                        focus = false; /* whether focus is supported */
+                        autoFocus = false; /* whether autoFocus is supported */
+                        zoom = false; /* whether zoom is supported */
+                        zoomMaxNum = 0; /* max zoom */
+                        ctrlValue = [
+                        /* id, min, max, step, default */
+                            12,   0,   0,   0,   0,
+                            13,   0,   0,   0,   0,
+                            14,   0,   0,   0,   0,
+                            15,   0,   0,   0,   0,
+                            16,   0,   0,   0,   0,
+                            17,   0,   0,   0,   0,
+                        ];
+                    }
+                }
+
+                LensConfig {
+                    mode = false; /* whether lens is supported */
+                    template LensDevice {
+                        name = "lens0"; /* lens name */
+                        id = 0; /* id */
+                        aperture = false; /* whether aperture is supported */
+                        ctrlValue = [
+                        /* id, min, max, step, default */
+                           18,   0,   0,   0,   0,
+                           19,   0,   0,   0,   0,
+                        ];
+                    }
+                }
+
+                FlashConfig {
+                    mode = false; /* whether flash is supported */
+                    name = "flash0"; /* flash name */
+                    id = 0; /* id */
+                    flashMode = false; /* whether switch flashing light is supported */
+                    flashIntensity = false; /* whether it supports setting flash light intensity */
+                    ctrlValue = [
+                    /* id, min, max, step, default */
+                        20,   0,   0,   0,   0,
+                        21,   0,   0,   0,   0,
+                    ];
+                }
+
+                StreamConfig {
+                    mode = false; /* whether stream is supported */
+                    template StreamDevice {
+                        name = "stream0"; /* stream name */
+                        id = 0; /* id */
+                        heightMaxNum = 0; /* max height */
+                        widthMaxNum = 0; /* max width */
+                        frameRateMaxNum = 0; /* max frameRate */
+                        bufferCount = 0; /* buffer count */
+                        bufferType = [ /* buffer type */
+                                0, /* MMAP */
+                                1, /* DMA_BUF */
+                                2 /* USERPTR */
+                        ];
+                        formatType = [ /* supported formats */
+                                0, /* invalid format */
+                                1, /* PIX_FMT_YUV420 */
+                                2, /* PIX_FMT_YUV422 */
+                                3, /* PIX_FMT_YUV444 */
+                                100, /* PIX_FMT_RGB565 */
+                                101, /* PIX_FMT_RGB444 */
+                                102, /* PIX_FMT_RGB555 */
+                                103, /* PIX_FMT_RGB32 */
+                                200, /* PIX_FMT_SRGGB8 */
+                                201, /* PIX_FMT_SRGGB10 */
+                                202, /* PIX_FMT_SRGGB12 */
+                                203, /* PIX_FMT_SBGGR8 */
+                                204, /* PIX_FMT_SBGGR10 */
+                                205, /* PIX_FMT_SBGGR12 */
+                                300, /* PIX_FMT_JPEG */
+                                301, /* PIX_FMT_MJPEG */
+                                302, /* PIX_FMT_MPEG */
+                                303, /* PIX_FMT_MPEG1 */
+                                304, /* PIX_FMT_MPEG2 */
+                                305, /* PIX_FMT_MPEG4 */
+                                400, /* PIX_FMT_H264 */
+                                401, /* PIX_FMT_H264_NO_SC */
+                                402, /* PIX_FMT_H264_MVC */
+                        ];
+                    }
+                }
+            }
+
+            camera0 :: device {
+                deviceName = "camera0";
+                SensorConfig {
+                    mode = true;
+                    sensor0 :: SensorDevice {
+                        name = "uvcvideo";
+                        id = 0;
+                        exposure = true;
+                        ctrlValue = [
+                        /* id, min, max, step, default */
+                           0,  10,   20,   30,   40,
+                           8,  50,   60,   70,   80,
+                        ];
+                    }
+                }
+
+                IspConfig {
+                    mode = true;
+                    name = "ISP0";
+                    id = 0;
+                    brightness = true;
+                    whiteBalance = true;
+                }
+
+                StreamConfig {
+                    mode = true;
+                    Stream0 :: StreamDevice {
+                        name = "uvcvideo";
+                        id = 0;
+                        heightMaxNum = 860;
+                        widthMaxNum = 820;
+                        bufferCount = 5;
+                        bufferType = [3];
+                        formatType = [1,2,3,200];
+                    }
+                }
+            }
+        }
+    }
+}

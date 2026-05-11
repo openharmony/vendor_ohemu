@@ -1,0 +1,26 @@
+root {
+    platform {
+        template headset_info {
+            match_attr = "";
+            serviceName = "";
+        }
+        headset :: headset_info {
+            match_attr = "analog_headset_attr";
+            serviceName = "analog_headset_service";
+            vendor = 0x0001;
+            product = 0x0001;
+            version = 0x0100;
+            dev_name = "rk809_analog_headset";
+            headset_gpio = 115;
+            headset_gpio_flag = 0;
+            mic_switch_gpio = 0;
+            hp_mic_io_value = 0;
+            main_mic_io_value = 1;
+            headset_wakeup = 1;
+            hook_gpio = 0;
+            adc_controller_no = 0;
+            adc_channel = 0;
+            hook_down_type = 0;
+        }
+    }
+}

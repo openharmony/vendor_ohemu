@@ -1,0 +1,93 @@
+root {
+    platform {
+        template dai_controller {
+            match_attr = "";
+            serviceName = "";
+        }
+        controller_0x120c1020 :: dai_controller {
+            match_attr = "hdf_dai_driver";
+            serviceName = "dai_service";
+
+            idInfo {
+                chipName = "/i2s@fe410000";
+                chipIdRegister = 0xfe410000;
+                chipIdSize = 0x1000;
+            }
+
+            regConfig {
+
+                /*  reg: register address
+                    rreg: register address
+                    shift: shift bits
+                    rshift: rshift bits
+                    min: min value
+                    max: max value
+                    mask: mask of value
+                    invert: enum InvertVal 0-uninvert 1-invert
+                    value: value
+
+                    reg, rreg, shift, rshift, min, max, mask, invert value
+                */
+                daiStartupSeqConfig = [
+                    0x00,    0x00,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x7200000f,   //Transmit Operation Init
+                    0x04,    0x04,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x01c8000f,   //Receive Operation Init
+                    0x08,    0x08,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x00001f1f,   //Clock Generation Init
+                    0x10,    0x10,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x001f0000,   //DMA Control Init
+                    0x14,    0x14,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x01f00000,   //Interrupt Control Init
+                    0x1C,    0x1C,     0,    0,    0,    0x3,          0x3,           0,            0,   //XFER Init
+                    0x30,    0x30,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x00003eff,   //TDM Transmit Init
+                    0x34,    0x34,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x00003eff,   //TDM Receive Init
+                    0x38,    0x38,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x00000707    //Clock Divider Init
+                ];
+
+                daiParamsSeqConfig = [
+                    0x08,    0x08,    8,    8,    0x1F,    0xFF,   0xFF,    0,    0x0,   // I2S_CKR_RSD
+                    0x08,    0x08,    0,    0,    0x1F,    0xFF,   0xFF,    0,    0x0,   // I2S_CKR_TSD
+                    0x38,    0x38,    8,    8,    0x00,    0xFF,   0xFF,    0,    0x0,   // I2S_CLKDIV_RX_MDIV
+                    0x38,    0x38,    0,    0,    0x00,    0xFF,   0xFF,    0,    0x0,   // I2S_CLKDIV_TX_MDIV
+                    0x08,    0x08,    27,   27,   0x0,     0x1,    0x1,     0,    0x0,   // I2S_CKR_MSS
+                    0x08,    0x08,    26,   26,   0x0,     0x1,    0x1,     0,    0x0,   // I2S_CKR_CKP
+                    0x08,    0x08,    25,   25,   0x0,     0x1,    0x1,     0,    0x0,   // I2S_CKR_RLP
+                    0x08,    0x08,    24,   24,   0x0,     0x1,    0x1,     0,    0x0,   // I2S_CKR_TLP
+                ];
+
+                daiTriggerSeqConfig = [
+                    0x10,    0x10,    24,   24,   0x0,     0x1,    0x1,     0,    0x1,   // I2S_DMACR_RDE
+                    0x10,    0x10,    8,    8,    0x0,     0x1,    0x1,     0,    0x1,   // I2S_DMACR_TDE
+                    0x14,    0x14,    17,   17,   0x0,     0x1,    0x1,     0,    0x0,   // I2S_INTCR_RXOIE
+                    0x14,    0x14,    16,   16,   0x0,     0x1,    0x1,     0,    0x0,   // I2S_INTCR_RXFIE
+                    0x14,    0x14,    1,    1,    0x0,     0x1,    0x1,     0,    0x0,   // I2S_INTCR_TXUIE
+                    0x14,    0x14,    0,    0,    0x0,     0x1,    0x1,     0,    0x0    // I2S_INTCR_TXEIE
+                ];
+            }
+        }
+        controller_0x120c1021 :: dai_controller {
+            match_attr = "hdf_hdmi_dai_driver";
+            serviceName = "hdmi_dai_service";
+
+            idInfo {
+                    chipName = "/i2s@fe400000";
+                    chipIdRegister = 0xfe400000;
+                    chipIdSize = 0x1000;
+            }
+            regConfig {
+
+                /*  reg: register address
+                    rreg: register address
+                    shift: shift bits
+                    rshift: rshift bits
+                    min: min value
+                    max: max value
+                    mask: mask of value
+                    invert: enum InvertVal 0-uninvert 1-invert
+                    value: value
+
+                    reg, rreg, shift, rshift, min, max, mask, invert value
+                */
+                daiStartupSeqConfig = [
+                    0x00,    0x00,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x0,   //Transmit Operation Init
+                ];
+            }
+        }
+    }
+}

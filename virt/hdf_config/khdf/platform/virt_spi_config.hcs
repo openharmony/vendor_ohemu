@@ -1,0 +1,37 @@
+root {
+    platform {
+        spi_config {
+            template spi_controller {
+                serviceName = "";
+                match_attr = "";
+                busNum = 0;
+                numCs = 0;
+            }
+
+            controller_0xfe610000 :: spi_controller {
+                busNum = 0;
+                numCs = 1;
+                match_attr = "edu_virt_spi_0";
+            }
+
+            controller_0xfe620000 :: spi_controller {
+                match_attr = "edu_virt_spi_1";
+                busNum = 1;
+                numCs = 1;
+            }
+
+            controller_0xfe630000 :: spi_controller {
+                match_attr = "edu_virt_spi_2";
+                busNum = 2;
+                numCs = 1;
+            }
+            controller_0xfe640000 :: spi_controller {
+                match_attr = "edu_virt_spi_3";
+                busNum = 3;
+                numCs = 1;
+            }
+        }
+    }
+}
+
+

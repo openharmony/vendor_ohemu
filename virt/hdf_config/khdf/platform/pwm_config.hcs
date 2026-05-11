@@ -1,0 +1,37 @@
+root {
+    platform {
+        pwm_config {
+            template pwm_device {
+                serviceName = "";
+                match_attr = "";
+                num = 0;
+            }
+
+            device_pwm_0x00000000 :: pwm_device {
+                num = 0;
+                match_attr = "linux_pwm_adapter_0";
+            }
+
+            device_pwm_0x00000001 :: pwm_device {
+                num = 1;
+                match_attr = "linux_pwm_adapter_1";
+            }
+
+            device_pwm_0x00000002 :: pwm_device {
+                num = 2;
+                match_attr = "linux_pwm_adapter_2";
+            }
+
+            device_pwm_0x00000003 :: pwm_device {
+                num = 3;
+                match_attr = "linux_pwm_adapter_3";
+            }
+
+            device_pwm_0x00000004 :: pwm_device {
+                num = 4;
+                match_attr = "linux_pwm_adapter_4";
+            }
+        }
+    }
+}
+

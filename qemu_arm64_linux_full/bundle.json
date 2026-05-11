@@ -1,0 +1,31 @@
+{
+  "name": "@ohos/qemu_arm64_linux_full_product",
+  "description": "product part definition for qemu arm64 linux full",
+  "version": "4.0",
+  "license": "Apache License 2.0",
+  "publishAs": "code-segment",
+  "segment": {
+    "destPath": "vendor/ohemu/qemu_arm64_linux_full"
+  },
+  "dirs": {},
+  "scripts": {},
+  "component": {
+    "name": "product_arm64_virt",
+    "subsystem": "product_arm64_virt",
+    "features": [],
+    "adapted_system_type": [
+      "standard"
+    ],
+    "rom": "",
+    "ram": "",
+    "deps": {
+      "components": [],
+      "third_party": []
+    },
+    "build": {
+      "sub_component": [
+        "//vendor/ohemu/qemu_arm64_linux_full/power_config:power_mode_config"
+      ]
+    }
+  }
+}

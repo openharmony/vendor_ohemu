@@ -1,0 +1,32 @@
+root {
+    module = "master";
+    codec_image_config {
+        match_attr = "image_codec_capabilities";
+
+        ImageHwEncoders {
+        }
+        ImageHwDecoders {
+            /* node name explanation -- HDF_video_hw_enc_avc_rk：
+            **
+            **    HDF____________Jpeg__________________hw____________________enc______________rk
+            **     |               |                    |                      |              |
+            **    HDF         Jpeg or Heif    hardware or software    encoder or decoder    vendor
+            */
+            HDF_Image_hw_dec_jpeg_rk {
+                role = 0;
+                type = 0;
+                name = "HDF.rk.decoder.jpeg";
+                maxInst = 1;
+                isSoftwareCodec = false;
+                minWidth = 144;
+                minHeight = 144;
+                maxWidth = 4096;
+                maxHeight = 2160;
+                widthAlignment = 8;
+                heightAlignment = 16;
+                maxSample = 8;
+                supportPixelFmts = [24];
+            }
+        }
+    }
+}

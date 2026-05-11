@@ -1,0 +1,2294 @@
+root {
+    module = "pipeline_specs";
+    template pipeline_spec {
+        name = "";
+        template node_spec {
+            name = "";
+            status = "";
+            streamType = "";
+            template port_spec {
+                name = "";
+                peerPortName = "";
+                peerPortNodeName = "";
+                direction = 0;
+                width = 0;
+                height = 0;
+                format = 0;
+                usage = 0x10000000000000;
+                needAllocation = 0;
+                bufferCount = 0;
+            }
+        }
+    }
+    normal_preview :: pipeline_spec {
+        name = "normal_preview";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        sink :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+    }
+    uvc_preview :: pipeline_spec {
+        name = "uvc_preview";
+        uvc :: node_spec {
+            name = "uvc#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "uvc#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        sink :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+    }
+    normal_video :: pipeline_spec {
+        name = "normal_video";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        sink :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "video";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+    }
+    uvc_video :: pipeline_spec {
+        name = "uvc_video";
+        uvc :: node_spec {
+            name = "uvc#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "uvc#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        sink :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "video";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+    }
+    normal_preview_preview :: pipeline_spec {
+        name = "normal_preview_preview";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        fork :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        Codec :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+        }
+    }
+    uvc_preview_preview :: pipeline_spec {
+        name = "uvc_preview_preview";
+        uvc :: node_spec {
+            name = "uvc#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        fork :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "uvc#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        Codec :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+        }
+    }
+    normal_preview_preview_snapshot :: pipeline_spec {
+        name = "normal_preview_preview_snapshot";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        fork_1 :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#1";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+        }
+        fork_2 :: node_spec {
+            name = "fork#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#2";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "ipp#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_3 :: node_spec {
+            name = "Scale#2";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        ipp :: node_spec {
+            name = "ipp#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#1";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        Codec_2 :: node_spec {
+            name = "Codec#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "ipp#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Exif#0";
+                direction = 1;
+            }
+        }
+        Exif :: node_spec {
+            name = "Exif#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#2";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#2";
+                direction = 0;
+            }
+        }
+        sink_3 :: node_spec {
+            name = "sink#2";
+            status = "new";
+            streamType = "snapshot";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Exif#0";
+                direction = 0;
+            }
+        }
+    }
+    normal_preview_preview_video :: pipeline_spec {
+        name = "normal_preview_preview_video";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        fork_1 :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#1";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "stability#0";
+                direction = 1;
+            }
+        }
+        stability :: node_spec {
+            name = "stability#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#1";
+                direction = 1;
+            }
+        }
+        fork_2 :: node_spec {
+            name = "fork#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#2";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_3 :: node_spec {
+            name = "Scale#2";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        Codec_2 :: node_spec {
+            name = "Codec#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "stability#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#2";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#2";
+                direction = 0;
+            }
+        }
+        sink_3 :: node_spec {
+            name = "sink#2";
+            status = "new";
+            streamType = "video";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#1";
+                direction = 0;
+            }
+        }
+    }
+    normal_preview_analyze :: pipeline_spec {
+        name = "normal_preview_analyze";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        fork :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "RKFace#0";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        RKFace :: node_spec {
+            name = "RKFace#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "analyze";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "RKFace#0";
+                direction = 0;
+            }
+        }
+    }
+    normal_snapshot :: pipeline_spec {
+        name = "normal_snapshot";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        sink :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "snapshot";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+        }
+    }
+    uvc_snapshot :: pipeline_spec {
+        name = "uvc_snapshot";
+        uvc :: node_spec {
+            name = "uvc#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        sink :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "snapshot";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "uvc#0";
+                direction = 0;
+            }
+        }
+    }
+    normal_preview_snapshot :: pipeline_spec {
+        name = "normal_preview_snapshot";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+            }
+        }
+        fork :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "ipp#0";
+                direction = 1;
+            }
+        }
+        ipp :: node_spec {
+            name = "ipp#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#1";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        Codec_2 :: node_spec {
+            name = "Codec#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "ipp#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Exif#0";
+                direction = 1;
+            }
+        }
+        RKExif_1 :: node_spec {
+            name = "Exif#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "snapshot";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Exif#0";
+                direction = 0;
+            }
+        }
+    }
+    uvc_preview_snapshot :: pipeline_spec {
+        name = "uvc_preview_snapshot";
+        uvc :: node_spec {
+            name = "uvc#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+            }
+        }
+        fork :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "uvc#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "ipp#0";
+                direction = 1;
+            }
+        }
+        ipp :: node_spec {
+            name = "ipp#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#1";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        Codec_2 :: node_spec {
+            name = "Codec#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "ipp#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Exif#0";
+                direction = 1;
+            }
+        }
+        RKExif_1 :: node_spec {
+            name = "Exif#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "snapshot";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Exif#0";
+                direction = 0;
+            }
+        }
+    }
+    normal_preview_snapshot_analyze :: pipeline_spec {
+        name = "normal_preview_snapshot_analyze";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+            }
+        }
+        fork_1 :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#1";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+        }
+        fork_2 :: node_spec {
+            name = "fork#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#2";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "ipp#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_3 :: node_spec {
+            name = "Scale#2";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "RKFace#0";
+                direction = 1;
+            }
+        }
+        ipp :: node_spec {
+            name = "ipp#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#1";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        Codec_2 :: node_spec {
+            name = "Codec#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "ipp#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Exif#0";
+                direction = 1;
+            }
+        }
+        RKExif_1 :: node_spec {
+            name = "Exif#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        RKFace :: node_spec {
+            name = "RKFace#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#2";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#2";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "snapshot";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Exif#0";
+                direction = 0;
+            }
+        }
+        sink_3 :: node_spec {
+            name = "sink#2";
+            status = "new";
+            streamType = "analyze";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "RKFace#0";
+                direction = 0;
+            }
+        }
+    }
+    normal_preview_video_snapshot :: pipeline_spec {
+        name = "normal_preview_video_snapshot";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        fork_1 :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#1";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#2";
+                direction = 1;
+            }
+        }
+        fork_2 :: node_spec {
+            name = "fork#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "ipp#0";
+                direction = 1;
+            }
+        }
+        Scale_3 :: node_spec {
+            name = "Scale#2";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#2";
+                direction = 1;
+            }
+        }
+        ipp :: node_spec {
+            name = "ipp#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#1";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        Codec_2 :: node_spec {
+            name = "Codec#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "ipp#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Exif#0";
+                direction = 1;
+            }
+        }
+        Codec_3 :: node_spec {
+            name = "Codec#2";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#2";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#2";
+                direction = 1;
+            }
+        }
+        Exif :: node_spec {
+            name = "Exif#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "snapshot";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Exif#0";
+                direction = 0;
+            }
+        }
+        sink_3 :: node_spec {
+            name = "sink#2";
+            status = "new";
+            streamType = "video";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#2";
+                direction = 0;
+            }
+        }
+    }
+    uvc_preview_video_snapshot :: pipeline_spec {
+        name = "uvc_preview_video_snapshot";
+        uvc :: node_spec {
+            name = "uvc#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+            }
+        }
+        fork_1 :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "uvc#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#1";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#2";
+                direction = 1;
+            }
+        }
+        fork_2 :: node_spec {
+            name = "fork#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "ipp#0";
+                direction = 1;
+            }
+        }
+        Scale_3 :: node_spec {
+            name = "Scale#2";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#2";
+                direction = 1;
+            }
+        }
+        ipp :: node_spec {
+            name = "ipp#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#1";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        Codec_2 :: node_spec {
+            name = "Codec#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "ipp#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Exif#0";
+                direction = 1;
+            }
+        }
+        Codec_3 :: node_spec {
+            name = "Codec#2";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#2";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#2";
+                direction = 1;
+            }
+        }
+        Exif :: node_spec {
+            name = "Exif#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "snapshot";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Exif#0";
+                direction = 0;
+            }
+        }
+        sink_3 :: node_spec {
+            name = "sink#2";
+            status = "new";
+            streamType = "video";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#2";
+                direction = 0;
+            }
+        }
+    }
+    normal_preview_video :: pipeline_spec {
+        name = "normal_preview_video";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+            }
+        }
+        fork :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "stability#0";
+                direction = 1;
+            }
+        }
+        stability :: node_spec {
+            name = "stability#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#1";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        Codec_2 :: node_spec {
+            name = "Codec#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "stability#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "video";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#1";
+                direction = 0;
+            }
+        }
+    }
+    uvc_preview_video :: pipeline_spec {
+        name = "uvc_preview_video";
+        uvc :: node_spec {
+            name = "uvc#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "fork#0";
+                direction = 1;
+            }
+        }
+        fork :: node_spec {
+            name = "fork#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "uvc#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#0";
+                direction = 1;
+            }
+            out_port_1 :: port_spec {
+                name = "out1";
+                peerPortName = "in0";
+                peerPortNodeName = "Scale#1";
+                direction = 1;
+            }
+        }
+        Scale_1 :: node_spec {
+            name = "Scale#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#0";
+                direction = 1;
+            }
+        }
+        Scale_2 :: node_spec {
+            name = "Scale#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out1";
+                peerPortNodeName = "fork#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "stability#0";
+                direction = 1;
+            }
+        }
+        stability :: node_spec {
+            name = "stability#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#1";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "Codec#1";
+                direction = 1;
+            }
+        }
+        Codec_1 :: node_spec {
+            name = "Codec#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Scale#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        Codec_2 :: node_spec {
+            name = "Codec#1";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "stability#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#1";
+                direction = 1;
+            }
+        }
+        sink_1 :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#0";
+                direction = 0;
+            }
+        }
+        sink_2 :: node_spec {
+            name = "sink#1";
+            status = "new";
+            streamType = "video";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "Codec#1";
+                direction = 0;
+            }
+        }
+    }
+    dual_privew :: pipeline_spec {
+        name = "dual_preview";
+        uvc :: node_spec {
+            name = "uvc#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in1";
+                peerPortNodeName = "merge#0";
+                direction = 1;
+                width = 0;
+                height = 0;
+                format = 0;
+                needAllocation = 1;
+                bufferCount = 8;
+            }
+        }
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
+            status = "new";
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "merge#0";
+                direction = 1;
+            }
+        }
+        merge :: node_spec {
+            name = "merge#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "v4l2_source#0";
+                direction = 0;
+            }
+            in_port_1 :: port_spec {
+                name = "in1";
+                peerPortName = "out0";
+                peerPortNodeName = "uvc#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "ipp#0";
+                direction = 1;
+            }
+        }
+        ipp :: node_spec {
+            name = "ipp#0";
+            status = "new";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "merge#0";
+                direction = 0;
+            }
+            out_port_0 :: port_spec {
+                name = "out0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
+                direction = 1;
+            }
+        }
+        sink :: node_spec {
+            name = "sink#0";
+            status = "new";
+            streamType = "preview";
+            in_port_0 :: port_spec {
+                name = "in0";
+                peerPortName = "out0";
+                peerPortNodeName = "ipp#0";
+                direction = 0;
+            }
+        }
+    }
+}

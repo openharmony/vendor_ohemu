@@ -1,0 +1,2059 @@
+# Copyright (C) 2023 HiHope Open Source Organization .
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# audio_framework : //foundation/multimedia/audio_framework
+bypass_audio_framework = [
+  "audio_capturer_gateway",
+  "oh_audio_capturer_test",
+  "oh_audio_capturer_lowlatency_test",
+  "audio_opensles_player_test",
+  "audio_renderer_gateway",
+  "oh_audio_renderer_test",
+  "audio_opensles_recorder_test",
+  "audio_capturer_test",
+  "audio_renderer_test",
+  "audio_toneplayer_test",
+  "audio_latency_accuracy_test",
+  "audio_render_mode_callback_test",
+  "audio_process_client_test",
+  "audio_voip_test",
+  "audio_hdi_device_test",
+  "audio_policy_test",
+  "audio_interrupt_test",
+  "audio_service_playback_test",
+  "interrupt_multi_renderer_test",
+  "audio_faststream_playback_test",
+  "audio_blendmode_test",
+  "audio_service_record_test",
+  "audio_multichannel_test",
+  "audio_schedule",
+  "ohaudio",
+  "opensles",
+  "audio_common",
+  "audio_dump",
+  "audio",
+  "audio_client",
+  "audio_policy_service",
+  "audio_capturer",
+  "audio_renderer",
+  "audio_process_service",
+  "audio_toneplayer",
+  "audio_service",
+  "audio_policy_client",
+  "audio_policy_client_static",
+  "module-loopback",
+  "module-inner-capturer-sink",
+  "module-hdi-sink",
+  "module-receiver-sink",
+  "module-hdi-source",
+  "audio_utils",
+  "audio_bluetooth_client",
+  "pulse_audio_service_adapter",
+  "audio_capturer_source",
+  "audio_renderer_sink",
+  "playback_capturer",
+  "audio_effect",
+  "fast_audio_capturer_source",
+  "fast_audio_renderer_sink",
+  "remote_audio_capturer_source",
+  "bluetooth_renderer_sink",
+  "remote_fast_audio_capturer_source",
+  "remote_audio_renderer_sink",
+  "audio_capturer_file_source",
+  "remote_fast_audio_renderer_sink",
+  "capturer_source_adapter",
+  "audio_renderer_file_sink",
+  "renderer_sink_adapter",
+  "audio_device_manager",
+]
+
+# media_foundation : //foundation/multimedia/media_foundation
+bypass_media_foundation = [
+  "histreamer_pipeline_base",
+  "histreamer_plugin_intf",
+  "plugin_base",
+  "ffmpeg_convert",
+  "histreamer_pipeline",
+  "histreamer_plugin_core",
+  "std_engine_factory",
+  "histreamer_foundation",
+  "codec_filters",
+  "muxer_filter",
+  "media_synchronous_sink",
+  "audio_capture_filter",
+  "scene_common",
+  "demuxer_filter",
+  "audio_sink_filter",
+  "media_source_filter",
+  "video_sink_filter",
+  "video_capture_filter",
+  "output_sink_filter",
+  "ffmpeg_adapter_common",
+  "filesource",
+  "httpsource",
+  "std_stream_source",
+  "ffmpeg_audio_decoders",
+  "std_audio_capture",
+  "filefdsource",
+  "audio_server_sink",
+  "file_fd_sink",
+  "std_video_surface_sink",
+  "ffmpeg_demuxers",
+  "std_plugin_codec_adapter",
+  "ffmpeg_audio_encoders",
+  "histreamer_recorder",
+  "histreamer_player",
+  "ffmpeg_video_decoders",
+  "ffmpeg_video_encoders",
+  "ffmpeg_muxers",
+]
+
+# av_session : //foundation/multimedia/av_session
+bypass_av_session = [
+  "avvolumepanel",
+  "avcastpicker",
+  "mediacontrolextensionability_napi",
+  "avsession_client",
+  "avsession_client_static",
+  "mediacontrolextensioncontext_napi",
+  "media_control_extension",
+  "media_control_extension_module",
+  "avsession_item",
+  "avsession_item_static",
+  "avsession_common",
+  "avsession_napi",
+  "avsession_utils",
+  "avsession_cast_client",
+  "avsession_service",
+  "avsession_service_static",
+  "remote_session_source",
+  "avsession_router",
+  "avsession_router_static",
+  "remote_session_sink",
+  "avsession_cast_item",
+  "avsession_cast_item_static",
+]
+
+# huks : //base/security/huks
+bypass_huks = [
+  "libhukssdk_static",
+  "cipher_napi",
+  "cipher_shared",
+  "huks_modify_old_version_key_util",
+]
+
+# certificate_manager : //base/security/certificate_manager
+bypass_certificate_manager = [ "libcert_manager_fuzz_test_common_static" ]
+
+# image_framework : //foundation/multimedia/image_framework
+bypass_image_framework = [
+  "pixelconvertadapter_static",
+  "image_static",
+  "image_utils_static",
+  "log_mock_static",
+  "utils_mock_static",
+  "pluginmanager_static",
+  "jpegplugin",
+  "textureEncoderCL",
+]
+
+# media_library : //foundation/multimedia/media_library
+bypass_media_library = [
+  "scanner",
+  "medialibrary_data_extension",
+]
+
+bypass_user_file_service = []
+
+# contacts_data_hap : //applications/standard/contacts_data
+bypass_contacts_data_hap = [ "contactsdataability" ]
+
+# crypto_framework : //base/security/crypto_framework
+bypass_crypto_framework = []
+
+# wpa_supplicant : //third_party/wpa_supplicant
+bypass_wpa_supplicant = [
+  "wpa_cli",
+  "hostapd_cli",
+  "wpa_supplicant",
+  "hostapd",
+  "wpa_client",
+  "wpa_client_vendor",
+  "wpa_client_updater",
+  "wpa",
+  "wpa_sys",
+  "wpa_updater",
+]
+
+# netmanager_base : //foundation/communication/netmanager_base
+bypass_netmanager_base = [
+  "net_bundle_utils",  # contains blocklist but reviewed
+  "net_conn_parcel",
+  "net_policy_parcel",
+  "net_native_parcel",
+  "netsys_native_manager_static",
+  "net_stats_parcel",
+  "libip4tc",
+  "libip6tc",
+  "libxtables",
+  "libext4",
+  "libext6",
+  "net_connection",
+  "net_conn_manager_if",
+  "net_conn_manager",
+  "napi_utils",
+  "net_policy_manager",
+  "net_native_manager_if",
+  "net_stats_manager_if",
+  "net_policy_manager_if",
+  "socket_permission",
+  "netconn_ndk",
+  "netsys_controller_static",
+  "net_conn_manager_static",
+  "net_policy_manager_static_no_cfi",
+  "net_pac_manager",
+  "net_pac_manager_static",
+]
+
+# camera_framework : //foundation/multimedia/camera_framework
+bypass_camera_framework = [
+  "camera_video",
+  "camera_capture",
+  "camera_capture_video",
+  "camera_capture_mode",
+  "camera_framework",
+  "camera_napi",
+  "camera_service",
+  "deferred_processing_service",
+]
+
+# player_framework : //foundation/multimedia/player_framework
+bypass_player_framework = [
+  "media_format",
+  "audio_ringtone_client",
+  "media_seccomp_filter",
+  "media_engine_common_avcodeclist",
+  "media_engine_gst_common",
+  "media_engine_gst_loader",
+  "media_engine_gst_recorder",
+  "media_engine_gst_factory",
+  "media_gst_dfx",
+  "media_engine_gst_player",
+  "media_engine_gst_avcodec",
+  "media_engine_gst_avmeta",
+  "gst_subtitle_sink_base",
+  "gst_subtitle_parse_plugin",
+  "gst_mem_sink_base",
+  "gst_mem_src_base",
+  "media_engine_dfx",
+  "gst_codec_plugins_common",
+  "soundpool_client",
+  "gst_mem_sink",
+  "gst_codec_bin",
+  "gst_audio_server_sink",
+  "gst_subtitle_sink",
+  "gst_audio_capture_src",
+  "gst_mem_src",
+  "gst_media_common",
+  "gst_codec_plugin_hdi",
+  "native_avscreen_capture",
+]
+
+bypass_screenlock_mgr = []
+bypass_nfc = []
+
+# wifi : //foundation/communication/wifi
+bypass_wifi = [
+  "crpc_client_updater",
+  "WifiHalVendorTest",
+  "crpc_server",
+  "crpc_client",
+  "wifi_hal_service",
+  "wifi_hal_service_updater",
+  "wifi_scan_service_impl",
+  "wifi_device_service_impl",
+  "wifi_utils",
+  "wifi_hotspot_service_impl",
+  "wifi_p2p_service_impl",
+  "wifi_device_proxy_impl",
+  "wifi_hotspot_proxy_impl",
+  "wifi_scan_proxy_impl",
+  "wifi_p2p_proxy_impl",
+  "rpc_server",
+  "rpc_client",
+  "wifi",
+  "wifiext",
+  "wifi_native_js",
+  "wifimanager",
+  "wifimanagerext",
+  "wifi_sdk",
+]
+
+# dsoftbus : //foundation/communication/dsoftbus
+bypass_dsoftbus = [ "softbus_server" ]
+
+# hilog : //base/hiviewdfx/hilog
+bypass_hilog = [
+  "libhilog",
+  "libhilog_base",
+  "hilog",
+  "hilogd",
+  "libhilognapi_src",
+  "libhilog_source_ohos",
+  "libhilog_source_windows",
+  "libhilog_source_mac",
+  "libhilog_source_linux",
+  "libhilog_source_android",
+  "libhilog_source_ios",
+  "libhilog_base_source",
+  "libhilog_source_ohos",
+  "libhilog_source_windows",
+  "libhilog_source_mac",
+  "libhilog_source_linux",
+  "libhilog_source_android",
+  "libhilog_source_ios",
+  "libhilog_base_source",
+  "libhilog_base_for_musl",
+]
+
+# bluetooth : //foundation/communication/bluetooth
+bypass_bluetooth = [
+  "btframework",
+  "bluetooth",
+  "bluetoothmanager",
+  "btcommon",
+  "a2dp",
+  "access",
+  "baseprofile",
+  "ble",
+  "connection",
+  "constant",
+  "hfp",
+  "hid",
+  "pan",
+  "socket",
+]
+
+# bluetoth_service : //foundation/communication/bluetooth_service
+bypass_bluetooth_service = [
+  "bluetooth_server",
+  "btservice",
+  "btsbc",
+  "btdummy",
+  "btstack",
+  "bluetooth_hdi_adapter",
+  "btipc_static",
+  "btipc_service",
+]
+
+#device_security_level : //base/security/device_security_level
+bypass_device_security_level = [
+  "messenger_static",  # blocklist contains test code only
+  "utils_static",  # blocklist contains test code only
+  "DslmUnitTest",  # blocklist contains test code only
+  "dslm_extension_dfx",  # blocklist contains test code only
+  "service_common_obj",  # blocklist contains test code only
+  "service_sa_static",  # blocklist contains test code only
+  "service_dslm_obj",  # blocklist contains test code only
+  "service_dslm_test_obj",  # blocklist contains test code only
+  "service_msg_obj",  # blocklist contains test code only
+  "oem_common_obj",  # blocklist contains test code only
+  "dslm_sdk",  # blocklist contains test code only
+  "dslm_service",  # blocklist contains test code only
+  "dslm_oem_ext",  # blocklist contains test code only
+  "dslm_ohos_cred_obj",  # blocklist contains test code only
+]
+
+# face_auth : //base/useriam/face_auth
+bypass_face_auth = [
+  "iam_utils",
+  "faceauth",
+  "faceauth_framework",
+  "faceauth_framework_stub",
+  "faceauthservice_source_set",
+  "faceauthservice",
+  "faceauthservice_ex",
+  "faceauthservice_ex_source_set",
+  "faceauth_framework_stub_fuzzer",  #cfi not configured
+  "faceauthservice_source_set_fuzzer",  #cfi not configured
+]
+
+# fingerprint_auth : //base/useriam/fingerprint_auth
+bypass_fingerprint_auth = [
+  "fingerprintauthservice_source_set_fuzzer",  #cfi not configured
+]
+
+# pin_auth : //base/useriam/pin_auth
+bypass_pin_auth = [
+  "iam_utils",
+  "pinauth_framework_source_set",
+  "pinauth_framework",
+  "pinauth_ipc",
+  "pinauthservice_source_set",
+  "pinauthservice",
+  "pinauth_ipc_fuzzer",  #cfi not configured
+  "pinauthservice_source_set_fuzzer",  #cfi not configured
+]
+
+# user_auth_framework ：//base/useriam/user_auth_framework
+bypass_user_auth_framework = [
+  "iam_thread_pool",
+  "iam_utils",
+  "iam_test",
+  "iam_inner_api",
+  "userauthextensionability_napi",
+  "user_auth_extension",
+  "user_auth_extension_module",
+  "userauth",
+  "userauthicon",
+  "attributes",
+  "dfx",
+  "userauth_executors",
+  "userauth_client",
+  "userauth_client_ipc",
+  "userauth_service_ipc",
+  "userauthservice",
+  "userauth_service_core",
+  "userauth_service_base",
+  "userauth_service_context",
+  "userauth_services_ipc",
+  "userauth_service_load_mode",
+  "userauth_service_remote_connect",
+  "attributes_fuzzer",  #cfi not configured
+  "dfx_fuzzer",  #cfi not configured
+  "userauth_client_ipc_fuzzer",  #cfi not configured
+  "userauth_service_base_fuzzer",  #cfi not configured
+  "userauth_service_core_fuzzer",  #cfi not configured
+  "userauth_service_context_fuzzer",  #cfi not configured
+  "userauth_service_ipc_fuzzer",  #cfi not configured
+  "userauth_services_ipc_fuzzer",  #cfi not configured
+  "userauth_service_remote_connect_fuzzer",  #cfi not configured
+  "iam_thread_pool_fuzzer",  #cfi not configured
+  "iam_utils_fuzzer",  #cfi not configured
+  "iam_test_fuzzer",  #cfi not configured
+]
+
+# enterprise_device_management : //base/customization/enterprise_device_management
+bypass_enterprise_device_management = [
+  "AdminManagerFuzzTest",  # test/napi/client target or rust, not required to
+                           # enable cfi
+  "AdminPoliciesStorageRdbFuzzTest",  # test/napi/client target or rust, not
+                                      # required to enable cfi
+  "AdminServiceInterfaceFuzzTest",  # test/napi/client target or rust, not
+                                    # required to enable cfi
+  "AllowedUsbDevicesPluginFuzzTest",  # test/napi/client target or rust, not
+                                      # required to enable cfi
+  "EdmPluginFuzzTest",  # test/napi/client target or rust, not required to
+                        # enable cfi
+  "EnterpriseDeviceMgrAbilityFuzzTest",  # test/napi/client target or rust, not
+                                         # required to enable cfi
+  "EnterpriseDeviceMgrStubMockFuzzTest",  # test/napi/client target or rust, not
+                                          # required to enable cfi
+  "FireWallRulePluginFuzzTest",  # test/napi/client target or rust, not required
+                                 # to enable cfi
+  "IptablesRulePluginFuzzTest",  # test/napi/client target or rust, not required
+                                 # to enable cfi
+  "ManageAutoStartAppsPluginFuzzTest",  # test/napi/client target or rust, not
+                                        # required to enable cfi
+  "UsbReadOnlyPluginFuzzTest",  # test/napi/client target or rust, not required
+                                # to enable cfi
+]
+
+# wallpaper_mgr : //base/theme/wallpaper_mgr
+bypass_wallpaper_mgr = [
+  "wallpapermanager",  #cfi not configured
+  "wallpapermanager_static",  #cfi not configured
+  "wallpaper_utils",  #cfi not configured
+]
+
+# resource_schedule_service : //foundation/resourceschedule/resource_schedule_service
+bypass_resource_schedule_service = [
+  "ressched_test",  #cfi not configured
+  "process_proup_test",  #cfi not configured
+  "frame_aware_plugin",  # low-risk target, not required to enable cfi
+]
+
+# data_object ： //foundation/distributeddatamgr/data_object
+bypass_data_object = [ "distributeddataobject_static" ]
+
+# device_auth : //base/security/device_auth
+bypass_device_auth = [
+  "hichainsdk",  #cfi not configured
+  "hichainsdk_static",  #cfi not configured
+  "device_auth_test_hal",  #cfi not configured
+  "deviceauth_service",
+  "deviceauth_sdk",
+]
+
+# data_share : //foundation/distributeddatamgr/data_share
+bypass_data_share = []
+
+# time_service : //base/time/time_service
+bypass_time_service = [ "time_system_ability_static" ]
+
+# imf : //base/inputmethod/imf
+bypass_imf = [
+  "inputmethod_client",  # client target, not required to enable cfi
+  "inputmethod_client_fuzz_static",  # test target, not required to enable cfi
+  "inputmethod_ability_fuzz_static",  # test target, not required to enable cfi
+  "inputmethod_fuzztest_common",  # test target, not required to enable cfi
+]
+
+# location : //base/location
+bypass_location = [
+  "lbsservice_gnss",
+  "lbsservice_network",
+  "lbsservice_passive",
+  "locator_sdk",
+  "geolocation",
+  "lbsservice_common",
+  "locator_agent",
+  "geolocation_static",
+  "lbsservice_geocode",
+  "geolocationmanager",
+]
+
+bypass_dmsfwk = []
+
+# usb_manager : //base/use/usb_manager
+bypass_usb_manager = [
+  "usbsrv_client",
+  "usb",
+  "usbmanager",
+]
+
+# sensor : //base/sensors/sensor
+bypass_sensor = [ "sensor_rust_util_ffi" ]
+
+# battery_manager : //base/powermgr/battery_manager
+bypass_battery_manager = [
+  "batterysrv_client",
+  "charger",
+  "batteryinfo",
+  "batterysrv_stub",
+  "battery",
+]
+
+# battery_statistics ：//base/powermgr/battery_statistics
+bypass_battery_statistics = [
+  "batterystatistics",
+  "batterystats_client",
+  "batterystats_service",
+  "batterystats_stub",
+  "batterystats_utils",  #cfi not configured
+]
+
+# display_manager ：//base/powermgr/display_manager
+bypass_display_manager = [
+  "brightness",
+  "displaymgr",
+  "displaymgr_stub",
+]
+
+# power_manager : //base/powermgr/power_manager
+bypass_power_manager = [
+  "power-shell",
+  "power_sysparam",
+  "power_permission",
+  "power_setting",
+  "powermgr_client",  #cfi not configured
+  "power_ffrt",
+  "power_vibrator",
+  "powermgr_stub",  #cfi not configured
+  "power_utils",  #cfi not configured
+  "power",  #cfi not configured
+  "runninglock",  #cfi not configured
+]
+
+# thermal_manager : //base/powermgr/thermal_manager
+bypass_thermal_manager = [
+  "thermalservice",
+  "mock_thermalsrv_client",
+  "thermalsrv_client",
+  "thermalmgr_listener",
+  "thermal_protector",
+  "thermal",
+  "thermal_utils",
+  "thermalmgr_stub",
+  "thermalmgr_proxy",
+]
+
+# device_status ：//base/msdp/device_status
+bypass_device_status = [
+  "devicestatus_mock",  #cfi not configured
+  "devicestatus_static_service",  #cfi not configured
+  "devicestatus_vdev",  #cfi not configured
+  "devicestatus_vdev_builders",  #cfi not configured
+  "vdevadm",  #cfi not configured
+]
+
+bypass_motion = []
+
+bypass_spatial_awareness = []
+
+bypass_algorithm = []
+
+# window_manager : //foundation/window/window_manager
+bypass_window_manager = [
+  "setresolution_screen",  #cfi not configured
+  "libsetresolution_util",  #cfi not configured
+  "libwmutil",  #cfi not configured
+  "screensessionmanager_napi",  #cfi not configured
+  "demo_mirror_screen_listener",  #cfi not configured
+  "demo_screenshot_listener",  #cfi not configured
+  "demo_snapshot_virtual_screen",  #cfi not configured
+  "demo_system_sub_window",  #cfi not configured
+  "demo_freeze_display",  #cfi not configured
+  "demo_water_mark_listener",  #cfi not configured
+  "demo_session_manager",  #cfi not configured
+  "demo_visible_window_num_listener",  #cfi not configured
+  "demo_outline_virtual_media_service",  #cfi not configured
+  "ws_unittest_common",  #cfi not configured
+  "utils_unittest_common",  #cfi not configured
+  "window_extension_unittest_common",  #cfi not configured
+  "dm_unittest_common",  #cfi not configured
+  "dms_systemtest_common",  #cfi not configured
+  "dmserver_unittest_common",  #cfi not configured
+  "wm_unittest_common",  #cfi not configured
+  "libtestutil",  #cfi not configured
+  "wms_systemtest_common",  #cfi not configured
+  "libwm_lite",  #cfi not configured
+  "libdm",  #cfi not configured
+]
+
+bypass_qos_manager = [
+  "concurrent_task_client",  # client target,not required to enable cfi
+  "qos_ndk",  # napi target, not required to enable cfi
+  "qos",  # client target,not required to enable cfi
+]
+
+bypass_call_manager = [
+  "call",  # napi target, not required to enable cfi
+  "tel_call_manager_api",  # client target, not required to enable cfi
+  "call_manager_test_base",  # client target, not required to enable cfi
+]
+
+bypass_cellular_call = [
+  "cellular_call_test_base",  # client target, not required to enable cfi
+]
+
+# core_service : //base/telephony/core_service
+bypass_core_service = [
+  "vcard",  #cfi not configured
+  "libtel_vcard",  #cfi not configured
+  "ffrt_mocked", #test target, not required to enable cfi
+  "core_service_test_base", #test target, not required to enable cfi
+]
+
+bypass_rill_adapter = []
+
+bypass_sms_mms = []
+
+bypass_state_registry = []
+
+bypass_telephony_data = []
+
+# common_event_service : //base/notification/common_event_service
+bypass_common_event_service = [
+  "cesfwk_core",  #cfi not configured
+  "cesfwk_innerkits",
+  "cesfwk_services_static",  #cfi not configured
+  "tools_cem_source_set",  #cfi not configured
+  "actscesfwk_kits_test",  #cfi not configured
+  "cesfwk_kits_test",  #cfi not configured
+  "cesfwk_services",  #cfi not configured
+]
+
+bypass_distributed_notification_service = []
+
+# eventhandler : //base/notification/eventhandler
+bypass_eventhandler = [ "libeventhandler" ]
+
+# os_account : //base/account/os_account
+bypass_os_account = [
+  "account_iam_napi",  # napi target, not required to enable cfi
+  "authorization_napi",  # napi target, not required to enable cfi
+  "appaccount",  # napi target, not required to enable cfi
+  "account_napi_common",  # napi target, not required to enable cfi
+  "distributedaccount",  # napi target, not required to enable cfi
+  "domain_account_napi",  # napi target, not required to enable cfi
+  "osaccount",  # napi target, not required to enable cfi
+  "libaccountkits",  # client target, not required to enable cfi
+  "accountmgr",  # contains blocklist but reviewed
+]
+
+# access_token : //base/security/access_token
+bypass_access_token = [
+  "libtoken_setproc",  #cfi not configured
+  "atm",  #cfi not configured
+  "libaccesstoken_manager_service_standard_test",  # test target, not required
+                                                   # to enable cfi
+]
+
+bypass_dupdate_engine = []
+
+# input : //foundation/multimodalinput/input
+bypass_input = [
+  "mmi_rust_key_config",  #cfi not configured
+  "mmi_rust",  #cfi not configured
+  "libmmi-common",  #cfi not configured
+  "libmmi-util",  #cfi not configured
+  "libmmi-client",  #cfi not configured
+]
+
+bypass_device_attest = []
+
+bypass_perferences = []
+
+# relational_store : //foundation/distributeddatamgr/relational_store
+bypass_relational_store = [
+  "commontype_napi",  #cfi not configured
+  "cloudextension",  #cfi not configured
+  "clouddata",  # napi target, not required to enable cfi
+  "dataability",  # napi target, not required to enable cfi
+  "napi_rdb",  # napi target, not required to enable cfi
+  "rdb",  # napi target, not required to enable cfi
+  "relationalstore",  # napi target, not required to enable cfi
+  "sendablerelationalstore",  # napi target, not required to enable cfi
+]
+
+bypass_miscdevice = []
+
+# app_file_service : //foundation/filemanagement/app_file_service
+bypass_app_file_service = [
+  "fileuri_native",  #cfi not configured
+  "fileshare",  #cfi not configured
+  "remote_file_share_native",  #cfi not configured
+  "fileuri",  #cfi not configured
+  "sandbox_helper_native",  #cfi not configured
+  "backup",  #cfi not configured
+  "backup_tool",  #cfi not configured
+  "backup_cxx_rust",  #cfi not configured
+]
+
+# file_api : //foundation/filemanagement/file_api
+bypass_file_api = [
+  "rust_file",  #cfi not configured
+]
+
+# storage_service : //foundation/filemanagement/storage_service
+bypass_storage_service = [
+  "blkid",  #cfi not configured
+]
+
+bypass_scene_board_ext = []
+
+# background_task_mgr : //foundation/resourceschedule/background_task_mgr
+bypass_background_task_mgr = [ "bgtaskmgr_service_static" ]
+
+bypass_device_usage_statistics = []
+
+bypass_efficiency_manager = []
+
+bypass_efficiency_manager_ext = []
+
+bypass_frame_aware_sched = [
+  "policy_source",  # client target, not required to enable cfi
+  "collector_source",  # client target, not required to enable cfi
+  "frame_ui_utils",  # client target, not required to enable cfi
+  "frame_msg_intf",  # client target, not required to enable cfi
+  "rtg_interface",  # client target, not required to enable cfi
+  "frame_trace_intf",  # client target, not required to enable cfi
+  "frame_ui_intf",  # client target, not required to enable cfi
+]
+
+bypass_memmgr = []
+
+bypass_memmgr_override = []
+
+# work_scheduler : //foundation/resourceschedule/work_scheduler
+bypass_work_scheduler = []
+
+# accessibility : //foundation/barrierfree/accessibility
+bypass_accessibility = [
+  "accessibility_napi",
+  "accessibleability",
+  "accessibilityconfig",
+  "accessibilityclient",
+  "config_napi",
+  "accessibilityextensionability_napi",
+  "accessibilityextensioncontext_napi",
+  "accessibility_extension_module",
+  "gesturepath_napi",
+  "gesturepoint_napi",
+]
+
+# ffrt : //foundation/resourceschedule/ffrt
+bypass_ffrt = [
+  "libffrt",  #cfi not configured
+  "ffrt_ndk",  #cfi not configured
+]
+
+# advertising : //domains/advertising/advertising
+bypass_advertising = [
+  "advertising",
+  "adcomponent",
+  "adsserviceextensionability_napi",
+  "autoadcomponent",
+  "adsserviceextensioncontext_napi",
+  "libadsservice_extension",
+  "adsservice_extension_module",
+  "advertising_common",
+]
+
+# oaid : //domains/advertising/oaid
+bypass_oaid = [
+  "oaid_client",
+  "oaid",
+  "oaid_service",
+  "oaid_utils",
+]
+
+# init : //base/startup/init
+bypass_init = [
+  "watchdog_service",  #cfi not configured
+  "libueventd_ramdisk_static",  #cfi not configured
+  "libueventd_ramdisk_static_real",  #cfi not configured
+  "begetctl",  #cfi not configured
+  "loopevent",  #cfi not configured
+  "libbegetutil",  #cfi not configured
+  "libfsmanager_static",  #cfi not configured
+  "libfsmanager_static_real",  #cfi not configured
+  "seccomp",  #cfi not configured
+  "ueventd",  #cfi not configured
+  "reboot",  #cfi not configured
+  "libbeget_proxy",  #cfi not configured
+  "paramshell",  #cfi not configured
+  "param",  #cfi not configured
+  "libbegetutil_static",  #cfi not configured
+  "deviceinfo_ndk",  #cfi not configured
+  "deviceinfo",  #cfi not configured
+  "init_log",  #cfi not configured
+  "agent_log",  #cfi not configured
+  "systemparameter",  #cfi not configured
+  "bootchart",  #cfi not configured
+  "init_context",  #cfi not configured
+  "init_eng",  #cfi not configured
+  "libiniteng_static",  #cfi not configured
+  "rebootmodule",  #cfi not configured
+  "init_early",  #cfi not configured
+  "init",  #cfi not configured
+  "systemparameterenhance",  #cfi not configured
+  "udidmodule",  #cfi not configured
+  "libudid_static",  #cfi not configured
+  "libudidcomm",  #cfi not configured
+  "libudidcomm_static",  #cfi not configured
+  "selinuxadp",  #cfi not configured
+  "system_filter",  #cfi not configured
+  "appspawn_filter",  #cfi not configured
+  "initcontext_static",  #cfi not configured
+  "nwebspawn_filter",  #cfi not configured
+  "app_filter",  #cfi not configured
+  "inittrace",  #cfi not configured
+  "updater_filter",  #cfi not configured
+  "libseccomp_static",  #cfi not configured
+  "eventmodule",  #cfi not configured
+  "parameterbase_ext",  #cfi not configured
+  "param_init",  #cfi not configured
+  "libinit_utils",  #cfi not configured
+  "param_client",  #cfi not configured
+  "client",  #cfi not configured
+  "fd_holder_test",  #cfi not configured
+  "libfuzz_utils",  #cfi not configured
+  "server",  #cfi not configured
+  "ondemandTest",  #cfi not configured
+  "libparamtestmodule",  #cfi not configured
+  "libsocket",  #cfi not configured
+  "sandbox",  #cfi not configured
+  "libcontrolfd",  #cfi not configured
+  "libfile",  #cfi not configured
+  "fdholder",  #cfi not configured
+  "sh",  #cfi not configured
+  "libcrashhandler",  #cfi not configured
+  "parameterbase",  #cfi not configured
+  "parameterbase_noflto",  #cfi not configured
+  "remount",  #cfi not configured
+  "syscap_ts",  #cfi not configured
+]
+
+# bundle_framework : //foundation/bundlemanager/bundle_framework
+bypass_bundle_framework = [
+  "appexecfwk_base",  #cfi not configured
+  "appexecfwk_core",  #cfi not configured
+  "bundlemgr_extension",  #cfi not configured
+  "libappexecfwk_common",  #cfi not configured
+  "bundle_napi_common",  #cfi not configured
+  "app_detail_ability",  #cfi not configured
+  "bundlemgr_graphics",  #cfi not configured
+  "parser_common",  #cfi not configured
+  "bms_install_sst_source",  #cfi not configured
+  "rpcid_decode",  #cfi not configured
+  "bundle_ndk",  #cfi not configured
+  "bundle_parser",  #cfi not configured
+  "installs",  #cfi not configured
+  "bundlemanager",  #cfi not configured
+  "bundlemonitor",  #cfi not configured
+  "bundleresourcemanager",  #cfi not configured
+  "bundle",  #cfi not configured
+  "defaultappmanager",  #cfi not configured
+  "freeinstall",  #cfi not configured
+  "installer",  #cfi not configured
+  "launcherbundlemanager",  #cfi not configured
+  "overlay",  #cfi not configured
+  "innerbundlemanager",  #cfi not configured
+  "package",  #cfi not configured
+  "appcontrol",  #cfi not configured
+  "zlib",  #cfi not configured
+  "tool_common",  #cfi not configured
+  "fun",  #cfi not configured
+  "hello",  #cfi not configured
+  "test01",  #cfi not configured
+  "test02",  #cfi not configured
+  "otaUpdateTestAplUpSo1",  #cfi not configured
+  "otaUpdateTestAplUpSo2",  #cfi not configured
+  "otaUpdateTestBasisFt1So1",  #cfi not configured
+  "otaUpdateTestBasisFt2So1",  #cfi not configured
+  "otaUpdateTestBasisFt1So2",  #cfi not configured
+  "otaUpdateTestBasisFt2So2",  #cfi not configured
+  "otaUpdateTestModuleFieldSo1",  #cfi not configured
+  "otaUpdateTestSignaIconSo1",  #cfi not configured
+  "otaUpdateTestModuleFieldSo2",  #cfi not configured
+  "otaUpdateTestSignaIconSo2",  #cfi not configured
+  "otaUpdateTestSoChangedSo1",  #cfi not configured
+  "otaUpdateTestSoChangedSo2",  #cfi not configured
+  "otaUpdateTestSoChangedFt2So1",  #cfi not configured
+  "otaUpdateTestAplDownSo1",  #cfi not configured
+  "otaUpdateTestAplDownSo2",  #cfi not configured
+  "hapso3",  #cfi not configured
+  "hapso17",  #cfi not configured
+  "hapSectionContainso5",  #cfi not configured
+  "hapso4",  #cfi not configured
+  "hapso31",  #cfi not configured
+  "hapso18",  #cfi not configured
+  "hapso15",  #cfi not configured
+  "hapSectionContainso6",  #cfi not configured
+  "hapso32",  #cfi not configured
+  "hapso16",  #cfi not configured
+  "hapso1",  #cfi not configured
+  "hapso37",  #cfi not configured
+  "hapso9",  #cfi not configured
+  "hspast41",  #cfi not configured
+  "hapso2",  #cfi not configured
+  "hapso10",  #cfi not configured
+  "hapso38",  #cfi not configured
+  "hspast42",  #cfi not configured
+  "hapso21",  #cfi not configured
+  "hapSectionContainso3",  #cfi not configured
+  "hapso22",  #cfi not configured
+  "hapso27",  #cfi not configured
+  "hapSectionContainso4",  #cfi not configured
+  "hspast21",  #cfi not configured
+  "hapso28",  #cfi not configured
+  "hspast22",  #cfi not configured
+  "hspast31",  #cfi not configured
+  "hapso7",  #cfi not configured
+  "hapSectionContainso7",  #cfi not configured
+  "hspast32",  #cfi not configured
+  "hapso29",  #cfi not configured
+  "hapso8",  #cfi not configured
+  "hapSectionContainso8",  #cfi not configured
+  "hapso30",  #cfi not configured
+  "hapso19",  #cfi not configured
+  "hapso13",  #cfi not configured
+  "hapso20",  #cfi not configured
+  "hapso14",  #cfi not configured
+  "hapso23",  #cfi not configured
+  "hapso24",  #cfi not configured
+  "hapso33",  #cfi not configured
+  "hapso5",  #cfi not configured
+  "hapso34",  #cfi not configured
+  "hapso11",  #cfi not configured
+  "hapso6",  #cfi not configured
+  "hapso25",  #cfi not configured
+  "hapso12",  #cfi not configured
+  "hapso26",  #cfi not configured
+  "hapso35",  #cfi not configured
+  "hapSectionContainso1",  #cfi not configured
+  "hspast11",  #cfi not configured
+  "hapso36",  #cfi not configured
+  "hapSectionContainso2",  #cfi not configured
+  "hspast12",  #cfi not configured
+]
+
+# ability_runtime : //foundation/ability/ability_runtime
+bypass_ability_runtime = [
+  "quickfixms",  #cfi not configured
+  "abilitykit_utils",  #cfi not configured
+  "quickfixms_static",  #cfi not configured
+  "abilitykit_native",  #cfi not configured
+  "js_environment",  #cfi not configured
+  "extensionkit_native",  #cfi not configured
+  "wantagent_innerkits",  #cfi not configured
+  "ability_context_native",  #cfi not configured
+  "ability_simulator_inner",  #cfi not configured
+  "ability_manager",  #cfi not configured
+  "session_handler",  #cfi not configured
+  "insight_intent_executor",  #cfi not configured
+  "quickfix_manager",  #cfi not configured
+  "mission_info",  #cfi not configured
+  "srms_fwk",  #cfi not configured
+  "napi_base_context",  #cfi not configured
+  "uiabilitykit_native",  #cfi not configured
+  "ability_manager_c",  #cfi not configured
+  "napi_ability_common",  #cfi not configured
+  "ability_start_setting",  #cfi not configured
+  "connection_obs_manager",  #cfi not configured
+  "dialog_request_info",  #cfi not configured
+  "ability_thread",  #cfi not configured
+  "appkit_native",  #cfi not configured
+  "ability_connect_callback_stub",  #cfi not configured
+  "ability_runtime_error_util",  #cfi not configured
+  "tools_aa_source_set",  #cfi not configured
+  "form_extension",  #cfi not configured
+  "extension_manager",  #cfi not configured
+  "auto_fill_manager",  #cfi not configured
+  "app_context",  #cfi not configured
+  "dataobs_manager",  #cfi not configured
+  "aa",  #cfi not configured
+  "form_extension_module",  #cfi not configured
+  "ability_deps_wrapper",  #cfi not configured
+  "runtime",  #cfi not configured
+  "app_context_utils",  #cfi not configured
+  "napi_common",  #cfi not configured
+  "app_manager",  #cfi not configured
+  "service_extension",  #cfi not configured
+  "uri_permission_mgr",  #cfi not configured
+  "appmgr_test_source",  #cfi not configured
+  "appkit_delegator",  #cfi not configured
+  "appkit_manager_helper",  #cfi not configured
+  "continuation_ipc",  #cfi not configured
+  "abilityms_test_source",  #cfi not configured
+  "data_ability_helper",  #cfi not configured
+  "application_context_manager",  #cfi not configured
+  "service_extension_module",  #cfi not configured
+  "ability_business_error",  #cfi not configured
+  "dialog_request_callback",  #cfi not configured
+  "ui_extension",  #cfi not configured
+  "ui_extension_module",  #cfi not configured
+  "share_extension",  #cfi not configured
+  "action_extension",  #cfi not configured
+  "share_extension_module",  #cfi not configured
+  "auto_startup_callback",  #cfi not configured
+  "action_extension_module",  #cfi not configured
+  "auto_fill_extension",  #cfi not configured
+  "auto_fill_extension_module",  #cfi not configured
+  "abilityms",  #cfi not configured
+  "aakit_mock",  #cfi not configured
+  "appexecfwk_appmgr_mock",  #cfi not configured
+  "perm_verification",  #cfi not configured
+  "appexecfwk_bundlemgr_mock",  #cfi not configured
+  "event_report",  #cfi not configured
+  "task_handler_wrap",  #cfi not configured
+  "app_util",  #cfi not configured
+  "dataobsms",  #cfi not configured
+  "libappms",  #cfi not configured
+  "libupms",  #cfi not configured
+  "child_process_manager",  #cfi not configured
+  "dataobsms_static",  #cfi not configured
+  "insightintentcontext",  #cfi not configured
+  "abilitycontext_napi",  #cfi not configured
+  "libupms_static",  #cfi not configured
+  "abilitydelegatorregistry_napi",  #cfi not configured
+  "autofillextensionability_napi",  #cfi not configured
+  "caller_napi",  #cfi not configured
+  "embeddableuiability_napi",  #cfi not configured
+  "featureability",  #cfi not configured
+  "abilitydelegatorregistry",  #cfi not configured
+  "insightintentexecutor_napi",  #cfi not configured
+  "dialogrequest_napi",  #cfi not configured
+  "datauriutils",  #cfi not configured
+  "appmanager_napi",  #cfi not configured
+  "errormanager_napi",  #cfi not configured
+  "particleability",  #cfi not configured
+  "serviceextensioncontext_napi",  #cfi not configured
+  "uripermissionmanager_napi",  #cfi not configured
+  "wantagent",  #cfi not configured
+  "errormanager",  #cfi not configured
+  "abilityconstant_napi",  #cfi not configured
+  "contextconstant_napi",  #cfi not configured
+  "callee_napi",  #cfi not configured
+  "actionextensionability_napi",  #cfi not configured
+  "extensioncontext_napi",  #cfi not configured
+  "insightintentdecorator_napi",  #cfi not configured
+  "insightintentdriver_napi",  #cfi not configured
+  "abilityconstant",  #cfi not configured
+  "missionmanager",  #cfi not configured
+  "childprocessmanager_napi",  #cfi not configured
+  "missionmanager_napi",  #cfi not configured
+  "testrunner_napi",  #cfi not configured
+  "ability_napi",  #cfi not configured
+  "abilitystagecontext_napi",  #cfi not configured
+  "serviceextensionability_napi",  #cfi not configured
+  "uiextensioncontext_napi",  #cfi not configured
+  "distributedmissionmanager",  #cfi not configured
+  "abilitymanager_napi",  #cfi not configured
+  "autofillmanager_napi",  #cfi not configured
+  "uiability",  #cfi not configured
+  "configurationconstant_napi",  #cfi not configured
+  "serviceextensionability",  #cfi not configured
+  "extensionability_napi",  #cfi not configured
+  "insightintent_napi",  #cfi not configured
+  "abilitymanager",  #cfi not configured
+  "childprocess_napi",  #cfi not configured
+  "dialogsession_napi",  #cfi not configured
+  "configurationconstant",  #cfi not configured
+  "autostartupmanager",  #cfi not configured
+  "abilitystage",  #cfi not configured
+  "context_napi",  #cfi not configured
+  "apprecovery_napi",  #cfi not configured
+  "uiextensionability_napi",  #cfi not configured
+  "wantconstant",  #cfi not configured
+  "autofillextensioncontext_napi",  #cfi not configured
+  "embeddableuiabilitycontext_napi",  #cfi not configured
+  "abilitystage_napi",  #cfi not configured
+  "featureability_napi",  #cfi not configured
+  "insightintentcontext_napi",  #cfi not configured
+  "wantconstant_napi",  #cfi not configured
+  "autostartupcallback",  #cfi not configured
+  "applicationcontext_napi",  #cfi not configured
+  "appmanager",  #cfi not configured
+  "quickfixmanager_napi",  #cfi not configured
+  "shareextensionability_napi",  #cfi not configured
+  "libsrms",  #cfi not configured
+  "module_test_dump_util_lib",  #cfi not configured
+  "appmgr_mst_source",  #cfi not configured
+  "freeze_util",  #cfi not configured
+  "appmgr_test_service",  #cfi not configured
+  "arkui_mock",  #cfi not configured
+  "sa_mgr_mock",  #cfi not configured
+  "wantagent_napi",  #cfi not configured
+  "abilitylifecyclecallback",  #cfi not configured
+  "applicationstatechangecallback",  #cfi not configured
+  "environmentcallback",  #cfi not configured
+  "process_options",  #cfi not configured
+]
+
+# hiview : //base/hiviewdfx/hiview
+bypass_hiview = [
+  "faultlogger_napi",
+  "loglibrary_napi",
+  "libucollection_client",
+  "libucollection_utility",
+  "hiview",
+  "libxpower_event",
+  "libxpower_event_js",
+  "logger",
+  "libasan_logger",
+  "faultlogger",
+  "hiview_base",
+  "hiviewbase",
+  "hiviewbase_static_lib_for_tdd",
+  "hiview_core_for_test",
+  "hiview_param_update_for_tdd",
+  "hiviewplatform_config_for_tdd",
+  "hiview_service_impl",
+  "hiview_service_impl_for_unified_collection",
+  "hiview_service_impl_for_js",
+  "faultlogger_client_impl",
+  "hiview_utility",
+  "ucollection_client_source",
+  "ucollection_source",
+  "usage_event_report",
+  "usage_event_report_for_test",
+  "sysevent_source",
+  "unified_collector",
+  "sys_event_store",
+  "sys_dispatcher",
+  "hiview_service",
+  "bbox_detector",
+  "leak_detector",
+  "xperf",
+  "hiview_core",
+  "usage_report",
+  "freeze_detector",
+  "eventlogger",
+  "smart_parser",
+  "hiview_reliability_common_utils",
+  "log_analyzer",
+  "faultlogger_common",
+  "faultlogger_service_ohos_common",
+  "faultlogger_service_ability",
+  "faultlogger_service_impl",
+  "faultlogger_service",
+  "hiview_event_publish",
+  "event_threshold_source",
+  "hiview_event_raw_base",
+  "hiview_event_raw_decode",
+  "hiview_event_raw_encode",
+  "eventpool",
+  "hiview_event_report",
+  "event_store_source",
+  "running_status_logger_source",
+  "log_store",
+  "collect_device_client",
+  "hiview_service_adapter",
+  "hiview_param_update",
+  "hiviewplatform_config",
+  "log_catcher",
+  "eventlogger_config",
+  "dynamicloadpluginexample",
+  "bundleplugintest",
+  "bundletest",
+  "faultlogger_test_napi",
+  "event_store_utility_source",
+  "event_store_config_source",
+  "eventlogger_adapter_logcatcher",
+  "faultlogger_service_fuzz_src",
+  "faultlog_ext_zidl_proxy_for_test",
+]
+
+bypass_device_standby = []
+
+bypass_appverify = []
+
+bypass_drm_framework = []
+
+# distributed_audio : //foundation/distributedhardware/distributed_audio
+bypass_distributed_audio = [ "distributed_audio_handler" ]
+
+bypass_memory_utils = [ "purgeable_memory_ndk" ]
+
+# distributed_camera : //foundation/distributedhardware/distributed_camera
+bypass_distributed_camera = [
+  "distributed_camera_source",
+  "distributed_camera_data_process",
+]
+
+# dhcp : //foundation/communication/dhcp
+bypass_dhcp = [
+  "dhcp_client_proxy_impl",
+  "dhcp_server_proxy_impl",
+]
+
+# device_info_manager : //foundation/deviceprofile/device_info_manager
+bypass_device_info_manager = [
+  "distributed_device_profile_svr",
+  "distributed_device_profile_sdk",
+  "distributed_device_profile_common",
+  "deviceprofileradar",
+  "device_profile_radar",
+]
+
+bypass_dfs_service = []
+
+bypass_dlp_permission_service = [ "ohdlp_permission" ]
+
+bypass_cellular_data = [
+  "tel_cellular_data_static",  # test target, not required to enable cfi
+]
+
+# request : //base/request/request
+bypass_request = [
+  "request_static",
+  "request_common_static",
+]
+
+bypass_datamgr_service = []
+
+bypass_dataclassification = []
+
+bypass_certificate_framework = []
+
+bypass_sharing_framework = []
+
+bypass_distributed_input = []
+
+# av_codec : //foundation/multimedia/av_codec
+bypass_av_codec = [
+  "native_media_avmuxer",  # napi target, not required to enable cfi
+  "native_media_avdemuxer",  # napi target, not required to enable cfi
+  "native_media_avsource",  # napi target, not required to enable cfi
+  "native_media_codecbase",  # napi target, not required to enable cfi
+  "native_media_acodec",  # napi target, not required to enable cfi
+  "native_media_adec",  # napi target, not required to enable cfi
+  "native_media_aenc",  # napi target, not required to enable cfi
+  "native_media_vdec",  # napi target, not required to enable cfi
+  "native_media_venc",  # napi target, not required to enable cfi
+  "av_codec_client",  # client target, not required to enable cfi
+  "av_codec_demo",  # test target, not required to enable cfi
+  "av_codec_demo_muxer",  # test target, not required to enable cfi
+  "video_codec_demo",  # test target, not required to enable cfi
+  "video_sample",  # test target, not required to enable cfi
+  "hcodec_demo",  # test target, not required to enable cfi
+  "hcodec_test_helper",  # test target, not required to enable cfi
+  "av_codec_capi_unit_test",  # test target, not required to enable cfi
+  "av_codec_inner_unit_test",  # test target, not required to enable cfi
+  "av_codec_engine_codeclist_mock",  # test target, not required to enable cfi
+]
+
+# kv_store : //foundation/distributeddatamgr/kv_store
+bypass_kv_store = [
+  "distributeddb",
+  "distributeddata_inner",
+  "src_file",
+  "kvdb_src_file",
+  "src_file",
+  "distributeddatafwk_src_file",
+]
+
+bypass_preferences = []
+
+bypass_distributed_screen = []
+
+# distributed_hardware_fwk : //foundation/distributedhardware/distributed_hardware_fwk
+bypass_distributed_hardware_fwk = [
+  "hardwaremanager",
+  "distributed_av_sender",
+  "distributed_av_receiver",
+  "histreamer_ability_querier",
+  "histreamer_ability_querier_core",
+  "avtrans_input_filter",
+  "avtrans_output_filter",
+  "plugin_AVTransDaudioInput",
+  "plugin_AVTransDsoftbusInputAudio",
+  "plugin_AVTransDsoftbusInput",
+  "plugin_AVTransDscreenInput",
+  "plugin_AVTransDaudioOutput",
+  "plugin_AVTransDsoftbusOutput",
+  "plugin_AVTransDscreenOutput",
+  "plugin_AVTransDsoftbusOutputAudio",
+]
+
+# soc_perf : //foundation/resourceschedule/resource_schedule_service/soc_perf
+bypass_soc_perf = [ "socperf_test" ]
+
+# update_service : //base/update/updateservice
+bypass_update_service = [
+  "update",
+  "updateservice",
+  "update_session",
+]
+
+# graphic_2d : //foundation/graphic/graphic_2d
+bypass_graphic_2d = [
+  "vulkan_loader",
+  "libnative_vsync",
+  "2d_graphics_source_ohos",
+  "2d_graphics_source_ohos_ng",
+  "2d_graphics",
+  "2d_graphics_new",
+  "2d_graphics_canvaskit0310",
+  "2d_graphics_drawing",
+  "drawing_ndk_source_ohos",
+  "drawing_ndk_source_ohos_ng",
+  "color_picker",
+  "EGL",
+  "GLESv1",
+  "GLESv2",
+  "GLESv3",
+  "opengl_wrapper_native_test",
+  "debug_layer_test1",
+  "debug_layer_test2",
+  "vulkan_swapchain_layer",
+  "libegl_effect",
+  "particle_cxx_rust",
+  "particle_cxx_cppdeps",
+  "render_service_base_src",
+  "libcomposer",
+  "librender_service_base",
+  "librender_service_base_static",
+  "libeffectchain",
+  "skeffectchain",
+  "rosen_text",
+  "libtexgine_source",
+  "rosen_text_inner",
+  "libtexgine",
+  "rosen_text_texgine",
+  "rosen_text_txt",
+  "rosen_text_skia",
+  "render_service_client_src",
+  "render_service_client_src_static",
+  "drawing_napi",
+  "librender_service_client",
+  "drawing_napi_impl",
+  "text_napi",
+  "text_napi_impl",
+  "librender_service_client_static",
+  "libbootanimation_utils",
+  "libnative_image",
+  "surface",
+  "libgraphic_utils",
+  "window_animation",
+  "sync_fence",
+  "color_manager_source",
+  "color_space_object_convertor_source",
+  "color_manager",
+  "color_space_object_convertor",
+  "colorspacemanager_napi_source",
+  "buffer_handle",
+  "colorspacemanager_napi",
+  "render_service_client",
+  "bootanimation",
+  "socketpair",
+  "libfence",
+  "libskia_rs_framework",
+  "render_frame_trace",
+  "rs_frame_report_ext",  # not required to enable cfi
+  "rs_frame_report_ext_surface",  # not required to enable cfi
+  "libhyper_graphic_manager",
+  "texgine_sample",
+  "texgine_sample_align",
+  "sandbox_utils",
+  "drawing_engine_sample",
+  "texgine_sample_alignment",
+  "impl_eventhandler",
+  "drawing_sample_rs",
+  "texgine_sample_calibrate",
+  "hilog",
+  "texgine_sample_decoration",
+  "mock_image_native",
+  "drawing_sample_canvaskit0310",
+  "mock_ipc_core",
+  "texgine_sample_direction",
+  "mock_utils",
+  "texgine_sample_mix",
+  "libtexgine_drawing",
+  "libvsync",
+  "texgine_sample_shadow",
+  "texgine_sample_bug",
+  "windowanimationmanager_napi",
+  "texgine_sample_dynamic_font",
+  "effectkit",
+  "texgine_sample_emoji",
+  "libhgmnapi",
+  "texgine_sample_font_style",
+  "skia_libtxt_ohos",
+  "texgine_sample_feature",
+  "webgl_src",
+  "texgine_sample_glyph_position",
+  "skia_libtxt_ohos_ng",
+  "libwebglnapi",
+  "texgine_sample_intrinsic_width",
+  "skia_paragraph",
+  "skia_unicode",
+  "texgine_sample_spacing",
+  "libframe_analyzer",
+  "skia_shaper",
+  "rosen_libicu_ohos",
+  "texgine_sample_strut",
+  "texgine_sample_text_color",
+  "rosen_libicu_ohos_ng",
+  "render_service_client_rs_demo",
+  "texgine_sample_weight_style",
+  "scoped_bytrace",
+  "render_service_client_screen_mode_demo",
+  "texgine_sample_word_boundary",
+  "render_service_client_app_demo",
+  "texgine_sample_ellipsis",
+  "texgine_sample_layout",
+  "render_service_client_node_demo",
+  "frame_report",
+  "semaphore",
+  "texgine_sample_dynamic_otf_font",
+  "render_service_client_modifier_demo",
+  "texgine_sample_text_height",
+  "test_header",
+  "option_parser",
+  "texgine_sample_typography_height",
+  "render_service_client_transition_demo",
+  "texgine_sample_ellipsis_modal",
+  "libgslogger",
+  "render_service_client_gesture_interrupt_animation_demo",
+  "raw_parser",
+  "gl_utils",
+  "cpudraw",
+  "render_service_client_gravity_demo",
+  "raw_maker",
+  "render_service_client_ui_capture_demo",
+  "render_service_client__alpha_offscreen_demo",
+  "render_service_client_scale_demo",
+  "render_service_client_rs_animation_demo",
+  "surface_capture_demo",
+  "security_layer_demo",
+  "render_service_client_surface_node_demo",
+  "render_service_client_uni_render_demo",
+  "render_service_client_watermark_demo",
+  "rs_uni_render_pixelmap_demo",
+  "render_service_display_mode_demo",
+  "render_service_client_tunnel_handle_demo",
+  "render_service_client_overlay_demo",
+  "snapshot_surface",
+  "screen_info_demo",
+  "render_service_client_pointer_window_demo",
+  "render_service_client_subSurface_demo",
+  "render_service_client_fingerprint_demo",
+  "render_service_client_first_frame_callback_demo",
+  "opengl_wrapper_test_common",
+  "vulkan_loader_test_common",
+  "vulkan_loader_test_common",
+  "rs_test_common",
+  "rs_test_common",
+  "surface_test_common",
+  "rosen_ohos_sources",
+  "color_manager_test_common",
+  "sync_fence_common",
+  "buffer_handle_test_common",
+  "render_context",
+  "vsync_test_common",
+  "rs_client_test_common",
+  "rs_client_test_common",
+  "rs_test_common",
+  "socketpair_test_common",
+  "fence_test_common",
+  "hdr_capability_utils",
+  "hdr_capability_napi",
+  "libnative_display_soloist",
+  "libnative_color_space_manager",
+  "rs_graphic_test_src",
+  "rs_graphic_test",
+  "rs_graphic_test_main",
+  "font_asset",
+  "layer_backend_test_impl",  # test target with gmock, not required to enable cfi
+]
+
+# security_component_manager : //base/security/security_component_manager
+bypass_security_component_manager = [
+  "libsecurity_component_sdk",
+  "security_component_no_cfi_enhance_adapter_src_set",
+  "security_component_no_cfi_framework_src_set",
+  "security_component_no_cfi_enhance_sdk_src_set",
+  "sec_comp_service_stub_no_cfi",
+  "sec_comp_no_cfi_service_proxy",
+  "security_component_no_cfi_disable_enhance_adapter_src_set",
+]
+
+# distributed_bundle_framework : //foundation/bundlemanager/distributed_bundle_framework
+bypass_distributed_bundle_framework = [
+  "distributedbundle",
+  "distributedbundlemanager",
+]
+
+# device_manager : //foundation/distributedhardware/device_manager
+bypass_device_manager = [
+  "devicemanagersdk",
+  "devicemanagerdependency",
+  "devicemanagerradar",
+]
+
+# hdf_core : //drivers/hdf_core
+bypass_hdf_core = [
+  "libhdf_ipc_adapter",
+  "libhdf_host",
+  "libhdi",
+  "libhdi_base",
+  "libpub_utils",
+  "libhdf_utils",
+  "libhdf_platform",
+  "libsample_driver",
+  "libsample1_driver",
+  "hdf_dbg",
+  "libhdf_test_common",
+  "libvdi_sample1_driver",
+  "libvdi_sample1_symbol",
+  "libvdi_sample2_driver",
+]
+
+# drivers_devhost : //drivers/peripheral/devhost
+bypass_drivers_devhost = [
+  "hdf_devhost",
+]
+
+# The list contains both part name that need to enable cfi and disable debug mode, and corresponding bypass_xxx list that bypass the cfi check
+enable_cfi_part_and_bypass_list = [
+  # enabled in OH4.0
+  [
+    "audio_framework",
+    bypass_audio_framework,
+  ],
+  [
+    "media_foundation",
+    bypass_media_foundation,
+  ],
+  [
+    "av_session",
+    bypass_av_session,
+  ],
+  [
+    "huks",
+    bypass_huks,
+  ],
+  [
+    "certificate_manager",
+    bypass_certificate_manager,
+  ],
+  [
+    "image_framework",
+    bypass_image_framework,
+  ],
+  [
+    "media_library",
+    bypass_media_library,
+  ],
+  [
+    "user_file_service",
+    bypass_user_file_service,
+  ],
+  [
+    "contacts_data_hap",
+    bypass_contacts_data_hap,
+  ],
+  [
+    "crypto_framework",
+    bypass_crypto_framework,
+  ],
+  [
+    "wpa_supplicant",
+    bypass_wpa_supplicant,
+  ],
+  [
+    "netmanager_base",
+    bypass_netmanager_base,
+  ],
+  [
+    "camera_framework",
+    bypass_camera_framework,
+  ],
+  [
+    "player_framework",
+    bypass_player_framework,
+  ],
+  [
+    "screenlock_mgr",
+    bypass_screenlock_mgr,
+  ],
+  [
+    "nfc",
+    bypass_nfc,
+  ],
+  [
+    "wifi",
+    bypass_wifi,
+  ],
+  [
+    "dsoftbus",
+    bypass_dsoftbus,
+  ],
+  [
+    "hilog",
+    bypass_hilog,
+  ],
+  [
+    "bluetooth",
+    bypass_bluetooth,
+  ],
+  [
+    "bluetooth_service",
+    bypass_bluetooth_service,
+  ],
+
+  # enabled in OH4.1
+  [
+    "device_security_level",
+    bypass_device_security_level,
+  ],
+  [
+    "face_auth",
+    bypass_face_auth,
+  ],
+  [
+    "fingerprint_auth",
+    bypass_fingerprint_auth,
+  ],
+  [
+    "pin_auth",
+    bypass_pin_auth,
+  ],
+  [
+    "user_auth_framework",
+    bypass_user_auth_framework,
+  ],
+  [
+    "enterprise_device_management",
+    bypass_enterprise_device_management,
+  ],
+  [
+    "wallpaper_mgr",
+    bypass_wallpaper_mgr,
+  ],
+  [
+    "resource_schedule_service",
+    bypass_resource_schedule_service,
+  ],
+  [
+    "data_object",
+    bypass_data_object,
+  ],
+  [
+    "device_auth",
+    bypass_device_auth,
+  ],
+  [
+    "data_share",
+    bypass_data_share,
+  ],
+  [
+    "time_service",
+    bypass_time_service,
+  ],
+  [
+    "imf",
+    bypass_imf,
+  ],
+  [
+    "location",
+    bypass_location,
+  ],
+  [
+    "dmsfwk",
+    bypass_dmsfwk,
+  ],
+  [
+    "usb_manager",
+    bypass_usb_manager,
+  ],
+  [
+    "sensor",
+    bypass_sensor,
+  ],
+  [
+    "battery_manager",
+    bypass_battery_manager,
+  ],
+  [
+    "battery_statistics",
+    bypass_battery_statistics,
+  ],
+  [
+    "display_manager",
+    bypass_display_manager,
+  ],
+  [
+    "power_manager",
+    bypass_power_manager,
+  ],
+  [
+    "thermal_manager",
+    bypass_thermal_manager,
+  ],
+  [
+    "device_status",
+    bypass_device_status,
+  ],
+  [
+    "motion",
+    bypass_motion,
+  ],
+  [
+    "spatial_awareness",
+    bypass_spatial_awareness,
+  ],
+  [
+    "algorithm",
+    bypass_algorithm,
+  ],
+  [
+    "window_manager",
+    bypass_window_manager,
+  ],
+  [
+    "qos_manager",
+    bypass_qos_manager,
+  ],
+  [
+    "call_manager",
+    bypass_call_manager,
+  ],
+  [
+    "cellular_call",
+    bypass_cellular_call,
+  ],
+  [
+    "core_service",
+    bypass_core_service,
+  ],
+  [
+    "rill_adapter",
+    bypass_rill_adapter,
+  ],
+  [
+    "sms_mms",
+    bypass_sms_mms,
+  ],
+  [
+    "state_registry",
+    bypass_state_registry,
+  ],
+  [
+    "telephony_data",
+    bypass_telephony_data,
+  ],
+  [
+    "common_event_service",
+    bypass_common_event_service,
+  ],
+  [
+    "distributed_notification_service",
+    bypass_distributed_notification_service,
+  ],
+  [
+    "eventhandler",
+    bypass_eventhandler,
+  ],
+  [
+    "os_account",
+    bypass_os_account,
+  ],
+  [
+    "access_token",
+    bypass_access_token,
+  ],
+  [
+    "dupdate_engine",
+    bypass_dupdate_engine,
+  ],
+  [
+    "input",
+    bypass_input,
+  ],
+  [
+    "device_attest",
+    bypass_device_attest,
+  ],
+  [
+    "perferences",
+    bypass_perferences,
+  ],
+  [
+    "relational_store",
+    bypass_relational_store,
+  ],
+  [
+    "miscdevice",
+    bypass_miscdevice,
+  ],
+  [
+    "app_file_service",
+    bypass_app_file_service,
+  ],
+  [
+    "file_api",
+    bypass_file_api,
+  ],
+  [
+    "storage_service",
+    bypass_storage_service,
+  ],
+  [
+    "scene_board_ext",
+    bypass_scene_board_ext,
+  ],
+  [
+    "background_task_mgr",
+    bypass_background_task_mgr,
+  ],
+  [
+    "device_usage_statistics",
+    bypass_device_usage_statistics,
+  ],
+  [
+    "efficiency_manager",
+    bypass_efficiency_manager,
+  ],
+  [
+    "efficiency_manager_ext",
+    bypass_efficiency_manager_ext,
+  ],
+  [
+    "frame_aware_sched",
+    bypass_frame_aware_sched,
+  ],
+  [
+    "memmgr",
+    bypass_memmgr,
+  ],
+  [
+    "memmgr_override",
+    bypass_memmgr_override,
+  ],
+  [
+    "work_scheduler",
+    bypass_work_scheduler,
+  ],
+  [
+    "accessibility",
+    bypass_accessibility,
+  ],
+  [
+    "ffrt",
+    bypass_ffrt,
+  ],
+  [
+    "advertising",
+    bypass_advertising,
+  ],
+  [
+    "oaid",
+    bypass_oaid,
+  ],
+  [
+    "init",
+    bypass_init,
+  ],
+  [
+    "bundle_framework",
+    bypass_bundle_framework,
+  ],
+  [
+    "ability_runtime",
+    bypass_ability_runtime,
+  ],
+  [
+    "hiview",
+    bypass_hiview,
+  ],
+  [
+    "device_standby",
+    bypass_device_standby,
+  ],
+  [
+    "appverify",
+    bypass_appverify,
+  ],
+  [
+    "drm_framework",
+    bypass_drm_framework,
+  ],
+  [
+    "distributed_audio",
+    bypass_distributed_audio,
+  ],
+  [
+    "memory_utils",
+    bypass_memory_utils,
+  ],
+  [
+    "distributed_camera",
+    bypass_distributed_camera,
+  ],
+  [
+    "dhcp",
+    bypass_dhcp,
+  ],
+  [
+    "device_info_manager",
+    bypass_device_info_manager,
+  ],
+  [
+    "dfs_service",
+    bypass_dfs_service,
+  ],
+  [
+    "dlp_permission_service",
+    bypass_dlp_permission_service,
+  ],
+  [
+    "cellular_data",
+    bypass_cellular_data,
+  ],
+  [
+    "request",
+    bypass_request,
+  ],
+  [
+    "datamgr_service",
+    bypass_datamgr_service,
+  ],
+  [
+    "dataclassification",
+    bypass_dataclassification,
+  ],
+  [
+    "certificate_framework",
+    bypass_certificate_framework,
+  ],
+  [
+    "sharing_framework",
+    bypass_sharing_framework,
+  ],
+  [
+    "distributed_input",
+    bypass_distributed_input,
+  ],
+  [
+    "av_codec",
+    bypass_av_codec,
+  ],
+  [
+    "kv_store",
+    bypass_kv_store,
+  ],
+  [
+    "preferences",
+    bypass_preferences,
+  ],
+  [
+    "distributed_screen",
+    bypass_distributed_screen,
+  ],
+  [
+    "distributed_hardware_fwk",
+    bypass_distributed_hardware_fwk,
+  ],
+  [
+    "soc_perf",
+    bypass_soc_perf,
+  ],
+  [
+    "update_service",
+    bypass_update_service,
+  ],
+  [
+    "graphic_2d",
+    bypass_graphic_2d,
+  ],
+  [
+    "security_component_manager",
+    bypass_security_component_manager,
+  ],
+  [
+    "distributed_bundle_framework",
+    bypass_distributed_bundle_framework,
+  ],
+  [
+    "device_manager",
+    bypass_device_manager,
+  ],
+  [
+    "hdf_core",
+    bypass_hdf_core,
+  ],
+  [
+    "drivers_devhost",
+    bypass_drivers_devhost,
+  ],
+]
+
+# The list of part name that need to enable intsan
+enable_intsan_part_list = []
+
+# The list of build target that bypass the intsan check
+bypass_intsan_target_list = []
+
+# The list of part_name that not check debug
+bypass_config_debug_list = [
+  "libc-test",
+  "libc-test-lib",
+  "unittest",
+  "fuzztest",
+  "moduletest",
+]

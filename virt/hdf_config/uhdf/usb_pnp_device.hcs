@@ -1,0 +1,87 @@
+root {
+    module = "usb_pnp_device";
+    usb_pnp_config {
+        match_attr = "usb_pnp_match";
+        usb_pnp_device_id = "UsbPnpDeviceId";
+        UsbPnpDeviceId {
+            idTableList = [
+                "host_acm_table",
+                "host_acm_rawapi_table",
+                "host_ecm_table",
+                "host_rndis_table"
+            ];
+            host_acm_table {
+                moduleName = "usbhost_acm";
+                serviceName = "usbhost_acm_pnp_service";
+                deviceMatchAttr = "usbhost_acm_pnp_matchAttr";
+                length = 21;
+                matchFlag = 0x0300;
+                vendorId = 0x2207;
+                productId = 0x0018;
+                bcdDeviceLow = 0x0000;
+                bcdDeviceHigh = 0x0000;
+                deviceClass = 0;
+                deviceSubClass = 0;
+                deviceProtocol = 0;
+                interfaceClass = [0];
+                interfaceSubClass = [2, 0];
+                interfaceProtocol = [1, 2];
+                interfaceNumber = [2, 3];
+            }
+            host_acm_rawapi_table {
+                moduleName = "usbhost_acm_rawapi";
+                serviceName = "usbhost_acm_rawapi_service";
+                deviceMatchAttr = "usbhost_acm_rawapi_matchAttr";
+                length = 21;
+                matchFlag = 0x0300;
+                vendorId = 0x2207;
+                productId = 0x0018;
+                bcdDeviceLow = 0x0000;
+                bcdDeviceHigh = 0x0000;
+                deviceClass = 0;
+                deviceSubClass = 0;
+                deviceProtocol = 0;
+                interfaceClass = [0];
+                interfaceSubClass = [2, 0];
+                interfaceProtocol = [1, 2];
+                interfaceNumber = [2, 3];
+            }
+            host_ecm_table {
+                moduleName = "usbhost_ecm";
+                serviceName = "usbhost_ecm_pnp_service";
+                deviceMatchAttr = "usbhost_ecm_pnp_matchAttr";
+                length = 21;
+                matchFlag = 0x0300;
+                vendorId = 0x2207;
+                productId = 0x0018;
+                bcdDeviceLow = 0x0000;
+                bcdDeviceHigh = 0x0000;
+                deviceClass = 0;
+                deviceSubClass = 0;
+                deviceProtocol = 0;
+                interfaceClass = [0];
+                interfaceSubClass = [6, 0];
+                interfaceProtocol = [0, 6];
+                interfaceNumber = [0, 1];
+            }
+            host_rndis_table {
+               moduleName = "usbhost_rndis_rawapi";
+               serviceName = "usbhost_rndis_rawapi_service";
+               deviceMatchAttr = "usbhost_rndis_rawapi_matchAttr";
+               length = 18;
+               matchFlag = 0x0383;
+               vendorId = 0x2c7c;
+               productId = 0x0125;
+               bcdDeviceLow = 0x0318;
+               bcdDeviceHigh = 0x0318;
+               deviceClass = 0xef;
+               deviceSubClass = 0x02;
+               deviceProtocol = 0x01;
+               interfaceClass = [224];
+               interfaceSubClass = [1];
+               interfaceProtocol = [3];
+               interfaceNumber = [0];
+           }
+        }
+    }
+}
