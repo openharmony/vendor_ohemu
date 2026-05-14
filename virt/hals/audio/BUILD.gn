@@ -1,0 +1,94 @@
+# Copyright (C) 2024 Institute of Software, Chinese Academy of Sciences.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+virt_subsystem_name = "device_arm64_virt"
+
+ohos_prebuilt_etc("hdf_audio_effect_json") {
+  source = "audio_effect.json"
+
+  relative_install_dir = "hdfconfig"
+  install_images = [chip_prod_base_dir ]
+  subsystem_name = virt_subsystem_name
+  part_name = "qemu_virt_full"
+}
+
+ohos_prebuilt_etc("hdf_audio_path_json") {
+  source = "audio_paths.json"
+  relative_install_dir = "hdfconfig"
+  install_images = [ chipset_base_dir ]
+  subsystem_name = virt_subsystem_name
+  part_name = "qemu_virt_full"
+}
+
+ohos_prebuilt_etc("hdf_audio_adapter_json") {
+  source = "audio_adapter.json"
+  relative_install_dir = "hdfconfig"
+  install_images = [ chipset_base_dir ]
+  subsystem_name = virt_subsystem_name
+  part_name = "qemu_virt_full"
+}
+
+ohos_prebuilt_etc("audio_policy_config") {
+  if (target_cpu == "arm") {
+    source = "config/arm/audio_policy_config.xml"
+  } else {
+    source = "config/riscv64/audio_policy_config.xml"
+  }
+  subsystem_name = virt_subsystem_name
+  relative_install_dir = "audio"
+  install_images = [ chipset_base_dir ]
+  part_name = "qemu_virt_full"
+}
+
+ohos_prebuilt_etc("hdf_alsa_adapter_json") {
+  source = "alsa_adapter.json"
+  subsystem_name = virt_subsystem_name
+  relative_install_dir = "hdfconfig"
+  install_images = [ chipset_base_dir ]
+  part_name = "qemu_virt_full"
+}
+
+ohos_prebuilt_etc("hdf_alsa_paths_json") {
+  source = "alsa_paths.json"
+  relative_install_dir = "hdfconfig"
+  install_images = [ chipset_base_dir ]
+  subsystem_name = virt_subsystem_name
+  part_name = "qemu_virt_full"
+}
+
+ohos_prebuilt_etc("audio_policy_config_new") {
+  source = "config/audio_policy_config_new.xml"
+  relative_install_dir = "audio"
+  output = "audio_policy_config.xml"
+  install_images = [ chip_prod_base_dir ]
+  subsystem_name = virt_subsystem_name
+  part_name = "qemu_virt_full"
+}
+
+group("hdf_audio_config") {
+  deps = [
+    ":audio_policy_config",
+    ":audio_policy_config_new",
+    ":hdf_audio_effect_json",
+    ":hdf_audio_path_json",
+    ":hdf_audio_adapter_json",
+    ":hdf_alsa_paths_json",
+    ":hdf_alsa_adapter_json",
+  ]
+}
+
+group("hdi_service_st") {
+  testonly = true
+  deps = [ "//drivers/peripheral/audio/test/systemtest/hdi_service/rk3568:hdi_service_hardwaredependence" ]
+}

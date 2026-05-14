@@ -1,0 +1,10 @@
+#include "device_info.hcs"
+#include "usb_pnp_device.hcs"
+#include "usb_ecm_acm.hcs"
+#include "media_codec/codec_hdi1.0_capabilities.hcs"
+#include "media_codec/media_codec_capabilities.hcs"
+#include "media_codec/image_codec_capabilities.hcs"
+
+root {
+    module = "default";
+}

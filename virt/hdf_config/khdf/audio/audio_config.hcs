@@ -1,0 +1,39 @@
+root {
+    platform {
+        template card_controller {
+            match_attr = "";
+            serviceName = "";
+            codecName = "";
+            platformName = "";
+            cpuDaiName = "";
+            codecDaiName = "";
+            dspName = "";
+            dspDaiName = "";
+        }
+        controller_0x120c1000 :: card_controller {
+            match_attr = "hdf_audio_driver_0";
+            serviceName = "hdf_audio_codec_primary_dev0";
+            codecName = "codec_service_0";
+            platformName = "dma_service_0";
+            cpuDaiName = "dai_service";
+            codecDaiName = "codec_dai";
+            dspName = "dsp_service_0";
+            dspDaiName = "dsp_dai";
+        }
+        controller_0x120c1001 :: card_controller {
+            match_attr = "hdf_audio_driver_1";
+            serviceName = "hdf_audio_codec_hdmi_dev0";
+            codecName = "codec_service_1";
+            platformName = "hdmi_dma_service_0";
+            cpuDaiName = "hdmi_dai_service";
+            codecDaiName = "hdmi_codec_dai";
+        }
+        controller_0x120c1002 :: card_controller {
+            match_attr = "hdf_audio_driver_2";
+            serviceName = "hdf_audio_codec_usb_dev0";
+            codecName = "audio_usb_service_0";
+            platformName = "usb_dma_service_0";
+            codecDaiName = "usb_codec_dai";
+        }
+    }
+}

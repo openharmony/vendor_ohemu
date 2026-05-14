@@ -1,0 +1,27 @@
+root {
+    drv2605lConfig {
+            match_attr = "hdf_drv2605l_linear_vibrator_driver";
+            VibratorBusConfig {
+                busType = 0;    // 0:i2c 1:gpio
+                busNum = 3;
+                busAddr = 0x5a;
+                regWidth = 1;    // 1 byte
+            }
+            VibratorAttr {
+                chipIdRegister = 0X00;
+                chipIdValue = 0XE0;
+                defaultIntensity = 0XAB;
+                defaultFrequency = 0X33;
+            }
+            VibratorChipConfig {
+                isSupportIntensity = 1;    /* setting intensity capability. 1 indicates support,
+                                            0 indicates not support. */
+                isSupportFrequency = 1;    /* setting frequency capability. 1 indicates support,
+                                            0 indicates not support. */
+                intensityMaxValue = 100;    // Max intensity
+                intensityMinValue = 0;    // Min intensity
+                frequencyMaxValue = 500;    // Max frequency
+                frequencyMinValue = 0;    // Min frequency
+            }
+    }
+}

@@ -1,0 +1,25 @@
+root {
+    platform {
+        module = "watchdog";
+        watchdog_config {
+            template watchdog_device {
+                serviceName = "HDF_PLATFORM_WATCHDOG_0";
+                match_attr = "";
+                driver_name = "watchdog";
+                id = 0;
+            }
+            device_0x12050000 :: watchdog_device {
+                id = 0;
+                match_attr = "edu_virt_watchdog_0";
+            }
+            device_0x12060000 :: watchdog_device {
+                id = 1;
+                match_attr = "edu_virt_watchdog_1";
+            }
+            device_0x12070000 :: watchdog_device {
+                id = 2;
+                match_attr = "edu_virt_watchdog_2";
+            }
+        }
+    }
+}

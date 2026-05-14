@@ -1,0 +1,247 @@
+root {
+    platform {
+        template codec_controller {
+            match_attr = "";
+            serviceName = "";
+            codecDaiName = "";
+        }
+        controller_0x120c1030 :: codec_controller {
+            match_attr = "hdf_codec_driver_0";
+            serviceName = "codec_service_0";
+            codecDaiName = "codec_dai";
+
+            hwInfo = [
+                /*
+                    Playback/Captrue, formats, rates, rate_min, rate_max, channels_min, channels_max,
+                    buffer_bytes_max, period_bytes_min, period_bytes_max, periods_min, periods_max
+                */
+                1, 0xF, 0xFF, 8000, 96000, 1, 2, 1, 2, 3, 4, 5,
+                2, 0xF, 0xFF, 8000, 96000, 1, 2, 1, 2, 3, 4, 5,
+            ];
+
+            regConfig {
+                /*  reg: register address
+                    rreg: register address
+                    shift: shift bits
+                    rshift: rshift bits
+                    min: min value
+                    max: max value
+                    mask: mask of value
+                    invert: enum InvertVal 0-uninvert 1-invert
+                    value: value
+                */
+
+                /* reg, value */
+                initSeqConfig = [
+                    0x13,    0xf4,
+                    0x15,    0xff,
+                    0x17,    0x40,
+                    0x18,    0xc8,
+                    0x1e,    0x00,
+                    0x27,    0x3f,
+                    0x29,    0x99,
+                    0x2f,    0x03,
+                    0x30,    0x06,
+                    0x35,    0x02,
+                    0x38,    0x10,
+                    0x3c,    0x0F,
+                    0x3d,    0x80,
+                    0x3e,    0x0f,
+                    0x3f,    0x11,
+                    0x40,    0xa5,
+                    0x41,    0x77,
+                    0x42,    0x04,
+                    0x43,    0x58,
+                    0x44,    0x2d,
+                    0x45,    0x0c,
+                    0x46,    0xa5,
+                    0x47,    0x00,
+                    0x48,    0x00,
+                    0x4b,    0x0f,
+                    0x4c,    0x20,
+                    0x4e,    0x0f,
+                    0x4f,    0x00,
+                ];
+
+                controlsConfig = [
+                    /*array index, iface, mixer/mux, enable,*/
+                    0,  2,  0,  1,
+                    1,  2,  0,  1,
+                    2,  2,  0,  1,
+                    3,  2,  0,  1,
+                    4,  2,  0,  1,
+                    5,  2,  0,  1,
+                    8,  2,  0,  1,
+                    9,  2,  0,  1,
+                ];
+
+                /* reg, rreg, shift, rshift, min, max, mask, invert, value */
+                ctrlParamsSeqConfig = [
+                    0x31,    0x32,    0,    0,    0x00,    0xFF,   0xFF,   1,    0x00, // DACL/R Playback Volume
+                    0x1a,    0x1b,    0,    0,    0x00,    0xFF,   0xFF,   1,    0x00, // ADCL/R Capture Volume
+                    0x38,    0x38,    0,    0,    0x0,     0x1,    0x1,    0,    0x0,  // DAC Playback Mute
+                    0x27,    0x27,    6,    6,    0x0,     0x1,    0x1,    0,    0x0,  // ADCL/R Capture Mute
+                    0x29,    0x29,    4,    4,    0x0,     0xF,    0xF,    0,    0x9,  // Mic Left Gain
+                    0x29,    0x29,    0,    0,    0x0,     0xF,    0xF,    0,    0x9,  // Mic Right Gain
+                    0x4a,    0x4a,    2,    2,    0x0,     0x2,    0x3,    0,    0x0,  // Render Channel Mode
+                    0x4d,    0x4d,    2,    2,    0x0,     0x2,    0x3,    0,    0x0,  // Captrue Channel Mode
+                ];
+
+                /* reg, rreg, shift, rshift, min, max, mask, invert, value */
+                daiParamsSeqConfig = [
+                    0x45,    0x45,    0,     0,    0x0,   0xFF,    0xFF,   0,     0x0C, // PLL_PREDIV_BIT
+                    0x35,    0x35,    0,     0,    0x0,   0x7,     0x7,    0,     0x2,  // DAC_Sample_rate
+                    0x1e,    0x1e,    0,     0,    0x0,   0x7,     0x7,    0,     0x2,  // ADC_Sample_rate
+                    0x4e,    0x4e,    0,     0,    0x0,   0x17,    0x1F,   0,     0x0F, // TX_datawidth
+                    0x4b,    0x4b,    0,     0,    0x0,   0x17,    0x1F,   0,     0x0F, // RX_datawidth
+                    0x15,    0x15,  0x0,   0x0,    0x0,    0xf,     0xf,   0,     0x0,  // rx clk enable
+                    0x15,    0x15,  0x4,   0x4,    0x0,    0xf,     0xf,   0,     0x0,  // tx clk enable
+                ];
+
+                ctrlSapmParamsSeqConfig = [
+                    0x27,    0x27,    5,     5,    0x00,    0x1,    0x1,    1,    0x00,     //LPGA MIC  -- connect MIC1
+                    0x27,    0x27,    4,     4,    0x00,    0x1,    0x1,    1,    0x00,     //RPGA MIC  -- connect MIC2
+                    0x2F,    0x2F,    2,     2,    0x00,    0x1,    0x1,    1,    0x00,     //Speaker1 Switch -- connect speaker
+                    0x2F,    0x2F,    1,     1,    0x00,    0x1,    0x1,    1,    0x00,     //Headphone1 Switch -- connect hpl
+                    0x2F,    0x2F,    0,     0,    0x00,    0x1,    0x1,    1,    0x00,     //Headphone2 Switch -- connect hpr
+                ];
+                /*
+                 reg is 0xFFFF: component has no sapm register bit
+                 sapmType, compNameIndex, reg, mask, shift, invert, kcontrolNews, kcontrolsNum
+                */
+                sapmComponent = [
+                    10,      0,       0x18,       0x1,     7,     1,     0,     0,  //ADCL
+                    10,      1,       0x18,       0x1,     6,     1,     0,     0,  //ADCR
+                    11,     32,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //DAC1
+                    11,     33,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //DAC2
+                    11,     34,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //DAC3
+                    6,      52,     0xFFFF,    0xFFFF,     0,     0,     3,     1,  //SPKL PGA
+                    6,      54,     0xFFFF,    0xFFFF,     0,     0,     4,     1,  //HPL PGA
+                    6,      55,     0xFFFF,    0xFFFF,     0,     0,     5,     1,  //HPR PGA
+                    15,      6,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //SPK
+                    14,     10,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //HPL
+                    14,     11,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //HPR
+                    6,       4,     0xFFFF,    0xFFFF,     6,     0,     1,     1,  //LPGA
+                    6,       5,     0xFFFF,    0xFFFF,     6,     0,     2,     1,  //RPGA
+                    13,     40,     0xFFFF,    0xFFFF,     6,     0,     0,     0,  //MIC1
+                    13,     41,       0x4d,       0x1,     1,     0,     0,     0   //MIC2
+                ];
+
+                /*array index, iface, mixer/mux, enable*/
+                sapmConfig = [
+                    0,     2,    0,    1,
+                    1,     2,    0,    1,
+                    24,    2,    0,    1,
+                    28,    2,    0,    1,
+                    29,    2,    0,    1
+                ];
+            }
+        }
+        controller_0x120c1031 :: codec_controller {
+            match_attr = "hdf_codec_driver_1";
+            serviceName = "codec_service_1";
+            codecDaiName = "hdmi_codec_dai";
+
+            hwInfo = [
+                /*
+                    Playback/Captrue, formats, rates, rate_min, rate_max, channels_min, channels_max,
+                    buffer_bytes_max, period_bytes_min, period_bytes_max, periods_min, periods_max
+                */
+                1, 0xF, 0xFF, 8000, 96000, 1, 2, 1, 2, 3, 4, 5
+            ];
+
+            regConfig {
+                /* reg: register address
+                    rreg: register address
+                    shift: shift bits
+                    rshift: rshift bits
+                    min: min value
+                    max: max value
+                    mask: mask of value
+                    invert: enum InvertVal 0-uninvert 1-invert
+                    value: value
+                */
+
+            initSeqConfig = [
+                /* reg, value */
+                0x13,    0xf4,
+            ];
+
+            controlsConfig = [
+                /* array index, iface, mixer/mux, enable */
+                0,  2,  0,  1,
+                1,  2,  0,  1,
+                2,  2,  0,  1,
+                3,  2,  0,  1,
+                4,  2,  0,  1,
+                5,  2,  0,  1,
+                8,  2,  0,  1,
+                9,  2,  0,  1,
+            ];
+
+            ctrlParamsSeqConfig = [
+                /* reg, rreg, shift, rshift, min, max, mask, invert, value */
+                0x31,    0x32,    0,    0,    0x00,    0xFF,   0xFF,   1,    0x00, // DACL/R Playback Volume
+                0x1a,    0x1b,    0,    0,    0x00,    0xFF,   0xFF,   1,    0x00, // ADCL/R Capture Volume
+                0x38,    0x38,    0,    0,    0x0,     0x1,    0x1,    0,    0x0,  // DAC Playback Mute
+                0x27,    0x27,    6,    6,    0x0,     0x1,    0x1,    0,    0x0,  // ADCL/R Capture Mute
+                0x29,    0x29,    4,    4,    0x0,     0xF,    0xF,    0,    0x9,  // Mic Left Gain
+                0x29,    0x29,    0,    0,    0x0,     0xF,    0xF,    0,    0x9,  // Mic Right Gain
+                0x4a,    0x4a,    2,    2,    0x0,     0x2,    0x3,    0,    0x0,  // Render Channel Mode
+                0x4d,    0x4d,    2,    2,    0x0,     0x2,    0x3,    0,    0x0,  // Captrue Channel Mode
+            ];
+
+            daiParamsSeqConfig = [
+                /* reg, rreg, shift, rshift, min, max, mask, invert, value */
+                0x45,    0x45,    0,     0,    0x0,   0xFF,    0xFF,   0,     0x0C, // PLL_PREDIV_BIT
+                0x35,    0x35,    0,     0,    0x0,   0x7,     0x7,    0,     0x2,  // DAC_Sample_rate
+                0x1e,    0x1e,    0,     0,    0x0,   0x7,     0x7,    0,     0x2,  // ADC_Sample_rate
+                0x4e,    0x4e,    0,     0,    0x0,   0x17,    0x1F,   0,     0x0F, // TX_datawidth
+                0x4b,    0x4b,    0,     0,    0x0,   0x17,    0x1F,   0,     0x0F, // RX_datawidth
+                0x15,    0x15,  0x0,   0x0,    0x0,    0xf,     0xf,   0,     0x0,  // rx clk enable
+                0x15,    0x15,  0x4,   0x4,    0x0,    0xf,     0xf,   0,     0x0,  // tx clk enable
+            ];
+
+            ctrlSapmParamsSeqConfig = [
+            /* reg, rreg, shift, rshift, min, max, mask, invert, value */
+                0x27,    0x27,    5,     5,    0x00,    0x1,    0x1,    1,    0x00,     //LPGA MIC  -- connect MIC1
+                0x27,    0x27,    4,     4,    0x00,    0x1,    0x1,    1,    0x00,     //RPGA MIC  -- connect MIC2
+                0x2F,    0x2F,    2,     2,    0x00,    0x1,    0x1,    1,    0x00,     //Speaker1 Switch -- connect speaker
+                0x2F,    0x2F,    1,     1,    0x00,    0x1,    0x1,    1,    0x00,     //Headphone1 Switch -- connect hpl
+                0x2F,    0x2F,    0,     0,    0x00,    0x1,    0x1,    1,    0x00,     //Headphone2 Switch -- connect hpr
+            ];
+
+            /*
+             reg is 0xFFFF: component has no sapm register bit
+             sapmType, compNameIndex, reg, mask, shift, invert, kcontrolNews, kcontrolsNum
+            */
+            sapmComponent = [
+                10,      0,       0x18,       0x1,     7,     1,     0,     0,  //ADCL
+                10,      1,       0x18,       0x1,     6,     1,     0,     0,  //ADCR
+                11,     32,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //DAC1
+                11,     33,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //DAC2
+                11,     34,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //DAC3
+                6,      52,     0xFFFF,    0xFFFF,     0,     0,     3,     1,  //SPKL PGA
+                6,      54,     0xFFFF,    0xFFFF,     0,     0,     4,     1,  //HPL PGA
+                6,      55,     0xFFFF,    0xFFFF,     0,     0,     5,     1,  //HPR PGA
+                15,      6,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //SPK
+                14,     10,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //HPL
+                14,     11,     0xFFFF,    0xFFFF,     0,     0,     0,     0,  //HPR
+                6,       4,     0xFFFF,    0xFFFF,     6,     0,     1,     1,  //LPGA
+                6,       5,     0xFFFF,    0xFFFF,     6,     0,     2,     1,  //RPGA
+                13,     40,     0xFFFF,    0xFFFF,     6,     0,     0,     0,  //MIC1
+                13,     41,       0x4d,       0x1,     1,     0,     0,     0   //MIC2
+            ];
+
+            sapmConfig = [
+                /* array index, iface, mixer/mux, enable */
+                0,     2,    0,    1,
+                1,     2,    0,    1,
+                24,    2,    0,    1,
+                28,    2,    0,    1,
+                29,    2,    0,    1
+            ];
+            }
+        }
+    }
+}

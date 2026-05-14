@@ -1,0 +1,62 @@
+root {
+    platform {
+        template dma_controller {
+            match_attr = "";
+            serviceName = "";
+        }
+        controller_0x120c1010 :: dma_controller {
+            match_attr = "hdf_dma_driver";
+            serviceName = "dma_service_0";
+            
+            idInfo {
+                chipName = "/i2s@fe410000";
+                chipIdRegister = 0xfe410000;
+                chipIdSize = 0x1000;
+            }
+            regConfig {
+                 /*  reg: register address
+                     rreg: register address
+                     shift: shift bits
+                     rshift: rshift bits
+                     min: min value
+                     max: max value
+                     mask: mask of value
+                     invert: enum InvertVal 0-uninvert 1-invert
+                     value: value
+            
+                     reg, rreg, shift, rshift, min, max, mask, invert value
+                 */
+                 daiStartupSeqConfig = [
+                     0x00,    0x00,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x0,   //Transmit Operation Init
+                 ];
+              }
+        }
+        controller_0x120c1011 :: dma_controller {
+            match_attr = "hdf_hdmi_dma_driver";
+            serviceName = "hdmi_dma_service_0";
+            
+            idInfo {
+                chipName = "/i2s@fe400000";
+                chipIdRegister = 0xfe400000;
+                chipIdSize = 0x1000;
+            }
+            regConfig {
+                /*  reg: register address
+                    rreg: register address
+                    shift: shift bits
+                    rshift: rshift bits
+                    min: min value
+                    max: max value
+                    mask: mask of value
+                    invert: enum InvertVal 0-uninvert 1-invert
+                    value: value
+
+                    reg, rreg, shift, rshift, min, max, mask, invert value
+                */
+                daiStartupSeqConfig = [
+                    0x00,    0x00,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x0,   //Transmit Operation Init
+                ];
+            }
+        }
+    }
+}
