@@ -34,6 +34,10 @@
           "features": []
         },
         {
+          "component": "expat",
+          "features": []
+        },
+        {
           "component": "alsa-lib",
           "features": []
         },
@@ -43,6 +47,10 @@
         },
         {
           "component": "pcre2",
+          "features": []
+        },
+        {
+          "component": "vma",
           "features": []
         }
       ]
