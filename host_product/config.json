@@ -50,6 +50,12 @@
           "features": []
         }
       ]
+    },
+    {
+      "subsystem": "hiviewdfx",
+      "components": [
+        { "component": "hilog", "features":[] }
+      ]
     }
   ]
 }
