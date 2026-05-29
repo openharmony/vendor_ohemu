@@ -41,6 +41,15 @@
           "features": []
         }
       ]
+    },
+    {
+      "subsystem": "thirdparty",
+      "components": [
+        {
+          "component": "vixl",
+          "features": []
+        }
+      ]
     }
   ]
 }
