@@ -9,6 +9,7 @@
     "enable_ramdisk": true,
     "support_jsapi": false,
     "device_build_path": "device/qemu/arm_virt/linux",
+    "build_out_path": "out/qemu-arm-linux-min",
     "subsystems": [
       {
         "subsystem": "build",

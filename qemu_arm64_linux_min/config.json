@@ -9,6 +9,7 @@
     "enable_ramdisk": true,
     "support_jsapi": false,
     "device_build_path": "device/qemu/arm_virt/linux",
+    "build_out_path": "out/qemu-arm64-linux-min",
     "subsystems": [
       {
         "subsystem": "build",
@@ -17,10 +18,30 @@
         ]
       },
       {
+        "subsystem": "thirdparty",
+        "components": [
+          { "component": "lzma", "features":[] },
+          { "component": "libunwind", "features":[] },
+          { "component": "libuv", "features":[] },
+          { "component": "sqlite", "features":[] },
+          { "component": "libusb", "features":[] },
+          { "component": "protobuf", "features":[] },
+          { "component": "abseil-cpp", "features":[] },
+          { "component": "pcre2", "features":[] },
+          { "component": "astc-encoder", "features":[] },
+          { "component": "rust_libc", "features":[] },
+          { "component": "rust_cxx", "features":[] },
+          { "component": "rust_bindgen", "features":[] },
+          { "component": "optimized_routines", "features":[] },
+          { "component": "mksh", "features":[] },
+          { "component": "typescript", "features":[] },
+          { "component": "rust_rust-openssl", "features":[] }
+        ]
+      },
+      {
         "subsystem": "startup",
         "components": [
-          { "component": "startup_l2", "features":[] },
-          { "component": "init", "features":[] }
+          { "component": "init", "features":[ "init_appspawn_client_module=false" ] }
         ]
       },
       {
@@ -34,9 +55,15 @@
         ]
       },
       {
+        "subsystem": "customization",
+        "components": [
+          { "component": "config_policy", "features":[] }
+        ]
+      },
+      {
         "subsystem": "distributedhardware",
         "components": [
-          { "component": "device_manager", "features": [] }
+          { "component": "device_manager", "features": [ "device_manager_capability=false" ] }
         ]
       },
       {
@@ -44,13 +71,16 @@
         "components": [
           { "component": "device_auth", "features":[] },
           { "component": "access_token", "features":[] },
-          { "component": "huks", "features": [] }
+          { "component": "huks", "features": [ "huks_qemu_enabled = true" ] },
+          { "component": "dataclassification", "features":[] },
+          { "component": "device_security_level", "features":[] }
         ]
       },
       {
         "subsystem": "commonlibrary",
         "components": [
-          { "component": "c_utils", "features": [] }
+          { "component": "c_utils", "features": [] },
+          { "component": "ylong_runtime", "features": [] }
         ]
       },
       {
@@ -81,12 +111,18 @@
       },
       {
         "subsystem": "securec",
+        "components": []
+      },
+      {
+        "subsystem": "resourceschedule",
         "components": [
-          { "component": "thirdparty_bounds_checking_function", "features":[] }
+          { "component": "ffrt", "features":[] },
+          { "component": "frame_aware_sched", "features":[] },
+          { "component": "qos_manager", "features":[] }
         ]
       },
       {
-        "subsystem": "device_arm_virt",
+        "subsystem": "device_qemu-arm-linux",
         "components": [
           { "component": "qemu_arm_linux_chipset", "features":[] }
         ]
@@ -95,6 +131,15 @@
         "subsystem": "ability",
         "components": [
           { "component": "idl_tool", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hdf",
+        "components": [
+          { "component": "drivers_interface_bluetooth", "features":[] },
+          { "component": "drivers_interface_usb", "features":[] },
+          { "component": "drivers_peripheral_usb", "features":[] },
+          { "component": "hdf_core", "features":[] }
         ]
       }
     ]
