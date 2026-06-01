@@ -8,7 +8,6 @@
     "target_os": "ohos",
     "enable_ramdisk": true,
     "device_build_path": "device/qemu/arm_virt/linux",
-    "build_out_path": "out/qemu-arm-linux-headless",
     "subsystems": [
       {
         "subsystem": "build",
