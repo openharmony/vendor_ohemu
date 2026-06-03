@@ -5,6 +5,7 @@
   "compile_mode": "host",
   "host_target_os": "linux",
   "host_target_cpu": "x86_64",
+  "support_jsapi": false,
   "subsystems": [
     {
       "subsystem": "build",
@@ -43,10 +44,84 @@
       ]
     },
     {
+      "subsystem": "arkcompiler",
+      "components": [
+        {
+          "component": "ets_runtime",
+          "features": [],
+          "prune_deps": {
+            "components": [
+              "ability_base",
+              "faultloggerd",
+              "init",
+              "hitrace",
+              "hisysevent",
+              "qos_manager",
+              "code_signature",
+              "access_token",
+              "eventhandler",
+              "ipc",
+              "safwk",
+              "samgr",
+              "common_event_service",
+              "ffrt",
+              "cJSON",
+              "hiview"
+            ]
+          }
+        },
+        {
+          "component": "ets_frontend",
+          "features": []
+        }
+      ]
+    },
+    {
+      "subsystem": "arkui",
+      "components": [
+        {
+          "component": "napi",
+          "features": []
+        }
+      ]
+    },
+    {
       "subsystem": "thirdparty",
       "components": [
         {
+          "component": "abseil-cpp",
+          "features": []
+        },
+        {
+          "component": "flatbuffers",
+          "features": []
+        },
+        {
+          "component": "icu",
+          "features": []
+        },
+        {
+          "component": "json",
+          "features": []
+        },
+        {
+          "component": "libuv",
+          "features": []
+        },
+        {
+          "component": "protobuf",
+          "features": []
+        },
+        {
+          "component": "typescript",
+          "features": []
+        },
+        {
           "component": "vixl",
+          "features": []
+        },
+        {
+          "component": "zlib",
           "features": []
         }
       ]
