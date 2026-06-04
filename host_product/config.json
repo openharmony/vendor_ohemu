@@ -13,10 +13,7 @@
           "component": "build_framework",
           "features": [],
           "prune_deps": {
-            "components": [
-              "selinux",
-              "selinux_adapter"
-            ],
+            "components": ["selinux", "selinux_adapter"],
             "sub_component": [
               "//third_party/f2fs-tools:f2fs-tools_host_toolchain"
             ]
@@ -118,9 +115,11 @@
     },
     {
       "subsystem": "hiviewdfx",
-      "components": [
-        { "component": "hilog", "features":[] }
-      ]
+      "components": [{ "component": "hilog", "features": [] }]
+    },
+    {
+      "subsystem": "arkui",
+      "components": [{ "component": "ace_engine", "features": [] }]
     }
   ]
 }
