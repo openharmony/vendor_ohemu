@@ -5,6 +5,7 @@
   "compile_mode": "host",
   "host_target_os": "linux",
   "host_target_cpu": "x86_64",
+  "support_jsapi": false,
   "subsystems": [
     {
       "subsystem": "build",
@@ -68,6 +69,15 @@
         },
         {
           "component": "ets_frontend",
+          "features": []
+        }
+      ]
+    },
+    {
+      "subsystem": "arkui",
+      "components": [
+        {
+          "component": "napi",
           "features": []
         }
       ]
