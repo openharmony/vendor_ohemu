@@ -18,7 +18,7 @@ qemu_setup_network=""
 qemu_instance_id=""
 img_copy_option="-n"
 
-kernel_bootargs="console=ttyAMA0,115200 init=/bin/init hardware=qemu.arm.linux default_boot_device=a003e00.virtio_mmio root=/dev/ram0 rw ohos.required_mount.system=/dev/block/vdb@/usr@ext4@ro,barrier=1@wait,required ohos.required_mount.vendor=/dev/block/vdc@/vendor@ext4@ro,barrier=1@wait,required"
+kernel_bootargs="console=ttyAMA0,115200 ip=dhcp ipv6.disable=1 init=/bin/init hardware=qemu.arm.linux default_boot_device=a003e00.virtio_mmio root=/dev/ram0 rw ohos.required_mount.system=/dev/block/vdb@/usr@ext4@ro,barrier=1@wait,required ohos.required_mount.vendor=/dev/block/vdc@/vendor@ext4@ro,barrier=1@wait,required"
 
 elf_file="out/qemu-arm-linux/packages/phone/images"
 if [ -f "${PWD}/ramdisk.img" ]; then
@@ -30,17 +30,16 @@ Usage: qemu-run [OPTION]...
 Run a OHOS image in qemu according to the options.
     -e,  --exec image_path    images path, including: zImage-dtb, ramdisk.img, system.img, vendor.img, userdata.img
     -g,  --gdb                enable gdb for kernel.
-    -n,  --network            auto setup network for qemu (sudo required).
+    -n,  --network            enable QEMU user-mode NAT network.
     -i,  --instance id        start qemu images with specified instance id (from 01 to 99).
                               it will also setup network when running in multiple instance mode.
-         -f                   force override instance image with a new copy.
+    -f                        force override instance image with a new copy.
     -h,  --help               print this help info.
 
     If no image_path specified, it will find OHOS image in current working directory; then try ${elf_file}.
 
-    When setting up network, it will create br0 on the host PC with the following information:
-        IP address: 192.168.100.1
-        netmask: 255.255.255.0
+    When setting up network, it will use QEMU user-mode NAT.
+        HDC TCP port is forwarded from host 127.0.0.1:5555 to guest :5555.
 
     The default qemu device MAC address is [00:22:33:44:55:66], default serial number is [0023456789].
     When running in multiple instances mode, the MAC address and serial number will increase with specified instance ID as follow:
@@ -86,24 +85,8 @@ function parameter_verification()
 
 function qemu_network()
 {
-    ifconfig br0 > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        qemu_install_path=`which qemu-system-arm`
-        qemu_install_path=`dirname ${qemu_install_path}`
-        qemu_install_path=${qemu_install_path}/../etc/qemu
-        [ ! -d ${qemu_install_path} ] && sudo mkdir -p ${qemu_install_path}
-        echo 'allow br0' | sudo tee -a ${qemu_install_path}/bridge.conf
-        [ ! -d /etc/qemu ] && sudo mkdir -p /etc/qemu
-        echo 'allow br0' | sudo tee -a /etc/qemu/bridge.conf
-        sudo modprobe tun tap
-        sudo ip link add br0 type bridge
-        sudo ip address add 192.168.100.1/24 dev br0
-        sudo ip link set dev br0 up
-    fi
-
-    [ x"${qemu_instance_id}" != x ] && qemu_option_add "-netdev bridge,id=net0 -device virtio-net-device,netdev=net0,mac=${qemu_instance_id}:22:33:44:55:66"
-    [ x"${qemu_instance_id}" == x ] && qemu_option_add "-netdev bridge,id=net0 -device virtio-net-device,netdev=net0,mac=00:22:33:44:55:66"
-    qemu_option_add "-no-user-config"
+    [ x"${qemu_instance_id}" != x ] && qemu_option_add "-netdev user,id=net0,hostfwd=tcp::5555-:5555 -device virtio-net-device,netdev=net0,mac=${qemu_instance_id}:22:33:44:55:66"
+    [ x"${qemu_instance_id}" == x ] && qemu_option_add "-netdev user,id=net0,hostfwd=tcp::5555-:5555 -device virtio-net-device,netdev=net0,mac=00:22:33:44:55:66"
 }
 
 function copy_img()
@@ -164,8 +147,8 @@ qemu_option_add "-drive if=none,file=$elf_file/system${qemu_instance_id}.img,for
 qemu_option_add "-drive if=none,file=$elf_file/updater${qemu_instance_id}.img,format=raw,id=updater,index=0 -device virtio-blk-device,drive=updater"
 qemu_option_add "-kernel $elf_file/zImage-dtb -initrd $elf_file/ramdisk.img"
 
-# Setup network need sudo
-[ x"${qemu_setup_network}" != x ] && sudo qemu-system-arm ${qemu_option} -append "${kernel_bootargs}"
+echo ${qemu_option}
+echo "----------------"
+echo ${kernel_bootargs}
 
-# start without sudo if no need to setup network
-[ x"${qemu_setup_network}" == x ] && qemu-system-arm ${qemu_option} -append "${kernel_bootargs}"
+qemu-system-arm ${qemu_option} -append "${kernel_bootargs}"
