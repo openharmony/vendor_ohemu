@@ -348,7 +348,7 @@
             priority = 40;
             processPriority = -8;
             threadPriority = 1;
-            caps = ["SYS_NICE"];
+            caps = ["SYS_NICE", "SYS_ADMIN"];
             uid = ["composer_host"];
             gid = ["composer_host", "graphics", "vendor_mpp_driver"];
 	        composer_device :: device {

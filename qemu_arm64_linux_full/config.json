@@ -107,6 +107,10 @@
         {
           "component": "drivers_interface_bluetooth",
           "features": []
+        },
+        {
+          "component": "drivers_devhost",
+          "features": []
         }
       ]
     },
@@ -116,6 +120,15 @@
         {
           "component": "tee_client",
           "features": []
+        }
+      ]
+    },
+    {
+      "subsystem": "security",
+      "components": [
+        {
+          "component": "selinux_adapter",
+          "features": [ "selinux_adapter_enforce=false" ]
         }
       ]
     }
