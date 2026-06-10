@@ -1,0 +1,8 @@
+import("//build/ohos.gni")
+
+ohos_prebuilt_etc("power_mode_config") {
+  source = "../../virt/power_config/power_mode_config.xml"
+  subsystem_name = "product_x86_64_virt"
+  relative_install_dir = "power_config"
+  part_name = "product_x86_64_virt"
+}
