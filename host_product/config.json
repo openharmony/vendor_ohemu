@@ -33,16 +33,7 @@
     },
     {
       "subsystem": "distributeddatamgr",
-      "components": [	 
-        { 
-          "component": "relational_store", 
-          "features": [] 
-        }, 
-        { 
-          "component": "kv_store", 
-          "features": [] 
-        } 
-      ]
+      "components": []
     },
     {
       "subsystem": "commonlibrary",
