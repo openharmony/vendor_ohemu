@@ -1,22 +1,22 @@
 {
-  "product_name": "arm64_virt",
+  "product_name": "x86_64_virt",
   "device_company": "qemu",
-  "device_build_path": "device/qemu/arm_virt/linux_full",
-  "target_cpu": "arm64",
+  "device_build_path": "device/qemu/x86_64_virt/linux_full",
+  "target_cpu": "x86_64",
   "type": "standard",
   "version": "3.0",
-  "board": "arm64_virt",
+  "board": "x86_64_virt",
   "api_version": 8,
   "enable_ramdisk": true,
   "enable_absystem": false,
   "ext_sanitizer_check_list_path": "vendor/ohemu/virt/security_config/sanitizer_check_list.gni",
   "build_selinux": true,
   "build_seccomp": true,
-  "inherit": [ 
-     "productdefine/common/inherit/rich.json",
-     "productdefine/common/inherit/chipset_common.json",
-     "vendor/ohemu/virt/virt_common.json"
-   ],
+  "inherit": [
+    "productdefine/common/inherit/rich.json",
+    "productdefine/common/inherit/chipset_common.json",
+    "vendor/ohemu/virt/virt_common_x86_64.json"
+  ],
   "subsystems": [
     {
       "subsystem": "thirdparty",
@@ -136,7 +136,9 @@
       "components": [
         {
           "component": "selinux_adapter",
-          "features": [ "selinux_adapter_enforce=false" ]
+          "features": [
+            "selinux_adapter_enforce=false"
+          ]
         }
       ]
     }
