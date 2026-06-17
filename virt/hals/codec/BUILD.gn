@@ -14,7 +14,7 @@
 import("//build/ohos.gni")
 import("//drivers/hdf_core/adapter/uhdf2/uhdf.gni")
 import("$hdf_framework_path/tools/hc-gen/hc_gen.gni")
-virt_subsystem_name = "device_arm64_virt"
+import("//device/qemu/common/virt_full/device.gni")
 
 hc_gen("build_codec_adapter_capabilities") {
   sources = [ rebase_path(
@@ -28,7 +28,7 @@ ohos_prebuilt_etc("codec_adapter_capabilities.hcb") {
   relative_install_dir = "hdfconfig"
   install_images = [ chipset_base_dir ]
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 group("hdf_codec_config") {

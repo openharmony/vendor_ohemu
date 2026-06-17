@@ -17,10 +17,13 @@ set -euo pipefail
 
 OHOS_IMG="${OHOS_IMG:-out/x86_64_virt/packages/phone/images}"
 DISPLAY_TYPE="${QEMU_DISPLAY:-gtk}"
-ACCEL="tcg"
 
 if [ -e /dev/kvm ] && [ -r /dev/kvm ]; then
-    ACCEL="kvm"
+    MACHINE="q35,accel=kvm"
+    ACCEL_ARGS=""
+else
+    MACHINE="q35"
+    ACCEL_ARGS="-accel tcg,thread=multi"  # 多线程TCG可提升性能
 fi
 
 case "${DISPLAY_TYPE}" in
@@ -32,7 +35,7 @@ case "${DISPLAY_TYPE}" in
         ;;
     vnc)
         DISPLAY_ARGS=(
-            -device virtio-gpu-pci
+            -device virtio-gpu-pci,xres=800,yres=500
             -vnc :21
             -serial stdio
         )
@@ -53,10 +56,11 @@ case "${DISPLAY_TYPE}" in
         ;;
 esac
 
-KERNEL_BOOTARGS="console=ttyS0,115200 init=/bin/init hardware=qemu.x86_64.linux root=/dev/ram0 rw ohos.boot.hardware=virt ohos.required_mount.system=/dev/block/vdc@/usr@ext4@ro,barrier=1@wait,required ohos.required_mount.vendor=/dev/block/vdd@/vendor@ext4@ro,barrier=1@wait,required ohos.required_mount.sys_prod=/dev/block/vde@/sys_prod@ext4@rw,barrier=1@wait,required ohos.required_mount.chip_prod=/dev/block/vdf@/chip_prod@ext4@rw,barrier=1@wait,required ohos.required_mount.data=/dev/block/vdb@/data@ext4@nosuid,nodev,noatime,barrier=1,data=ordered,noauto_da_alloc@wait,reservedsize=104857600"
+KERNEL_BOOTARGS="console=ttyS0,115200 sn=0023456789 init=/bin/init hardware=virt root=/dev/ram0 rw ip=dhcp ohos.boot.hardware=virt ohos.required_mount.system=/dev/block/vdb@/usr@ext4@ro,barrier=1@wait,required ohos.required_mount.vendor=/dev/block/vdc@/vendor@ext4@ro,barrier=1@wait,required ohos.required_mount.sys_prod=/dev/block/vdd@/sys_prod@ext4@rw,barrier=1@wait,required ohos.required_mount.chip_prod=/dev/block/vde@/chip_prod@ext4@rw,barrier=1@wait,required ohos.required_mount.data=/dev/block/vdf@/data@ext4@nosuid,nodev,noatime,barrier=1,data=ordered,noauto_da_alloc@wait,reservedsize=104857600"
 
 exec qemu-system-x86_64 \
-    -machine q35,accel="${ACCEL}" \
+    -machine "${MACHINE}" \
+    ${ACCEL_ARGS:-} \
     -cpu max \
     -smp 4 \
     -m 4096 \

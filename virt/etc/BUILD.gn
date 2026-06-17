@@ -12,13 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-
-virt_subsystem_name = "device_arm64_virt"
-virt_part_name = "qemu_virt_full"
-if (target_cpu == "x86_64") {
-  virt_subsystem_name = "device_x86_64_virt"
-  virt_part_name = "qemu_virt_full_x86_64"
-}
+import("//device/qemu/common/virt_full/device.gni")
 
 ohos_prebuilt_etc("para_for_chip_prod") {
   source = "./param/hardware_virt.para"

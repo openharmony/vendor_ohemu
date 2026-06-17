@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-virt_subsystem_name = "device_arm64_virt"
+import("//device/qemu/common/virt_full/device.gni")
 
 ohos_prebuilt_etc("hdf_audio_effect_json") {
   source = "audio_effect.json"
@@ -20,7 +20,7 @@ ohos_prebuilt_etc("hdf_audio_effect_json") {
   relative_install_dir = "hdfconfig"
   install_images = [chip_prod_base_dir ]
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("hdf_audio_path_json") {
@@ -28,7 +28,7 @@ ohos_prebuilt_etc("hdf_audio_path_json") {
   relative_install_dir = "hdfconfig"
   install_images = [ chipset_base_dir ]
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("hdf_audio_adapter_json") {
@@ -36,7 +36,7 @@ ohos_prebuilt_etc("hdf_audio_adapter_json") {
   relative_install_dir = "hdfconfig"
   install_images = [ chipset_base_dir ]
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("audio_policy_config") {
@@ -48,7 +48,7 @@ ohos_prebuilt_etc("audio_policy_config") {
   subsystem_name = virt_subsystem_name
   relative_install_dir = "audio"
   install_images = [ chipset_base_dir ]
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("hdf_alsa_adapter_json") {
@@ -56,7 +56,7 @@ ohos_prebuilt_etc("hdf_alsa_adapter_json") {
   subsystem_name = virt_subsystem_name
   relative_install_dir = "hdfconfig"
   install_images = [ chipset_base_dir ]
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("hdf_alsa_paths_json") {
@@ -64,7 +64,7 @@ ohos_prebuilt_etc("hdf_alsa_paths_json") {
   relative_install_dir = "hdfconfig"
   install_images = [ chipset_base_dir ]
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("audio_policy_config_new") {
@@ -73,7 +73,7 @@ ohos_prebuilt_etc("audio_policy_config_new") {
   output = "audio_policy_config.xml"
   install_images = [ chip_prod_base_dir ]
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 group("hdf_audio_config") {

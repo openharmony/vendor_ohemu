@@ -12,17 +12,17 @@
 # limitations under the License.
 
 import("//drivers/hdf_core/adapter/uhdf2/hcs/hcs.gni")
-virt_subsystem_name = "device_arm64_virt"
+import("//device/qemu/common/virt_full/device.gni")
 
 hdf_hcb("hdf_default.hcb") {
   source = "./hdf.hcs"
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
   subsystem_name = virt_subsystem_name
 }
 
 hdf_cfg("hdf_devhost.cfg") {
   source = "./hdf.hcs"
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
   subsystem_name = virt_subsystem_name
 }
 

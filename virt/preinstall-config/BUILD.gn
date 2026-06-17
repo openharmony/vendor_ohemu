@@ -12,34 +12,34 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-virt_subsystem_name = "device_arm64_virt"
+import("//device/qemu/common/virt_full/device.gni")
 
 ohos_prebuilt_etc("install_list_config") {
   source = "./install_list.json"
   relative_install_dir = "app"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("uninstall_list_config") {
   source = "./uninstall_list.json"
   relative_install_dir = "app"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("install_list_capability_config") {
   source = "./install_list_capability.json"
   relative_install_dir = "app"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("install_list_permissions_config") {
   source = "./install_list_permissions.json"
   relative_install_dir = "app"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 group("preinstall-config") {

@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-virt_subsystem_name = "device_arm64_virt"
+import("//device/qemu/common/virt_full/device.gni")
 
 ohos_prebuilt_etc("res_sched_config") {
   source = "./ressched/res_sched_config.xml"
@@ -20,7 +20,7 @@ ohos_prebuilt_etc("res_sched_config") {
   install_images = [ chipset_base_dir ]
   module_install_dir = "etc/ressched"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("res_sched_plugin_switch") {
@@ -29,7 +29,7 @@ ohos_prebuilt_etc("res_sched_plugin_switch") {
   install_images = [ chipset_base_dir ]
   module_install_dir = "etc/ressched"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("cgroup_action_config") {
@@ -38,7 +38,7 @@ ohos_prebuilt_etc("cgroup_action_config") {
   install_images = [ chipset_base_dir ]
   module_install_dir = "etc/cgroup_sched"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("socperf_boost_config") {
@@ -47,7 +47,7 @@ ohos_prebuilt_etc("socperf_boost_config") {
   install_images = [ chipset_base_dir ]
   module_install_dir = "etc/soc_perf"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("socperf_resource_config") {
@@ -56,7 +56,7 @@ ohos_prebuilt_etc("socperf_resource_config") {
   install_images = [ chipset_base_dir ]
   module_install_dir = "etc/soc_perf"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 group("resourceschedule") {
