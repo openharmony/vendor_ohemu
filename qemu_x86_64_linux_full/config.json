@@ -11,7 +11,7 @@
   "enable_absystem": false,
   "ext_sanitizer_check_list_path": "vendor/ohemu/virt/security_config/sanitizer_check_list.gni",
   "build_selinux": true,
-  "build_seccomp": true,
+  "build_seccomp": false,
   "inherit": [
     "productdefine/common/inherit/rich.json",
     "productdefine/common/inherit/chipset_common.json",
@@ -80,6 +80,12 @@
           "component": "ets_runtime",
           "features": [
             "ets_runtime_feature_enable_static_backtrace = false"
+          ]
+        },
+        {
+          "component": "runtime_core",
+          "features": [
+            "runtime_core_enable_codegen = false"
           ]
         }
       ]

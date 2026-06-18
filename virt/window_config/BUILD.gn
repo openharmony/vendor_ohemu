@@ -12,14 +12,14 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-virt_subsystem_name = "device_arm64_virt"
+import("//device/qemu/common/virt_full/device.gni")
 
 ohos_prebuilt_etc("window_manager_config") {
   source = "window_manager_config.xml"
   install_enable = true
   relative_install_dir = "window/resources"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 ohos_prebuilt_etc("display_manager_config") {
@@ -27,7 +27,7 @@ ohos_prebuilt_etc("display_manager_config") {
   install_enable = true
   relative_install_dir = "window/resources"
   subsystem_name = virt_subsystem_name
-  part_name = "qemu_virt_full"
+  part_name = virt_part_name
 }
 
 group("window_config") {
