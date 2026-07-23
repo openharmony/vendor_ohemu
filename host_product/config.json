@@ -128,7 +128,7 @@
     },
     {
       "subsystem": "arkui",
-      "components": [{ "component": "ace_engine", "features": [] }]
+      "components": [{ "component": "ace_engine", "features": [] }, { "component": "idlize", "features": [] }]
     }
   ]
 }
