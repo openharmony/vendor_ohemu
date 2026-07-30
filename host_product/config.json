@@ -41,6 +41,29 @@
       ]
     },
     {
+      "subsystem": "developtools",
+      "components": [
+        {
+          "component": "ace_ets2bundle",
+          "features": [],
+          "prune_deps": {
+            "sub_component": [
+              "//developtools/ace_ets2bundle:ets_loader_component_config",
+              "//developtools/ace_ets2bundle:ets_loader",
+              "//developtools/ace_ets2bundle:ets_loader_library",
+              "//developtools/ace_ets2bundle:components",
+              "//developtools/ace_ets2bundle:server",
+              "//developtools/ace_ets2bundle:codegen",
+              "//developtools/ace_ets2bundle:ets_loader_declaration",
+              "//developtools/ace_ets2bundle:ets_loader_ark_hap",
+              "//developtools/ace_ets2bundle/koala-wrapper:ohos_ets_koala_wrapper(//build/toolchain/linux:clang_x64)",
+              "//developtools/ace_ets2bundle/ets1.2:ohos_ets_libarkts(//build/toolchain/linux:clang_x64)"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "subsystem": "arkcompiler",
       "components": [
         {
@@ -128,7 +151,7 @@
     },
     {
       "subsystem": "arkui",
-      "components": [{ "component": "ace_engine", "features": [] }]
+      "components": [{ "component": "ace_engine", "features": [] }, { "component": "idlize", "features": [] }]
     }
   ]
 }
