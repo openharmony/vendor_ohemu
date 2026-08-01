@@ -32,6 +32,19 @@
       ]
     },
     {
+      "subsystem": "distributeddatamgr",
+      "components": [
+        {
+          "component": "relational_store",
+          "features": []
+        },
+        {
+          "component": "kv_store",
+          "features": []
+        }
+      ]
+    },
+    {
       "subsystem": "commonlibrary",
       "components": [
         {
@@ -141,6 +154,36 @@
         },
         {
           "component": "zlib",
+          "features": []
+        },
+        {
+          "component": "sqlite",
+          "features": [
+            "sqlite_enable_fdsan = false"
+          ]
+        },
+        {
+          "component": "json",
+          "features": []
+        },
+        {
+          "component": "jsoncpp",
+          "features": []
+        },
+        {
+          "component": "cJSON",
+          "features": []
+        },
+        {
+          "component": "openssl",
+          "features": []
+        },
+        {
+          "component": "libxml2",
+          "features": []
+        },
+        {
+          "component": "libuv",
           "features": []
         }
       ]
