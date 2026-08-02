@@ -1,5 +1,6 @@
 @echo off
 setlocal
+set "PYTHONDONTWRITEBYTECODE=1"
 set "SCRIPT_DIR=%~dp0"
 set "PROFILE=%SCRIPT_DIR%qemu_profile.json"
 set "PORTABLE_IMAGES="

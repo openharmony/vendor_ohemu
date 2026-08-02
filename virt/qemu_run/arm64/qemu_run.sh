@@ -4,6 +4,7 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 
 set -e
+export PYTHONDONTWRITEBYTECODE=1
 
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 DEFAULT_ARGS=()

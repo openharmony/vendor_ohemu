@@ -189,6 +189,10 @@ manifest 记录 profile、实例号、镜像根目录和基础盘签名。重新
 
 不要对正在运行的 overlay 执行 `qemu-img rebase`、`commit`、`resize` 或修复操作。
 
+启动器创建 overlay 时使用 64 KiB cluster 并关闭 lazy refcounts。这样即使通过 QEMU 控制台 `Ctrl-A X` 立即退出，已分配数据簇的 refcount 也会同步写入，下一次启动的严格 `qemu-img check` 不会因延迟 refcount 元数据而失败。
+
+升级前创建且仍然一致的 lazy-refcount overlay 会在实例停止状态下自动迁移为关闭；迁移前后都会执行完整一致性检查。已经损坏的 overlay 不会被静默修复，需先备份，再选择人工修复或 `reset` 重建。
+
 ## 9. 默认数据目录
 
 便携镜像包默认不会写入自身目录：

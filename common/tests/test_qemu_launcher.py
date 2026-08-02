@@ -7,9 +7,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-
-COMMON = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(COMMON))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from qemu_launcher_lib import launcher  # noqa: E402
 
