@@ -171,7 +171,7 @@ function start_qemu_monitor() {
     if [ "$kernel_type" = "liteos_m" ]; then
         kill_specified_process qemu_mini_test_
         kill_specified_process qemu-system-
-        ./vendor/ohemu/common/qemu_mini_test_monitor.sh $test_file &
+        ./vendor/ohemu/virt/qemu_run/qemu_mini_test_monitor.sh $test_file &
     fi
 }
 

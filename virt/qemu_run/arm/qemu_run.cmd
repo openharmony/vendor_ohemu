@@ -8,7 +8,7 @@ if exist "%SCRIPT_DIR%qemu_launcher.py" if exist "%SCRIPT_DIR%qemu_launcher_lib\
     set "LAUNCHER=%SCRIPT_DIR%qemu_launcher.py"
     set "PORTABLE_IMAGES=1"
 ) else (
-    set "LAUNCHER=%SCRIPT_DIR%..\..\..\common\qemu_launcher.py"
+    set "LAUNCHER=%SCRIPT_DIR%..\qemu_launcher.py"
 )
 where py >nul 2>nul
 if not errorlevel 1 goto use_py

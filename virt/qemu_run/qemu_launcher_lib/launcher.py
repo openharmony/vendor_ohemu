@@ -131,7 +131,7 @@ def host_os() -> str:
 
 def repo_root_from_launcher() -> Path:
     # .../vendor/ohemu/common/qemu_launcher_lib/launcher.py -> source root
-    return Path(__file__).resolve().parents[4]
+    return Path(__file__).resolve().parents[5]
 
 
 # --- Profile loading and validation ------------------------------------------
@@ -1485,7 +1485,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def strip_legacy_parameter_block(argv: List[str]) -> List[str]:
-    # common/qemu-run historically passes 9+ positional values. The full-product
+    # virt/qemu_run/qemu-run historically passes 9+ positional values. The full-product
     # script ignored them, and the old min scripts only consumed their own flags.
     profile_end = 0
     for index, value in enumerate(argv):

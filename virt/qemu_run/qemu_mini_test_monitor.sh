@@ -14,7 +14,7 @@
 #limitations under the License.
 
 if [ "$1" = "" ]; then
-  echo "vendor/ohemu/common/qemu_mini_test_monitor.sh [log.txt]"
+  echo "vendor/ohemu/virt/qemu_run/qemu_mini_test_monitor.sh [log.txt]"
 fi
 
 test_file=$1

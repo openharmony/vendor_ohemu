@@ -12,7 +12,7 @@ if [[ -f "${SCRIPT_DIR}/qemu_launcher.py" && -f "${SCRIPT_DIR}/qemu_launcher_lib
     LAUNCHER="${SCRIPT_DIR}/qemu_launcher.py"
     DEFAULT_ARGS=(--images "${SCRIPT_DIR}")
 else
-    LAUNCHER="${SCRIPT_DIR}/../../../common/qemu_launcher.py"
+    LAUNCHER="${SCRIPT_DIR}/../qemu_launcher.py"
 fi
 PROFILE="${SCRIPT_DIR}/qemu_profile.json"
 

@@ -24,6 +24,22 @@ if (target_cpu == "x86_64") {
   assert(false, "QEMU launcher does not support target_cpu=${target_cpu}")
 }
 
+copy("qemu_launcher_common_entries") {
+  sources = [
+    "README.md",
+    "qemu_launcher.py",
+  ]
+  outputs = [ "$qemu_image_dir/{{source_file_part}}" ]
+}
+
+copy("qemu_launcher_common_library") {
+  sources = [
+    "qemu_launcher_lib/__init__.py",
+    "qemu_launcher_lib/launcher.py",
+  ]
+  outputs = [ "$qemu_image_dir/qemu_launcher_lib/{{source_file_part}}" ]
+}
+
 copy("qemu_run_product_entries") {
   sources = [
     "$qemu_run_source_dir/qemu_profile.json",
@@ -33,9 +49,16 @@ copy("qemu_run_product_entries") {
   outputs = [ "$qemu_image_dir/{{source_file_part}}" ]
 }
 
+group("qemu_launcher_common") {
+  deps = [
+    ":qemu_launcher_common_entries",
+    ":qemu_launcher_common_library",
+  ]
+}
+
 group("qemu_run_package") {
   deps = [
     ":qemu_run_product_entries",
-    "//vendor/ohemu/common:qemu_launcher_common",
+    ":qemu_launcher_common",
   ]
 }
