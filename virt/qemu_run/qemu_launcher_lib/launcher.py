@@ -924,12 +924,10 @@ def _display_args(display: str, profile: Dict[str, Any], resources: Dict[str, An
     return ["-display", "none"]
 
 
-def _serial_args(args: argparse.Namespace, display: str, run_dir: Path) -> List[str]:
+def _serial_args(args: argparse.Namespace, run_dir: Path) -> List[str]:
     if args.background or args.supervise:
         return ["-chardev", f"file,id=serial0,path={run_dir / 'serial.log'}", "-serial", "chardev:serial0"]
-    if display == "none":
-        return ["-serial", "mon:stdio"]
-    return ["-serial", "stdio"]
+    return ["-serial", "mon:stdio"]
 
 
 def _network_args(args: argparse.Namespace, network: str, profile: Dict[str, Any], resources: Dict[str, Any]) -> List[str]:
@@ -985,7 +983,7 @@ def build_command(
     argv += list(profile.get("common_args", []))
     argv += _display_args(display, profile, resources)
     argv += list(profile.get("input_args", []))
-    argv += _serial_args(args, display, run_dir)
+    argv += _serial_args(args, run_dir)
     argv += _network_args(args, network, profile, resources)
     argv += _drive_args(profile, instance_dir, args)
     argv += _qmp_args(endpoint)
