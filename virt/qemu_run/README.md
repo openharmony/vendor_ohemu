@@ -166,6 +166,19 @@ noVNC 会把 WebSocket 连到 `ws://<网关>/proxy/<端口>/websockify`，经代
 ./qemu_run.sh --help
 ```
 
+### 前台运行与退出（Ctrl-A 转义）
+
+不带 `--background` 的前台运行会把终端接到 QEMU 串口（`-serial mon:stdio`，monitor 与串口复用，终端为 raw 模式）。此时 `Ctrl-C` **不会**退出模拟器（被透传给客户机串口），改用 QEMU 的 `Ctrl-A` 转义序列：
+
+| 按键 | 作用 |
+| --- | --- |
+| `Ctrl-A X` | 退出 QEMU（前台最常用） |
+| `Ctrl-A C` | 在串口与 QEMU monitor 之间切换 |
+| `Ctrl-A H` | 打印全部 `Ctrl-A` 转义帮助 |
+| `Ctrl-A Ctrl-A` | 把 `Ctrl-A` 作为普通字节送给客户机 |
+
+后台运行（`--background`）时串口重定向到文件、QEMU 脱离终端，没有 `Ctrl-A`；改用 `stop` 命令经 QMP 关机即可。
+
 ## 5. 常用选项
 
 | 选项 | 说明 |
