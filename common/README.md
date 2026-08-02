@@ -2,32 +2,7 @@
 
 本文档说明 OpenHarmony QEMU 模拟器镜像包的启动、qcow2 多实例和生命周期管理方法。启动器由产品 profile 驱动，同一套 Python 核心可用于 x86_64、AArch64 和 ARM32 产品；镜像包中附带启动器，解压后即可直接运行，无需额外安装。
 
-## 1. 镜像包内容
-
-可直接运行的镜像目录至少包含：
-
-```text
-bzImage
-ramdisk.img
-updater.img
-system.img
-vendor.img
-sys_prod.img
-chip_prod.img
-userdata.img
-README.md
-qemu_run.sh
-qemu_run.cmd
-qemu_profile.json
-qemu_launcher.py
-qemu_launcher_lib/
-├── __init__.py
-└── launcher.py
-```
-
-发布或移动镜像包时，必须保留 `qemu_launcher_lib` 的目录结构。基础 `.img` 文件由所有实例只读共享；客户机写入保存在独立的 qcow2 overlay 中。
-
-## 2. 宿主机要求
+## 1. 宿主机要求
 
 | 宿主机 | 必需软件 | 推荐硬件加速 | 自动图形选择 |
 | --- | --- | --- | --- |
@@ -39,7 +14,7 @@ qemu_launcher_lib/
 
 启动器会实际探测加速器能否初始化。`auto` 模式下，硬件加速不可用时自动回退到 TCG。QEMU 不在 `PATH` 时使用 `--qemu-dir`，或分别使用 `--qemu-binary` 和 `--qemu-img`。
 
-## 3. 快速开始
+## 2. 快速开始
 
 进入镜像目录（包含 `qemu_run.sh` 与各 `.img` 文件的目录）。
 
@@ -72,6 +47,43 @@ qemu_run.cmd stop --instance 03 --force
 ```
 
 便携入口自动将脚本所在目录作为镜像目录，因此不依赖 OpenHarmony 源码树，也不依赖启动命令的当前工作目录。
+
+## 3. 启动后模拟器的使用方法
+
+模拟器启动后，通过 hdc 命令行或 VNC 图形界面与客户机交互。连接端口由实例号与客户机架构决定（见「实例资源映射」），以下以默认实例 `00`、x86_64 客户机为例；其他实例号或架构的端口在实例资源映射表对应基址上偏移。
+
+### hdc 连接与命令行
+
+`run`/`create` 启动时，启动器默认以 user 网络模式将客户机 5555 端口转发到宿主机 `127.0.0.1:<HDC 端口>`（默认实例 `00` 为 `5555`）。先用 `hdc tconn` 连接，再用 `hdc -t` 指定目标执行命令：
+
+```bash
+# 连接模拟器（默认实例 00 的 HDC 端口为 5555）
+hdc tconn 127.0.0.1:5555
+
+# 进入交互式 shell
+hdc -t 127.0.0.1:5555 shell
+
+# 单次执行命令示例
+hdc -t 127.0.0.1:5555 shell hilog | head
+hdc -t 127.0.0.1:5555 install /path/to/entry-default-signed.hap
+hdc -t 127.0.0.1:5555 file send /local/path /data/local/tmp/
+```
+
+其他实例号或架构的 HDC 端口见「实例资源映射」，例如实例 `03` 的 HDC 端口为 `5558`。
+
+### VNC 图形界面
+
+使用 `--display vnc`（或无桌面场景自动选择 VNC）启动时，QEMU 在 `127.0.0.1:<VNC TCP 端口>` 提供 VNC 服务（默认实例 `00` 为 `5921`，对应 display `:21`）。用任意 VNC 客户端连接：
+
+```bash
+# 显式端口形式
+vncviewer 127.0.0.1::5921
+
+# 或 display 形式（display 21 即端口 5921）
+vncviewer 127.0.0.1:21
+```
+
+VNC 默认仅监听 `127.0.0.1`；远程访问需通过 SSH 端口转发。其他实例号或架构的 VNC 端口见「实例资源映射」。
 
 ## 4. 生命周期命令
 
