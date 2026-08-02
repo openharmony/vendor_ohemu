@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "x86_64_linux_full",
+  "product_name": "x86_64_virt",
+  "guest_arch": "x86_64",
+  "port_slot": 0,
+  "qemu_binaries": ["qemu-system-x86_64"],
+  "minimum_qemu_version": "5.1.0",
+  "default_image_paths": ["out/x86_64_virt/packages/phone/images"],
+  "default_instance_root": "out/x86_64_virt/qemu_instances",
+  "machine_args": ["-machine", "q35"],
+  "cpu": "max",
+  "smp": 4,
+  "memory_mib": 4096,
+  "kernel": "bzImage",
+  "initrd": "ramdisk.img",
+  "common_args": [],
+  "graphics": {
+    "supported": true,
+    "device_args": ["-device", "virtio-gpu-pci"]
+  },
+  "input_args": [
+    "-device", "virtio-mouse-pci",
+    "-device", "virtio-keyboard-pci"
+  ],
+  "network": {"device": "virtio-net-pci"},
+  "drives": [
+    {"id": "updater", "file": "updater.img", "base_format": "raw", "drive_options": ["if=none", "id=updater"], "device": "virtio-blk-pci", "device_options": ["drive=updater", "serial=updater"]},
+    {"id": "system", "file": "system.img", "base_format": "raw", "drive_options": ["if=none", "id=system"], "device": "virtio-blk-pci", "device_options": ["drive=system", "serial=system"]},
+    {"id": "vendor", "file": "vendor.img", "base_format": "raw", "drive_options": ["if=none", "id=vendor"], "device": "virtio-blk-pci", "device_options": ["drive=vendor", "serial=vendor"]},
+    {"id": "sys_prod", "file": "sys_prod.img", "base_format": "raw", "drive_options": ["if=none", "id=sys_prod"], "device": "virtio-blk-pci", "device_options": ["drive=sys_prod", "serial=sys_prod"]},
+    {"id": "chip_prod", "file": "chip_prod.img", "base_format": "raw", "drive_options": ["if=none", "id=chip_prod"], "device": "virtio-blk-pci", "device_options": ["drive=chip_prod", "serial=chip_prod"]},
+    {"id": "userdata", "file": "userdata.img", "base_format": "raw", "drive_options": ["if=none", "id=userdata"], "device": "virtio-blk-pci", "device_options": ["drive=userdata", "serial=userdata"]}
+  ],
+  "bootargs": [
+    "console=ttyS0,115200",
+    "sn=${INSTANCE_SN}",
+    "init=/bin/init",
+    "hardware=virt",
+    "root=/dev/ram0",
+    "rw",
+    "ip=dhcp",
+    "ohos.boot.hardware=virt",
+    "ohos.required_mount.system=/dev/block/vdb@/usr@ext4@ro,barrier=1@wait,required",
+    "ohos.required_mount.vendor=/dev/block/vdc@/vendor@ext4@ro,barrier=1@wait,required",
+    "ohos.required_mount.sys_prod=/dev/block/vdd@/sys_prod@ext4@rw,barrier=1@wait,required",
+    "ohos.required_mount.chip_prod=/dev/block/vde@/chip_prod@ext4@rw,barrier=1@wait,required",
+    "ohos.required_mount.data=/dev/block/vdf@/data@ext4@nosuid,nodev,noatime,barrier=1,data=ordered,noauto_da_alloc@wait,reservedsize=104857600"
+  ]
+}

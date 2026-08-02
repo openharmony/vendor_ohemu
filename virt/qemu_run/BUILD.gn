@@ -1,0 +1,41 @@
+# Copyright (c) 2026 Huawei Device Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+qemu_image_dir = "$root_build_dir/packages/phone/images"
+
+if (target_cpu == "x86_64") {
+  qemu_run_source_dir = "x86_64"
+} else if (target_cpu == "arm64") {
+  qemu_run_source_dir = "arm64"
+} else if (target_cpu == "arm") {
+  qemu_run_source_dir = "arm"
+} else {
+  assert(false, "QEMU launcher does not support target_cpu=${target_cpu}")
+}
+
+copy("qemu_run_product_entries") {
+  sources = [
+    "$qemu_run_source_dir/qemu_profile.json",
+    "$qemu_run_source_dir/qemu_run.cmd",
+    "$qemu_run_source_dir/qemu_run.sh",
+  ]
+  outputs = [ "$qemu_image_dir/{{source_file_part}}" ]
+}
+
+group("qemu_run_package") {
+  deps = [
+    ":qemu_run_product_entries",
+    "//vendor/ohemu/common:qemu_launcher_common",
+  ]
+}

@@ -16,13 +16,14 @@ import("//build/ohos.gni")
 group("virtconfig_group") {
   deps = [
     "default_app_config:default_app_config",
-    "image_conf:custom_image_conf",
-    "preinstall-config:preinstall-config",
-    "resourceschedule:resourceschedule",
     "etc:product_etc_conf",
-    "window_config:window_config",
     "hals/audio:hdf_audio_config",
     "hals/codec:hdf_codec_config",
     "hdf_config/uhdf:hdf_config",
+    "image_conf:custom_image_conf",
+    "preinstall-config:preinstall-config",
+    "qemu_run:qemu_run_package",
+    "resourceschedule:resourceschedule",
+    "window_config:window_config",
   ]
 }
