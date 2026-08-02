@@ -1,5 +1,5 @@
 """Cross-platform OpenHarmony QEMU launcher."""
 
-from .launcher import main
-
 __all__ = ["main"]
+
+from .launcher import main  # noqa: E402

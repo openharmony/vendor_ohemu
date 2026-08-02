@@ -31,7 +31,7 @@ import time
 import types
 import zipfile
 from pathlib import Path, PurePosixPath, PureWindowsPath
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Any, Dict, Iterable, List, NoReturn, Optional, Sequence, Tuple
 
 
 # --- Module-level constants ---------------------------------------------------
@@ -59,7 +59,7 @@ class LauncherError(RuntimeError):
         self.code = code
 
 
-def fail(message: str, code: int = 1) -> None:
+def fail(message: str, code: int = 1) -> NoReturn:
     raise LauncherError(message, code)
 
 
@@ -831,7 +831,7 @@ def qmp_is_ready(endpoint: Dict[str, Any]) -> bool:
             stream = client.makefile("rb")
             greeting = json.loads(stream.readline().decode("utf-8"))
             return "QMP" in greeting
-    except (OSError, ValueError, json.JSONDecodeError):
+    except (OSError, ValueError):
         return False
 
 
@@ -1302,17 +1302,7 @@ def _handle_run(ctx: types.SimpleNamespace) -> int:
 # --- Argument parser ---------------------------------------------------------
 
 
-def build_parser() -> argparse.ArgumentParser:
-    entry_name = "qemu_run.cmd" if os.name == "nt" else "qemu_run.sh"
-    parser = argparse.ArgumentParser(
-        prog=entry_name,
-        usage="%(prog)s [OPTIONS] [COMMAND]",
-        description=(
-            "Run and manage OpenHarmony QEMU instances. Each instance uses "
-            "private qcow2 overlays while sharing the read-only base images."
-        ),
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""Commands:
+_USAGE_EPILOG = """Commands:
   run            Create or reuse an instance and start QEMU (default command).
   create         Create and validate the instance qcow2 overlays, then exit.
   list           List all instances belonging to this profile and image set.
@@ -1340,8 +1330,24 @@ Examples:
 Environment overrides:
   OHOS_IMG, QEMU_DISPLAY, QEMU_INSTANCE_ROOT, QEMU_RUNTIME_ROOT,
   QEMU_BRIDGE_NAME, QEMU_DISK_CACHE
-""",
+"""
+
+
+def _build_main_parser() -> argparse.ArgumentParser:
+    entry_name = "qemu_run.cmd" if os.name == "nt" else "qemu_run.sh"
+    return argparse.ArgumentParser(
+        prog=entry_name,
+        usage="%(prog)s [OPTIONS] [COMMAND]",
+        description=(
+            "Run and manage OpenHarmony QEMU instances. Each instance uses "
+            "private qcow2 overlays while sharing the read-only base images."
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=_USAGE_EPILOG,
     )
+
+
+def _add_path_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--profile", required=True, help=argparse.SUPPRESS)
     parser.add_argument(
         "command", nargs="?", choices=sorted(COMMANDS), metavar="COMMAND",
@@ -1387,6 +1393,9 @@ Environment overrides:
         "--qemu-img", metavar="PATH",
         help="exact qemu-img executable used to create and validate qcow2 overlays",
     )
+
+
+def _add_resource_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--accel", choices=["auto", "kvm", "hvf", "whpx", "tcg"], default="auto",
         help=(
@@ -1423,6 +1432,9 @@ Environment overrides:
             "(default: QEMU_DISK_CACHE or none)"
         ),
     )
+
+
+def _add_behavior_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--background", action="store_true",
         help="run QEMU under a detached supervisor and write serial/QEMU logs to the runtime directory",
@@ -1451,6 +1463,9 @@ Environment overrides:
         "--qemu-arg", metavar="ARG", action="append", default=[],
         help="append one raw argument to QEMU; repeat for multiple arguments (advanced)",
     )
+
+
+def _add_compat_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--create-only", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--reset", dest="reset_before_run", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--delete", dest="delete_compat", action="store_true", help=argparse.SUPPRESS)
@@ -1458,6 +1473,14 @@ Environment overrides:
     parser.add_argument("--list", dest="list_compat", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("-n", dest="network", action="store_const", const="user", help=argparse.SUPPRESS)
     parser.add_argument("--supervise", action="store_true", help=argparse.SUPPRESS)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = _build_main_parser()
+    _add_path_arguments(parser)
+    _add_resource_arguments(parser)
+    _add_behavior_arguments(parser)
+    _add_compat_arguments(parser)
     return parser
 
 
