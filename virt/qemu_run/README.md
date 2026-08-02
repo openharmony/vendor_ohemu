@@ -144,7 +144,6 @@ noVNC 会把 WebSocket 连到 `ws://<网关>/proxy/<端口>/websockify`，经代
 
 - forwarded URL 沿用 WebIDE 登录会话，用登录着 WebIDE 的浏览器打开即可，无需额外鉴权。
 - 其它实例号或架构的 VNC 端口见「实例资源映射」，改 websockify 的目标端口即可（实例 `03`→`5924`，AArch64→`6021`，ARM32→`6121`）。
-- 端口可见性默认 **Private**，仅自己可访问；需他人访问可在端口行右键将 **Port Visibility** 改为 **Public**。
 
 ## 4. 生命周期命令
 
