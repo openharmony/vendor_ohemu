@@ -17,7 +17,7 @@
   "common_args": [],
   "graphics": {
     "supported": true,
-    "device_args": ["-device", "virtio-gpu-pci"]
+    "device_args": ["-vga", "none", "-device", "virtio-gpu-pci"]
   },
   "input_args": [
     "-device", "virtio-mouse-pci",
