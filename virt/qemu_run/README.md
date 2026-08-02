@@ -114,7 +114,31 @@ git clone --depth 1 https://github.com/novnc/noVNC ~/noVNC
 
 4. 在 `6080` 一行右键 → **Open in Browser**（地球图标），或点 **Forwarded Address** 列复制 forwarded URL（形如 `http://<网关>/proxy/6080/`）。
 
-5. 浏览器打开 `…/proxy/6080/vnc.html`（可带参数 `?autoconnect=1&resize=scale`）。noVNC 经代理的 WebSocket 回连到 websockify，再桥接到 QEMU VNC，即可显示模拟器画面。
+5. 浏览器打开 noVNC 页面（URL 格式与参数见下文）。noVNC 经代理的 WebSocket 回连到 websockify，再桥接到 QEMU VNC，显示模拟器画面。
+
+**访问 URL 格式**（`<网关>` 取 Ports 面板里 `6080` 的 Forwarded Address 的 `host:port` 部分，`<端口>` 取 websockify 监听端口）：
+
+```
+http://<网关>/proxy/<端口>/vnc.html?host=&path=websockify&autoconnect=true&resize=scale
+```
+
+示例（网关 `123.249.34.178:40097`、端口 `6080`）：
+
+```
+http://123.249.34.178:40097/proxy/6080/vnc.html?host=&path=websockify&autoconnect=true&resize=scale
+```
+
+noVNC 会把 WebSocket 连到 `ws://<网关>/proxy/<端口>/websockify`，经代理转发到 websockify，再桥接到 QEMU VNC（`127.0.0.1:<VNC 端口>`）。
+
+**查询参数说明**：
+
+| 参数 | 必填 | 含义与作用 |
+| --- | --- | --- |
+| `host` | 是 | noVNC 连接的 WebSocket 主机。**留空**（`host=`）让 noVNC 沿用页面 URL 的 host（即 CodeSpace 网关）。不能省略：省略后 noVNC 可能读取浏览器 localStorage 里残留的旧 host，导致 WebSocket 连到错误地址而报"无法连接到服务器"。 |
+| `path` | 是 | noVNC 连接的 WebSocket 路径，设为 `websockify`（websockify 的 WS 端点）。noVNC 以页面 URL 为基准将其解析为 `/proxy/<端口>/websockify`。不能省略。 |
+| `autoconnect` | 否 | `true`：页面加载后自动发起连接，无需手动点击连接按钮。 |
+| `resize` | 否 | `scale`：将远端画面缩放适配浏览器视口；不传则按原始分辨率显示。 |
+| `reconnect` | 否 | `true`：连接断开后自动重连。 |
 
 说明：
 
