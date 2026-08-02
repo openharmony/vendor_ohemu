@@ -83,7 +83,44 @@ vncviewer 127.0.0.1::5921
 vncviewer 127.0.0.1:21
 ```
 
-VNC 默认仅监听 `127.0.0.1`；远程访问需通过 SSH 端口转发。其他实例号或架构的 VNC 端口见「实例资源映射」。
+VNC 默认仅监听 `127.0.0.1`，仅本机可达；在远程开发环境（VS Code / code-server 类 CodeSpace）中的远程访问方式见下节。其他实例号或架构的 VNC 端口见「实例资源映射」。
+
+### 通过 VS Code 端口代理远程访问 VNC
+
+在基于 VS Code（code-server）的远程开发环境（CodeSpace）中，远程网关只代理 HTTP/WebSocket，无法转发 VNC 的裸 TCP。借助 VS Code「端口（Ports）」面板 + noVNC 网页客户端即可在本地浏览器访问模拟器画面。
+
+前置准备（每个工作区执行一次）：
+
+```bash
+pip3 install --user websockify
+git clone --depth 1 https://github.com/novnc/noVNC ~/noVNC
+```
+
+以实例 `00`、x86_64（VNC TCP 端口 `5921`）为例，操作流程：
+
+1. 启动模拟器，VNC 监听本机 5921：
+
+   ```bash
+   ./qemu_run.sh run --instance 00 --display vnc --background
+   ```
+
+2. 另开终端，启动 websockify 桥接 + noVNC 网页（监听 6080，桥接到本机 VNC 5921）：
+
+   ```bash
+   ~/.local/bin/websockify --web ~/noVNC 6080 127.0.0.1:5921
+   ```
+
+3. 打开「端口」面板：菜单 **View → Open View… → Ports**（或点击底部面板的 **Ports** 标签）。列表会自动发现 `6080`；若未出现，点面板右上 **Forward a Port**（`+`）并输入 `6080`。
+
+4. 在 `6080` 一行右键 → **Open in Browser**（地球图标），或点 **Forwarded Address** 列复制 forwarded URL（形如 `http://<网关>/proxy/6080/`）。
+
+5. 浏览器打开 `…/proxy/6080/vnc.html`（可带参数 `?autoconnect=1&resize=scale`）。noVNC 经代理的 WebSocket 回连到 websockify，再桥接到 QEMU VNC，即可显示模拟器画面。
+
+说明：
+
+- forwarded URL 沿用 WebIDE 登录会话，用登录着 WebIDE 的浏览器打开即可，无需额外鉴权。
+- 其他实例号或架构的 VNC 端口见「实例资源映射」，改 websockify 的目标端口即可（实例 `03`→`5924`，AArch64→`6021`，ARM32→`6121`）。
+- 端口可见性默认 **Private**，仅自己可访问；需他人访问可在端口行右键将 **Port Visibility** 改为 **Public**。
 
 ## 4. 生命周期命令
 
