@@ -1,4 +1,6 @@
-# Copyright (C) 2021-2023 HiHope Open Source Organization .
+#!/usr/bin/env -S python3 -B
+
+# Copyright 2026 Institute of Software, Chinese Academy of Sciences.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,19 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
+from qemu_launcher_lib import main
 
-group("virtconfig_group") {
-  deps = [
-    "default_app_config:default_app_config",
-    "etc:product_etc_conf",
-    "hals/audio:hdf_audio_config",
-    "hals/codec:hdf_codec_config",
-    "hdf_config/uhdf:hdf_config",
-    "image_conf:custom_image_conf",
-    "preinstall-config:preinstall-config",
-    "qemu_run:qemu_run_package",
-    "resourceschedule:resourceschedule",
-    "window_config:window_config",
-  ]
-}
+if __name__ == "__main__":
+    main()

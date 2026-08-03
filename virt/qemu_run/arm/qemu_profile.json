@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "arm_linux_min",
+  "product_name": "qemu-arm-linux-min",
+  "guest_arch": "arm",
+  "port_slot": 2,
+  "qemu_binaries": ["qemu-system-arm"],
+  "minimum_qemu_version": "5.1.0",
+  "default_image_paths": ["out/qemu-arm-linux/packages/phone/images"],
+  "default_instance_root": "out/qemu-arm-linux/qemu_instances",
+  "machine_args": ["-machine", "virt"],
+  "cpu": "cortex-a7",
+  "smp": 4,
+  "memory_mib": 1024,
+  "kernel": "zImage-dtb",
+  "initrd": "ramdisk.img",
+  "common_args": [],
+  "graphics": {"supported": false, "device_args": []},
+  "input_args": [],
+  "network": {"device": "virtio-net-device"},
+  "drives": [
+    {"id": "userdata", "file": "userdata.img", "base_format": "raw", "drive_options": ["if=none", "id=userdata", "index=3"], "device": "virtio-blk-device", "device_options": ["drive=userdata"]},
+    {"id": "vendor", "file": "vendor.img", "base_format": "raw", "drive_options": ["if=none", "id=vendor", "index=2"], "device": "virtio-blk-device", "device_options": ["drive=vendor"]},
+    {"id": "system", "file": "system.img", "base_format": "raw", "drive_options": ["if=none", "id=system", "index=1"], "device": "virtio-blk-device", "device_options": ["drive=system"]},
+    {"id": "updater", "file": "updater.img", "base_format": "raw", "drive_options": ["if=none", "id=updater", "index=0"], "device": "virtio-blk-device", "device_options": ["drive=updater"]}
+  ],
+  "bootargs": [
+    "console=ttyAMA0,115200",
+    "sn=${INSTANCE_SN}",
+    "ip=dhcp",
+    "ipv6.disable=1",
+    "init=/bin/init",
+    "hardware=qemu.arm.linux",
+    "default_boot_device=a003e00.virtio_mmio",
+    "root=/dev/ram0",
+    "rw",
+    "ohos.required_mount.system=/dev/block/vdb@/usr@ext4@ro,barrier=1@wait,required",
+    "ohos.required_mount.vendor=/dev/block/vdc@/vendor@ext4@ro,barrier=1@wait,required"
+  ]
+}
