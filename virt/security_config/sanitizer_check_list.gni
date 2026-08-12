@@ -683,6 +683,7 @@ bypass_eventhandler = [ "libeventhandler" ]
 bypass_os_account = [
   "account_iam_napi",  # napi target, not required to enable cfi
   "authorization_napi",  # napi target, not required to enable cfi
+  "authorization",  # napi target, not required to enable cfi
   "appaccount",  # napi target, not required to enable cfi
   "account_napi_common",  # napi target, not required to enable cfi
   "distributedaccount",  # napi target, not required to enable cfi
